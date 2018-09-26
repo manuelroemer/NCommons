@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Manuel Römer</Authors>
+    <Company />
+    <Description>Provides functionalities which are commonly used in projects.</Description>
+  </PropertyGroup>
+
+</Project>
