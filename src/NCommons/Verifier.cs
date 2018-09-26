@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace NCommons
 {
-    
+
     /// <summary>
     ///     Provides static extension methods in the form of
     ///     <code>Verify[Condition](...)</code>
@@ -22,7 +22,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -34,7 +33,7 @@ namespace NCommons
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="obj"/> is not null.
         /// </exception>
-        public static T VerifyNull<T>(this T obj) where T : class
+        public static T VerifyNull<T>(this T obj)
         {
             return VerifyNull(obj, null, Strings.Verifier_ObjectNotNullExMsg);
         }
@@ -45,7 +44,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -62,12 +60,10 @@ namespace NCommons
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="obj"/> is not null.
         /// </exception>
-        public static T VerifyNull<T>(this T obj, string paramName) where T : class
+        public static T VerifyNull<T>(this T obj, string paramName)
         {
             return VerifyNull(
-                obj, 
-                paramName, 
-                string.Format(
+                obj, paramName, string.Format(
                     Strings.Verifier_ObjectNotNullExMsgWithParamName,
                     paramName));
         }
@@ -78,7 +74,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -98,8 +93,7 @@ namespace NCommons
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="obj"/> is not null.
         /// </exception>
-        public static T VerifyNull<T>(this T obj, string paramName, string message) 
-            where T : class
+        public static T VerifyNull<T>(this T obj, string paramName, string message)
         {
             if (obj != null)
             {
@@ -118,7 +112,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -130,7 +123,7 @@ namespace NCommons
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="obj"/> is null.
         /// </exception>
-        public static T VerifyNotNull<T>(this T obj) where T : class
+        public static T VerifyNotNull<T>(this T obj)
         {
             return VerifyNotNull(obj, null, null);
         }
@@ -141,7 +134,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -158,7 +150,7 @@ namespace NCommons
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="obj"/> is null.
         /// </exception>
-        public static T VerifyNotNull<T>(this T obj, string paramName) where T : class
+        public static T VerifyNotNull<T>(this T obj, string paramName)
         {
             return VerifyNotNull(obj, paramName, null);
         }
@@ -169,7 +161,6 @@ namespace NCommons
         /// </summary>
         /// <typeparam name="T">
         ///     The type of the object.
-        ///     Must be a reference type.
         /// </typeparam>
         /// <param name="obj">
         ///     The object to be checked.
@@ -189,8 +180,7 @@ namespace NCommons
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="obj"/> is null.
         /// </exception>
-        public static T VerifyNotNull<T>(this T obj, string paramName, string message) 
-            where T : class
+        public static T VerifyNotNull<T>(this T obj, string paramName, string message)
         {
             if (obj == null)
             {
@@ -198,7 +188,49 @@ namespace NCommons
             }
             return obj;
         }
-        
+
+        #endregion
+
+        #region Verify
+
+        /// <summary>
+        ///     Ensures that a specific condition, provided via a delegate,
+        ///     is fulfilled for the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <typeparam name="T">
+        ///     The type of the object.
+        /// </typeparam>
+        /// <param name="obj">
+        ///     The object to be checked.
+        /// </param>
+        /// <param name="condition">
+        ///     A function which checks a certain condition which must apply to the object.
+        /// </param>
+        /// <param name="exceptionFactory">
+        ///     A factory function which creates an <see cref="Exception"/> to be thrown if the
+        ///     <paramref name="condition"/> doesn't apply to the object.
+        /// </param>
+        /// <returns>
+        ///     If no exception is thrown, this returns a reference to the specified
+        ///     <paramref name="obj"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if <paramref name="condition"/> or <paramref name="exceptionFactory"/>
+        ///     is null.
+        /// </exception>
+        public static T Verify<T>(
+            this T obj, Func<bool> condition, Func<Exception> exceptionFactory)
+        {
+            condition.VerifyNotNull(nameof(condition));
+            exceptionFactory.VerifyNotNull(nameof(exceptionFactory));
+
+            if (!condition())
+            {
+                throw exceptionFactory();
+            }
+            return obj;
+        }
+
         #endregion
 
     }
