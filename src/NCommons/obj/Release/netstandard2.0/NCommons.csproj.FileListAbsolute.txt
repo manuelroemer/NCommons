@@ -1,9 +1,0 @@
-C:\Development\Privat\NCommons\src\NCommons\bin\Release\netstandard2.0\NCommons.deps.json
-C:\Development\Privat\NCommons\src\NCommons\bin\Release\netstandard2.0\NCommons.dll
-C:\Development\Privat\NCommons\src\NCommons\bin\Release\netstandard2.0\NCommons.pdb
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.csprojAssemblyReference.cache
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.csproj.CoreCompileInputs.cache
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.AssemblyInfoInputs.cache
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.AssemblyInfo.cs
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.dll
-C:\Development\Privat\NCommons\src\NCommons\obj\Release\netstandard2.0\NCommons.pdb
