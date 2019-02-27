@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NCommons.Resources {
+namespace NCommons.Monads.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace NCommons.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    internal class ExceptionStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal ExceptionStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace NCommons.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NCommons.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NCommons.Monads.Resources.ExceptionStrings", typeof(ExceptionStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace NCommons.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value must be null..
+        ///   Looks up a localized string similar to When constructing an option of type &quot;Some&quot;, the value must not be null (Nothing in VB)..
         /// </summary>
-        internal static string Verifier_ObjectNotNullExMsg {
+        internal static string Option_SomeValueMustNotBeNull {
             get {
-                return ResourceManager.GetString("Verifier_ObjectNotNullExMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The parameter &quot;{0}&quot; must be null..
-        /// </summary>
-        internal static string Verifier_ObjectNotNullExMsgWithParamName {
-            get {
-                return ResourceManager.GetString("Verifier_ObjectNotNullExMsgWithParamName", resourceCulture);
+                return ResourceManager.GetString("Option_SomeValueMustNotBeNull", resourceCulture);
             }
         }
     }
