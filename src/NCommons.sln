@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Monads", "NCommons.Monads\NCommons.Monads.csproj", "{8F283B55-5109-4052-AC55-7433F315E484}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C6E7FD3B-AC1D-4C94-B0E6-103404248921}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8F283B55-5109-4052-AC55-7433F315E484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F283B55-5109-4052-AC55-7433F315E484}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F283B55-5109-4052-AC55-7433F315E484}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F283B55-5109-4052-AC55-7433F315E484}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4CB4F73-0936-4140-B9E6-2FA6036F3255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4CB4F73-0936-4140-B9E6-2FA6036F3255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CB4F73-0936-4140-B9E6-2FA6036F3255}.Release|Any CPU.ActiveCfg = Release|Any CPU
