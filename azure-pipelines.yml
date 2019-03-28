@@ -30,5 +30,5 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) 
+- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration)
   displayName: Pack NuGet
