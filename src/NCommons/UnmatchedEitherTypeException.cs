@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.Serialization;
 using NCommons.Resources;
 
 namespace NCommons
 {
+
+#pragma warning disable CA1032
 
     /// <summary>
     ///     An exception which gets thrown by certain methods of the <see cref="Either{TL, TR}"/>
@@ -47,6 +50,9 @@ namespace NCommons
             ActualType = actualType;
         }
 
+        protected UnmatchedEitherTypeException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+            : base(serializationInfo, streamingContext) { }
+
         private static string BuildMessage(EitherType actualType)
         {
             return string.Format(
@@ -58,5 +64,7 @@ namespace NCommons
         }
 
     }
+
+#pragma warning restore CA1032
 
 }

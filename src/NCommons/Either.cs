@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 namespace NCommons
 {
 
+#pragma warning disable CA1066 // Should implement IEquatable<T>.    It is implemented?? Prob. confused by the explicit implementation.
+
     /// <summary>
     ///     Holds a single value which can either be of type <typeparamref name="TL"/>
     ///     (i.e. a left value) or of type <typeparamref name="TR"/> (i.e. a right value).
@@ -91,8 +93,10 @@ namespace NCommons
         ///     <paramref name="left"/> value.
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Either<TL, TR> Left(TL left) =>
-            new Either<TL, TR>(left);
+        public static Either<TL, TR> Left(TL left)
+        {
+            return new Either<TL, TR>(left);
+        }
 
         /// <summary>
         ///     Returns a new <see cref="Either{TL, TR}"/> which holds the specified
@@ -106,8 +110,10 @@ namespace NCommons
         ///     <paramref name="right"/> value.
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Either<TL, TR> Right(TR right) =>
-            new Either<TL, TR>(right);
+        public static Either<TL, TR> Right(TR right)
+        {
+            return new Either<TL, TR>(right);
+        }
 
         /// <summary>
         ///     Matches the two specified functions to the either's <see cref="Type"/> and executes
@@ -526,5 +532,7 @@ namespace NCommons
         }
 
     }
+
+#pragma warning restore CA1066
 
 }

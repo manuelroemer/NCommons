@@ -1,34 +1,5 @@
 <Project>
 
-  <!-- Default C# Project properties that are expected for all sub-projects. -->
-  <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
-
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <NullableReferenceTypes>true</NullableReferenceTypes>
-    <NullableContextOptions>enable</NullableContextOptions>
-    <WarningsAsErrors>
-      $(WarningsAsErrors);
-      CS8600; <!-- Converting null literal or possible null value to non-nullable type. -->
-      CS8602; <!-- Possible derefence of a null value reference. -->
-      CS8603; <!-- Possible null reference return. -->
-      CS8604; <!-- Possible null reference argument for parameter. -->
-      CS8612; <!-- Nullability of reference types in type doesn't match implicitly implemented member. -->
-      CS8615; <!-- Nullability of reference types in type doesn't match implemented member. -->
-
-      CS8618; <!-- Non-nullable field is uninitialized. -->
-      CS8620; <!-- Nullability of reference types in argument of type 'Class<T?>' doesn't match target type 'Other<T>'. -->
-      CS8625; <!-- Cannot convert null literal to non-nullable reference or unconstrained type parameter. -->
-    </WarningsAsErrors>
-  </PropertyGroup>
-  
-  
   <!-- Global project metadata.-->
   <PropertyGroup>
     <Product>NCommons</Product>
@@ -36,20 +7,29 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
   </PropertyGroup>
-  
-  
-  <!-- Global CA rules. Should be replaced with a shared ruleset. -->
+
+  <!-- Default C# Project properties that are expected for all sub-projects. -->
   <PropertyGroup>
-    <NoWarn>
-      $(NoWarn);
-      CA2225; <!-- Operator overloads have named alternates. -->
-      CA1710; <!-- IEnumerable implementers should end in Collection. -->
-    </NoWarn>
+    <LangVersion>8.0</LangVersion>
+    <NullableReferenceTypes>true</NullableReferenceTypes>
+    <NullableContextOptions>enable</NullableContextOptions>
+    
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
-  
-  <!-- Hand in hand with the CA: We don't want to have open warnings when releasing. -->
+
+  <!-- Don't allow warnings in release builds. -->
   <PropertyGroup Condition=" $(Configuration) == 'Release' ">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
+    <CodeAnalysisRuleSet>../CA.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  
+  <ItemGroup Condition=" !$(IsTestProject) ">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.0" PrivateAssets="all" />
+  </ItemGroup>
   
 </Project>
