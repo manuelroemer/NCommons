@@ -18,7 +18,7 @@ Common examples are specialized collections (e.g. the `WeakReferenceCollection`)
 write but may be useful in any kind of larger project.
 
 
-## Installation and Dev Notes
+## Installation and development notes
 
 Install the library via NuGet:
 
@@ -31,9 +31,10 @@ dotnet add package NCommons
 ```
 
 The project is using .NET Standard 2.0 as a compilation target.
+The library is also using C# 8.0 with *Nullable Reference Types*, if you have that feature flag
+enabled.
 
-Furthermore, it is using C# 8.0's Nullable Reference Types, if consumed with the same feature flag
-(recommended).
+If you want to work with the source code, you will need an editor/IDE that supports C# 8.0.
 
 
 ## Documentation / Usage
