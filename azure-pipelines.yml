@@ -1,6 +1,5 @@
 trigger:
 - master
-- dev
 
 name: $(SourceBranchName)_$(Date:yyyy-MM-dd)_$(Rev:.r)
 
