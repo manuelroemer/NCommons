@@ -1,7 +1,7 @@
 trigger:
 - master
 
-name: $(version)+ci-$(Build.BuildId)
+name: $(Date:yyyyMMdd)-$(Rev:.r)-from:$(SourceBranchName)
 
 pool:
   vmImage: 'windows-2019'
