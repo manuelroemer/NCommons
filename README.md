@@ -1,4 +1,4 @@
-# NCommons [![Build Status](https://dev.azure.com/ManuelRoemer/NCommons/_apis/build/status/NCommons%20(NuGet%20CI)?branchName=master)](https://dev.azure.com/ManuelRoemer/NCommons/_build/latest?definitionId=3&branchName=master) ![Nuget](https://img.shields.io/nuget/v/NCommons.svg?color=002b4d)
+# NCommons [![Build Status](https://dev.azure.com/ManuelRoemer/NCommons/_apis/build/status/NCommons%20(NuGet%20CI)?branchName=master)](https://dev.azure.com/ManuelRoemer/NCommons/_build/latest?definitionId=3&branchName=master) ![Nuget](https://img.shields.io/nuget/v/NCommons.svg)
 
 A reusable set of common members that are missing in the .NET Framework.
 
