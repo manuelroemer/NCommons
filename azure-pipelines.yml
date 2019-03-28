@@ -42,6 +42,7 @@ steps:
     )
 
 - task: NuGetCommand@2
+  displayName: Publish NuGet
   inputs:
     command: push
     nuGetFeedType: external
