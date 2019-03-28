@@ -65,9 +65,9 @@ Otherwise, feel free to contribute or discuss!
 Whenever a commit to `master` finishes, the project is automatically built and published to NuGet.
 Changes to `master` must be in a 100% deployable state (i.e. tested and complete).
 
-As a result, the `dev` branch is where all the preliminary updates should be happening.
-Create and use feature branches and PRs into `dev` for creating, well, new features. Once the
-changes in `dev` justify a new NuGet version, they will be merged into `master`.
+Changes should be created on `feature/` branches and collected on the `dev` branch.
+Once there are enough changes to justify a new NuGet version, `dev` will be merged into `master`
+and published.
 
 
 ## License
