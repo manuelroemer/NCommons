@@ -59,4 +59,4 @@ Otherwise, feel free to contribute or discuss!
 
 ## License
 
-See the [LICENSE](./LICENSE) file for details.
+See the [LICENSE](./LICENSE.md) file for details.

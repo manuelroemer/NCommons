@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace NCommons
+namespace NCommons.Monads
 {
 
 #pragma warning disable CA1066 // Should implement IEquatable<T>.    It is implemented?? Prob. confused by the explicit implementation.

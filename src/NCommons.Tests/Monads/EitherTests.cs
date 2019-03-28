@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace NCommons.Tests
+namespace NCommons.Monads.Tests
 {
 
     public sealed class EitherTests

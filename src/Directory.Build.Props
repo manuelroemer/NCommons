@@ -1,13 +1,5 @@
 <Project>
 
-  <!-- Global project metadata.-->
-  <PropertyGroup>
-    <Product>NCommons</Product>
-    <NeutralLanguage>en</NeutralLanguage>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
-  </PropertyGroup>
-
   <!-- Default C# Project properties that are expected for all sub-projects. -->
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
@@ -16,6 +8,15 @@
     
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
+    
+    <Product>NCommons</Product>
+    <Authors>Manuel Römer</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/manuelroemer/NCommons</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/manuelroemer/NCommons/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>../../LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <!-- Don't allow warnings in release builds. -->

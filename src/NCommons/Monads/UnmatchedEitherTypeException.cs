@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
-using NCommons.Resources;
+using NCommons.Monads.Resources;
 
-namespace NCommons
+namespace NCommons.Monads
 {
 
 #pragma warning disable CA1032

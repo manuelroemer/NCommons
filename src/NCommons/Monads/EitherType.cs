@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NCommons
+namespace NCommons.Monads
 {
 
     /// <summary>
