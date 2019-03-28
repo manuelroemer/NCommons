@@ -30,6 +30,7 @@ steps:
     command: test
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+  condition: succeeded()
 
 - script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration)
   displayName: Pack NuGet
@@ -37,7 +38,7 @@ steps:
     and
     (
       succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/dev'),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
       eq(variables['system.pullrequest.isfork'], false)
     )
 
@@ -51,6 +52,6 @@ steps:
     and
     (
       succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/dev'),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
       eq(variables['system.pullrequest.isfork'], false)
     )
