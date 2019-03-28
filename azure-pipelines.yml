@@ -11,6 +11,7 @@ variables:
 
 steps:
 - task: DotNetCoreInstaller@0
+  displayName: Install .NET Core 3.0 Preview
   inputs:
     packageType: 'sdk'
     version: '3.0.100-preview3-010431'
@@ -28,3 +29,8 @@ steps:
     command: test
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+
+- task: NuGetCommand@2
+  inputs:
+    command: pack
+    packagesToPack: '**/*.csproj'
