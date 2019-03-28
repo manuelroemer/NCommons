@@ -1,7 +1,7 @@
 trigger:
 - master
 
-name: $(releaseVersion)+ci-$(Build.BuildId)
+name: $(version)+ci-$(Build.BuildId)
 
 pool:
   vmImage: 'windows-2019'
@@ -10,6 +10,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreInstaller@0
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.0-preview3-010431'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
