@@ -33,7 +33,13 @@ steps:
 
 - script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration)
   displayName: Pack NuGet
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false))
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/dev'),
+      eq(variables['system.pullrequest.isfork'], false)
+    )
 
 - task: NuGetCommand@2
   inputs:
@@ -41,4 +47,10 @@ steps:
     nuGetFeedType: external
     publishFeedCredentials: 'NuGet.org'
     versioningScheme: off
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false))
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/dev'),
+      eq(variables['system.pullrequest.isfork'], false)
+    )
