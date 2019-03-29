@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UnmatchedEitherTypeException_DefaultMessage" xml:space="preserve">
-    <value>An attempt was made to read the "{0}" value of an either. The either does, however, hold a "{1}" value.</value>
+  <data name="UnexpectedEitherTypeException_DefaultMessage" xml:space="preserve">
+    <value>An attempt was made to read the value of an either of type "{0}". The either is, however, of type "{1}".</value>
     <comment>{0} and {1} stand for Left/Right respectively.</comment>
   </data>
 </root>

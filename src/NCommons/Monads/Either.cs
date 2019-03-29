@@ -117,29 +117,34 @@ namespace NCommons.Monads
 
         /// <summary>
         ///     Matches the two specified functions to the either's <see cref="Type"/> and executes
-        ///     the matching function, if present.
+        ///     the matching function.
         /// </summary>
         /// <param name="onLeft">
         ///     A function to be executed if the either holds a left value.
         ///     The function receives the left value as a parameter.
-        ///     Can be <c>null</c>. If <c>null</c>, nothing will happen if the either holds a left
-        ///     value.
         /// </param>
         /// <param name="onRight">
         ///     A function to be executed if the either holds a right value.
         ///     The function receives the right value as a parameter.
-        ///     Can be <c>null</c>. If <c>null</c>, nothing will happen if the either holds a right
-        ///     value.
         /// </param>
-        public void Match(Action<TL>? onLeft = null, Action<TR>? onRight = null)
+        /// <exception cref="ArgumentNullException">
+        ///     * <paramref name="onLeft"/>
+        ///     * <paramref name="onRight"/>
+        /// </exception>
+        public void Match(Action<TL> onLeft, Action<TR> onRight)
         {
+            if (onLeft is null)
+                throw new ArgumentNullException(nameof(onLeft));
+            if (onRight is null)
+                throw new ArgumentNullException(nameof(onRight));
+
             if (IsLeft)
             {
-                onLeft?.Invoke(_left);
+                onLeft(_left);
             }
             else
             {
-                onRight?.Invoke(_right);
+                onRight(_right);
             }
         }
 
@@ -266,28 +271,28 @@ namespace NCommons.Monads
 
         /// <summary>
         ///     Returns the either's left value if it holds one.
-        ///     Otherwise, an <see cref="UnmatchedEitherTypeException"/> is thrown.
+        ///     Otherwise, an <see cref="UnexpectedEitherTypeException"/> is thrown.
         /// </summary>
         /// <returns>The either's left value.</returns>
-        /// <exception cref="UnmatchedEitherTypeException">
+        /// <exception cref="UnexpectedEitherTypeException">
         ///     Thrown if the either holds a right value.
         /// </exception>
         public TL LeftOrThrow()
         {
-            return IsLeft ? _left : throw new UnmatchedEitherTypeException(Type);
+            return IsLeft ? _left : throw new UnexpectedEitherTypeException(Type);
         }
 
         /// <summary>
         ///     Returns the either's right value if it holds one.
-        ///     Otherwise, an <see cref="UnmatchedEitherTypeException"/> is thrown.
+        ///     Otherwise, an <see cref="UnexpectedEitherTypeException"/> is thrown.
         /// </summary>
         /// <returns>The either's right value.</returns>
-        /// <exception cref="UnmatchedEitherTypeException">
+        /// <exception cref="UnexpectedEitherTypeException">
         ///     Thrown if the either holds a left value.
         /// </exception>
         public TR RightOrThrow()
         {
-            return IsRight ? _right : throw new UnmatchedEitherTypeException(Type);
+            return IsRight ? _right : throw new UnexpectedEitherTypeException(Type);
         }
 
         /// <summary>
