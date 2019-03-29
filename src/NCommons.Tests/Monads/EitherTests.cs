@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Xunit;
 
 namespace NCommons.Monads.Tests
@@ -8,12 +10,12 @@ namespace NCommons.Monads.Tests
     {
         
         /// <summary>Used in the tests as a left value.</summary>
-        private sealed class Left
+        [Serializable] private sealed class Left
         {
         }
 
         /// <summary>Used in the tests as a right value.</summary>
-        private sealed class Right
+        [Serializable] private sealed class Right
         {
         }
 
@@ -648,6 +650,41 @@ namespace NCommons.Monads.Tests
         {
             var either = Either<Left?, Right?>.Right(null);
             Assert.Equal($"Right(null)", either.ToString());
+        }
+
+        #endregion
+
+        #region Serialization
+
+        [Fact]
+        public void Correctly_Serializes_Left_Either()
+        {
+            var either = new Either<Left, Right>(new Left());
+            var serializedEither = DoSerializationPass(either);
+
+            Assert.True(serializedEither.IsLeft);
+            Assert.IsType<Left>(serializedEither.LeftOrThrow());
+        }
+        
+        [Fact]
+        public void Correctly_Serializes_Right_Either()
+        {
+            var either = new Either<Left, Right>(new Right());
+            var serializedEither = DoSerializationPass(either);
+
+            Assert.True(serializedEither.IsRight);
+            Assert.IsType<Right>(serializedEither.RightOrThrow());
+        }
+
+        private Either<TL, TR> DoSerializationPass<TL, TR>(Either<TL, TR> either)
+        {
+            // Simply serialize and deserialize the either. The formatter doesn't really matter.
+            var formatter = new BinaryFormatter();
+            using var ms = new MemoryStream();
+
+            formatter.Serialize(ms, either);
+            ms.Position = 0;
+            return (Either<TL, TR>)formatter.Deserialize(ms);
         }
 
         #endregion
