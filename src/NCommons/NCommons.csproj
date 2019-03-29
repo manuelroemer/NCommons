@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Description>A reusable set of common members that are missing in the .NET Framework.</Description>
   </PropertyGroup>
 
@@ -13,10 +13,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ExceptionStrings.resx</DependentUpon>
     </Compile>
+    <Compile Update="Monads\Resources\ExceptionStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExceptionStrings.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Monads/Resources/ExceptionStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Monads\Resources\ExceptionStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ExceptionStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>

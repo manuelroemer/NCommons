@@ -61,11 +61,11 @@ namespace NCommons.Monads.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An attempt was made to read the &quot;{0}&quot; value of an either. The either does, however, hold a &quot;{1}&quot; value..
+        ///   Looks up a localized string similar to An attempt was made to read the value of an either of type &quot;{0}&quot;. The either is, however, of type &quot;{1}&quot;..
         /// </summary>
-        internal static string UnmatchedEitherTypeException_DefaultMessage {
+        internal static string UnexpectedEitherTypeException_DefaultMessage {
             get {
-                return ResourceManager.GetString("UnmatchedEitherTypeException_DefaultMessage", resourceCulture);
+                return ResourceManager.GetString("UnexpectedEitherTypeException_DefaultMessage", resourceCulture);
             }
         }
     }

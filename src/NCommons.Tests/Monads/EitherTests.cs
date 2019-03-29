@@ -86,42 +86,13 @@ namespace NCommons.Monads.Tests
         #region Either.Match()
 
         [Fact]
-        public void Action_Match_Accepts_Null()
+        public void Action_Match_Throws_For_Null()
         {
+#nullable disable
             var either = new Either<Left, Right>();
-            either.Match(null, null); // Should not throw.
-        }
-
-        [Fact]
-        public void Action_Match_Ignores_Left_Action_If_Null()
-        {
-            var either = new Either<Left, Right>(new Left());
-            either.Match(null, r => throw new Exception("Should not be called."));
-        }
-
-        [Fact]
-        public void Action_Match_Ignores_Right_Action_If_Null()
-        {
-            var either = new Either<Left, Right>(new Right());
-            either.Match(l => throw new Exception("Should not be called."), null);
-        }
-
-        [Fact]
-        public void Action_Match_Calls_Left_Action_Even_If_Right_Action_Is_Null()
-        {
-            bool wasLeftCalled = false;
-            var either = new Either<Left, Right>(new Left());
-            either.Match(l => { wasLeftCalled = true; }, null);
-            Assert.True(wasLeftCalled);
-        }
-        
-        [Fact]
-        public void Action_Match_Calls_Right_Action_Even_If_Left_Action_Is_Null()
-        {
-            bool wasRightCalled = false;
-            var either = new Either<Left, Right>(new Right());
-            either.Match(null, r => { wasRightCalled = true; });
-            Assert.True(wasRightCalled);
+            Assert.Throws<ArgumentNullException>(() => either.Match(null, r => { }));
+            Assert.Throws<ArgumentNullException>(() => either.Match(l => { }, null));
+#nullable enable
         }
 
         [Fact]
@@ -367,21 +338,21 @@ namespace NCommons.Monads.Tests
         public void LeftOrThrow_Throws_For_Right_Either()
         {
             var either = new Either<Left, Right>(new Right());
-            Assert.Throws<UnmatchedEitherTypeException>(() => either.LeftOrThrow());
+            Assert.Throws<UnexpectedEitherTypeException>(() => either.LeftOrThrow());
         }
         
         [Fact]
         public void RightOrThrow_Throws_For_Left_Either()
         {
             var either = new Either<Left, Right>(new Left());
-            Assert.Throws<UnmatchedEitherTypeException>(() => either.RightOrThrow());
+            Assert.Throws<UnexpectedEitherTypeException>(() => either.RightOrThrow());
         }
 
         [Fact]
         public void LeftOrThrow_Throws_Exception_With_Correct_ActualType()
         {
             var either = new Either<Left, Right>(new Right());
-            var ex = (UnmatchedEitherTypeException)Record.Exception(() => either.LeftOrThrow());
+            var ex = (UnexpectedEitherTypeException)Record.Exception(() => either.LeftOrThrow());
             Assert.Equal(EitherType.Right, ex.ActualType);
         }
 
@@ -389,7 +360,7 @@ namespace NCommons.Monads.Tests
         public void RightOrThrow_Throws_Exception_With_Correct_ActualType()
         {
             var either = new Either<Left, Right>(new Left());
-            var ex = (UnmatchedEitherTypeException)Record.Exception(() => either.RightOrThrow());
+            var ex = (UnexpectedEitherTypeException)Record.Exception(() => either.RightOrThrow());
             Assert.Equal(EitherType.Left, ex.ActualType);
         }
 
