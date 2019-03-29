@@ -6,8 +6,9 @@ namespace NCommons.Collections
 {
 
     /// <summary>
-    ///     A special collection which only contains weak references to the elements
+    ///     A special collection which only holds weak references to the elements
     ///     that are added to it.
+    ///     This allows the elements that are added to this list to be garbage-collected.
     /// </summary>
     /// <typeparam name="T">
     ///     The type of items added to the collection.
@@ -19,7 +20,7 @@ namespace NCommons.Collections
     public sealed class WeakReferenceCollection<T> : IEnumerable<T> where T : class
     {
 
-        private readonly IList<WeakReference<T>> _underlyingCollection;
+        private readonly List<WeakReference<T>> _underlyingCollection;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeakReferenceCollection{T}"/> class.
@@ -45,8 +46,8 @@ namespace NCommons.Collections
         /// </summary>
         /// <param name="item">The item to be removed from the collection.</param>
         /// <returns>
-        ///     true if the item was removed from the collection;
-        ///     false if no such item was found in the collection.
+        ///     <c>true</c> if the item was removed from the collection;
+        ///     <c>false</c> if no such item was found in the collection.
         /// </returns>
         public bool Remove(T item)
         {
@@ -85,8 +86,8 @@ namespace NCommons.Collections
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>
-        ///     true if the collection contains an alive reference to the specified 
-        ///     <paramref name="item"/>; false if not.
+        ///     <c>true</c> if the collection contains an alive reference to the specified 
+        ///     <paramref name="item"/>; <c>false</c> if not.
         /// </returns>
         public bool Contains(T item)
         {
