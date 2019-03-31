@@ -4,6 +4,14 @@ namespace NCommons.Collections
 {
 
     /// <summary>
+    ///     Represents the method that handles the <see cref="INotifyCollectionChanging.CollectionChanging"/>
+    ///     event.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">Information about the event.</param>
+    public delegate void NotifyCollectionChangingEventHandler(object sender, NotifyCollectionChangedEventArgs e);
+
+    /// <summary>
     ///     Notifies listeners about when a collection is about to change, but before the change
     ///     is actually going to happen.
     /// </summary>
@@ -23,7 +31,7 @@ namespace NCommons.Collections
         ///     Occurs when the collection is about to change, but before the change has actually
         ///     happened.
         /// </summary>
-        event NotifyCollectionChangedEventHandler CollectionChanging;
+        event NotifyCollectionChangingEventHandler CollectionChanging;
 
     }
 

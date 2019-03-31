@@ -22,7 +22,7 @@ namespace NCommons.Collections
         ///     Occurs when the collection is about to change, but before the change has actually
         ///     happened.
         /// </summary>
-        public event NotifyCollectionChangedEventHandler CollectionChanging;
+        public event NotifyCollectionChangingEventHandler CollectionChanging;
 
         private readonly ReentrancyMonitor _reentrancyMonitor = new ReentrancyMonitor();
 

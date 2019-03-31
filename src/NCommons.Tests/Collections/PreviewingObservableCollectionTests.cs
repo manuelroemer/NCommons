@@ -427,8 +427,8 @@ namespace NCommons.Tests.Collections
             PreviewingObservableCollection<T> collection,
             Action testCode)
         {
-            return Assert.Raises<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>(
-                ev => new NotifyCollectionChangedEventHandler(ev),
+            return Assert.Raises<NotifyCollectionChangingEventHandler, NotifyCollectionChangedEventArgs>(
+                ev => new NotifyCollectionChangingEventHandler(ev),
                 handler => collection.CollectionChanging += handler,
                 handler => collection.CollectionChanging -= handler,
                 testCode
