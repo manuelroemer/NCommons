@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Text;
 
 namespace NCommons.Collections
 {
@@ -48,6 +47,93 @@ namespace NCommons.Collections
         /// </exception>
         public PreviewingObservableCollection(List<T> list)
             : base(list) { }
+
+        /// <summary>
+        ///     Inserts the <paramref name="item"/> into the collection at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">The zero-based index where to insert the item.</param>
+        /// <param name="item">The item to be inserted.</param>
+        protected override void InsertItem(int index, T item)
+        {
+            using (BlockReentrancy())
+            {
+                OnCollectionChanging(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Add,
+                    item,
+                    index
+                ));
+                base.InsertItem(index, item);
+            }
+        }
+
+        /// <summary>
+        ///     Removes all items from the collection.
+        /// </summary>
+        protected override void ClearItems()
+        {
+            using (BlockReentrancy())
+            {
+                OnCollectionChanging(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Reset
+                ));
+                base.ClearItems();
+            }
+        }
+
+        /// <summary>
+        ///     Removes the item at the specified <paramref name="index"/> of the collection.
+        /// </summary>
+        /// <param name="index">The zero-based index of the item to be removed.</param>
+        protected override void RemoveItem(int index)
+        {
+            using (BlockReentrancy())
+            {
+                OnCollectionChanging(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Remove,
+                    this[index],
+                    index
+                ));
+                base.RemoveItem(index); 
+            }
+        }
+
+        /// <summary>
+        ///     Replaces the item at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">The zero-based index of the item to be replaced.</param>
+        /// <param name="item">The item with which to replace the old item.</param>
+        protected override void SetItem(int index, T item)
+        {
+            using (BlockReentrancy())
+            {
+                OnCollectionChanging(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Replace,
+                    newItem: item,
+                    oldItem: this[index],
+                    index:   index
+                ));
+                base.SetItem(index, item);
+            }
+        }
+
+        /// <summary>
+        ///     Moves the item at the specified index to a new location in the collection.
+        /// </summary>
+        /// <param name="oldIndex">The zero-based index of the item to be moved.</param>
+        /// <param name="newIndex">The zero-based index to which the item should be moved.</param>
+        protected override void MoveItem(int oldIndex, int newIndex)
+        {
+            using (BlockReentrancy())
+            {
+                OnCollectionChanging(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Move,
+                    this[oldIndex],
+                    newIndex,
+                    oldIndex
+                ));
+                base.MoveItem(oldIndex, newIndex); 
+            }
+        }
 
         /// <summary>
         ///     Raises the <see cref="INotifyCollectionChanging"/> event with the provided

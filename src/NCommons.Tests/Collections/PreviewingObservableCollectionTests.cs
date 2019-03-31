@@ -89,6 +89,20 @@ namespace NCommons.Tests.Collections
             AssertRaisesCollectionChanging(collection, () => collection.RemoveAt(0));
         }
 
+        [Fact]
+        public void Indexer_Raises_CollectionChanging()
+        {
+            var collection = new PreviewingObservableCollection<int>() { 123 };
+            AssertRaisesCollectionChanging(collection, () => collection[0] = 456);
+        }
+
+        [Fact]
+        public void Move_Raises_Collection_Changing()
+        {
+            var collection = new PreviewingObservableCollection<int>() { 123, 456 };
+            AssertRaisesCollectionChanging(collection, () => collection.Move(0, 1));
+        }
+
         #endregion
 
         #region EventArgs Data
@@ -222,6 +236,66 @@ namespace NCommons.Tests.Collections
             Assert.Equal(-1, args.NewStartingIndex);
 
             Assert.Same(objToRemove, args.OldItems[0]);
+        }
+
+        [Fact]
+        public void Indexer_EventArgs_Contain_Correct_Data()
+        {
+            var objToBeReplaced = new object();
+            var replacingObj = new object();
+            var collection = new PreviewingObservableCollection<object>()
+            {
+                new object(), // 3 items for StartingIndex asserts.
+                objToBeReplaced,
+                new object(),
+            };
+
+            var evData = AssertRaisesCollectionChanging(collection, () => collection[1] = replacingObj);
+            var args = evData.Arguments;
+
+
+            Assert.NotNull(args);
+            Assert.Equal(NotifyCollectionChangedAction.Replace, args.Action);
+
+            Assert.Equal(1, args.OldItems.Count);
+            Assert.Equal(1, args.OldStartingIndex);
+
+            Assert.Equal(1, args.NewItems.Count);
+            Assert.Equal(1, args.NewStartingIndex);
+
+            Assert.Same(objToBeReplaced, args.OldItems[0]);
+            Assert.Same(replacingObj, args.NewItems[0]);
+        }
+
+        [Fact]
+        public void Move_EventArgs_Contain_Correct_Data()
+        {
+            var toBeMoved = new object();
+            var willBeMoved = new object(); // The item that will switch places with toBeMoved.
+            var collection = new PreviewingObservableCollection<object>()
+            {
+                new object(), // 3 items for StartingIndex asserts.
+                toBeMoved,
+                willBeMoved,
+            };
+
+            var evData = AssertRaisesCollectionChanging(collection, () => collection.Move(1, 2));
+            var args = evData.Arguments;
+
+
+            Assert.NotNull(args);
+            Assert.Equal(NotifyCollectionChangedAction.Move, args.Action);
+
+            Assert.Equal(1, args.OldItems.Count);
+            Assert.Equal(1, args.OldStartingIndex);
+
+            Assert.Equal(1, args.NewItems.Count);
+            Assert.Equal(2, args.NewStartingIndex);
+
+            // Move should put the item that appeared at the index both in OldItems and NewItems.
+            // A little unintuitive, but that comes from the framework. Stay consistent with that.
+            Assert.Same(toBeMoved, args.OldItems[0]);
+            Assert.Same(toBeMoved, args.NewItems[0]);
         }
 
         #endregion
