@@ -14,7 +14,7 @@ namespace NCommons.Monads
     ///     hold.
     /// </summary>
     [Serializable]
-    public class UnmatchedEitherTypeException : Exception
+    public class UnexpectedEitherTypeException : Exception
     {
 
         /// <summary>
@@ -24,40 +24,40 @@ namespace NCommons.Monads
         public EitherType ActualType { get; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UnmatchedEitherTypeException"/>.
+        ///     Initializes a new instance of the <see cref="UnexpectedEitherTypeException"/>.
         /// </summary>
         /// <param name="actualType">The actual type of the either which was the cause of this exception.</param>
-        public UnmatchedEitherTypeException(EitherType actualType)
+        public UnexpectedEitherTypeException(EitherType actualType)
             : this(actualType, null) { }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UnmatchedEitherTypeException"/>.
+        ///     Initializes a new instance of the <see cref="UnexpectedEitherTypeException"/>.
         /// </summary>
         /// <param name="actualType">The actual type of the either which was the cause of this exception.</param>
         /// <param name="message">A message describing the error.</param>
-        public UnmatchedEitherTypeException(EitherType actualType, string? message) 
+        public UnexpectedEitherTypeException(EitherType actualType, string? message) 
             : this(actualType, message, null) { }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UnmatchedEitherTypeException"/>.
+        ///     Initializes a new instance of the <see cref="UnexpectedEitherTypeException"/>.
         /// </summary>
         /// <param name="actualType">The actual type of the either which was the cause of this exception.</param>
         /// <param name="message">A message describing the error.</param>
         /// <param name="innerException">An exception which was the cause of this exception.</param>
-        public UnmatchedEitherTypeException(EitherType actualType, string? message, Exception? innerException)
+        public UnexpectedEitherTypeException(EitherType actualType, string? message, Exception? innerException)
             : base(message ?? BuildMessage(actualType), innerException)
         {
             ActualType = actualType;
         }
 
-        protected UnmatchedEitherTypeException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+        protected UnexpectedEitherTypeException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext) { }
 
         private static string BuildMessage(EitherType actualType)
         {
             return string.Format(
                 CultureInfo.InvariantCulture,
-                ExceptionStrings.UnmatchedEitherTypeException_DefaultMessage,
+                ExceptionStrings.UnexpectedEitherTypeException_DefaultMessage,
                 actualType.Invert().ToString(),
                 actualType.ToString()
             );
