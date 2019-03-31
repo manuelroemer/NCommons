@@ -83,7 +83,9 @@ namespace NCommons.Monads
 #nullable enable
         }
 
+#pragma warning disable CA1801
         private Either(SerializationInfo serializationInfo, StreamingContext context)
+#pragma warning restore CA1801
         {
 #nullable disable
             if (serializationInfo is null)
