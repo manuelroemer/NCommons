@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 namespace NCommons.Monads
 {
@@ -25,7 +26,8 @@ namespace NCommons.Monads
     ///     An either constructed via the parameterless constructor will always hold a default left
     ///     value.
     /// </remarks>
-    public readonly struct Either<TL, TR> : IEquatable<Either<TL, TR>>
+    [Serializable]
+    public readonly struct Either<TL, TR> : IEquatable<Either<TL, TR>>, ISerializable
     {
 
         private readonly EitherType _type;
@@ -79,6 +81,44 @@ namespace NCommons.Monads
             _left = default;
             _right = right;
 #nullable enable
+        }
+
+#pragma warning disable CA1801
+        private Either(SerializationInfo serializationInfo, StreamingContext context)
+#pragma warning restore CA1801
+        {
+#nullable disable
+            if (serializationInfo is null)
+                throw new ArgumentNullException(nameof(serializationInfo));
+
+            _type = (EitherType)serializationInfo.GetInt32(nameof(_type));
+            if (_type == EitherType.Left)
+            {
+                _left = (TL)serializationInfo.GetValue(nameof(_left), typeof(TL));
+                _right = default;
+            }
+            else
+            {
+                _left = default;
+                _right = (TR)serializationInfo.GetValue(nameof(_right), typeof(TR));
+            }
+#nullable enable
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info is null)
+                throw new ArgumentNullException(nameof(info));
+
+            info.AddValue(nameof(_type), (int)_type);
+            if (IsLeft)
+            {
+                info.AddValue(nameof(_left), _left);
+            }
+            else
+            {
+                info.AddValue(nameof(_right), _right);
+            }
         }
 
         /// <summary>

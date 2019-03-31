@@ -6,6 +6,7 @@ namespace NCommons.Monads
     /// <summary>
     ///     Defines whether an <see cref="Either{TL, TR}"/> holds a left or a right value.
     /// </summary>
+    [Serializable]
     public enum EitherType
     {
 
