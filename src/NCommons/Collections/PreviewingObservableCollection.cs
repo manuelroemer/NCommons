@@ -53,14 +53,6 @@ namespace NCommons.Collections
         public PreviewingObservableCollection(List<T> list)
             : base(list) { }
 
-
-
-        //
-        // Note: In the following, calls to BlockCollectionChangingReentrancy are made.
-        //       Calling this method has the same effect as BlockReentrancy which, for perf.
-        //       reasons, does not have to be called by us.
-        //
-
         /// <summary>
         ///     Inserts the <paramref name="item"/> into the collection at the specified <paramref name="index"/>.
         /// </summary>
@@ -69,7 +61,10 @@ namespace NCommons.Collections
         protected override void InsertItem(int index, T item)
         {
             CheckCollectionChangingReentrancy();
+            CheckReentrancy();
+
             using (BlockCollectionChangingReentrancy())
+            using (BlockReentrancy())
             {
                 OnCollectionChanging(new NotifyCollectionChangedEventArgs(
                     NotifyCollectionChangedAction.Add,
@@ -86,7 +81,10 @@ namespace NCommons.Collections
         protected override void ClearItems()
         {
             CheckCollectionChangingReentrancy();
+            CheckReentrancy();
+
             using (BlockCollectionChangingReentrancy())
+            using (BlockReentrancy())
             {
                 OnCollectionChanging(new NotifyCollectionChangedEventArgs(
                     NotifyCollectionChangedAction.Reset
@@ -102,7 +100,10 @@ namespace NCommons.Collections
         protected override void RemoveItem(int index)
         {
             CheckCollectionChangingReentrancy();
+            CheckReentrancy();
+
             using (BlockCollectionChangingReentrancy())
+            using (BlockReentrancy())
             {
                 OnCollectionChanging(new NotifyCollectionChangedEventArgs(
                     NotifyCollectionChangedAction.Remove,
@@ -121,7 +122,10 @@ namespace NCommons.Collections
         protected override void SetItem(int index, T item)
         {
             CheckCollectionChangingReentrancy();
+            CheckReentrancy();
+
             using (BlockCollectionChangingReentrancy())
+            using (BlockReentrancy())
             {
                 OnCollectionChanging(new NotifyCollectionChangedEventArgs(
                     NotifyCollectionChangedAction.Replace,
@@ -141,7 +145,10 @@ namespace NCommons.Collections
         protected override void MoveItem(int oldIndex, int newIndex)
         {
             CheckCollectionChangingReentrancy();
+            CheckReentrancy();
+
             using (BlockCollectionChangingReentrancy())
+            using (BlockReentrancy())
             {
                 OnCollectionChanging(new NotifyCollectionChangedEventArgs(
                     NotifyCollectionChangedAction.Move,
@@ -225,6 +232,6 @@ namespace NCommons.Collections
 
     }
 
-#pragma warning restore CA1001 // _reentrancyMonitor doesn'T have to be disposed
+#pragma warning restore CA1001 // _reentrancyMonitor doesn't have to be disposed
 
 }
