@@ -20,7 +20,7 @@ namespace NCommons.Collections
     ///     <see cref="INotifyCollectionChanged"/> interface and should be implemented together
     ///     with it.
     ///     
-    ///     The <see cref="PreviewingObservableCollection"/> is a finished collection which
+    ///     The <see cref="PreviewingObservableCollection{T}"/> is a finished collection which
     ///     implements both of these interfaces.
     /// </remarks>
     /// <seealso cref="INotifyCollectionChanged"/>
