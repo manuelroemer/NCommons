@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using NCommons.Collections;
 using Xunit;
 
 namespace NCommons.Collections.Tests

@@ -1,0 +1,17 @@
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NCommons</id>
+    <version>0.0.999</version>
+    <authors>Manuel Römer</authors>
+    <owners>Manuel Römer</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/manuelroemer/NCommons/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/manuelroemer/NCommons</projectUrl>
+    <description>A reusable set of common members that are missing in the .NET Framework.</description>
+    <repository type="git" url="https://github.com/manuelroemer/NCommons" />
+    <dependencies>
+      <dependency id="NCommons.Collections" version="0.0.999" />
+      <dependency id="NCommons.Monads" version="0.0.999" />
+    </dependencies>
+  </metadata>
+</package>

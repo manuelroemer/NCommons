@@ -32,7 +32,17 @@ steps:
   condition: succeeded()
 
 - script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration)
-  displayName: Pack NuGet
+  displayName: NuGet - Pack Projects
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
+      eq(variables['system.pullrequest.isfork'], false)
+    )
+
+- script: nuget pack src/NCommons -OutputDirectory $(Build.ArtifactStagingDirectory)
+  displayName: NuGet - Pack Metapackage
   condition: |
     and
     (
@@ -42,7 +52,7 @@ steps:
     )
 
 - task: NuGetCommand@2
-  displayName: Publish NuGet
+  displayName: NuGet - Publish Packages
   inputs:
     command: push
     nuGetFeedType: external

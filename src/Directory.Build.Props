@@ -9,6 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     
+    <Version>0.0.999</Version>
     <Product>NCommons</Product>
     <Authors>Manuel Römer</Authors>
     <NeutralLanguage>en</NeutralLanguage>
@@ -16,7 +17,6 @@
     <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
     <PackageProjectUrl>https://github.com/manuelroemer/NCommons</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/manuelroemer/NCommons/blob/master/LICENSE</PackageLicenseUrl>
-    <!--<PackageLicenseFile>../../LICENSE.md</PackageLicenseFile>-->
   </PropertyGroup>
 
   <!-- Don't allow warnings in release builds. -->
@@ -32,5 +32,13 @@
   <ItemGroup Condition=" !$(IsTestProject) ">
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.0" PrivateAssets="all" />
   </ItemGroup>
+
+  <!-- Certain warnings make no sense in test projects. -->
+  <PropertyGroup Condition=" $(IsTestProject) ">
+    <NoWarn>
+      $(NoWarn);
+      CS1573 <!-- No matching XML comment for parameter -->
+    </NoWarn>
+  </PropertyGroup>
   
 </Project>
