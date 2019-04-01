@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C6E7FD
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		CA.ruleset = CA.ruleset
 		Directory.Build.Props = Directory.Build.Props
+		NCommons\NCommons.nuspec = NCommons\NCommons.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Collections", "NCommons.Collections\NCommons.Collections.csproj", "{F7DF7225-E609-4A4C-8ED9-EFA861B39655}"
