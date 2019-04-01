@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Generic_NegativeCapacity" xml:space="preserve">
+    <value>A collection's capacity cannot be set to a negative value.</value>
+  </data>
+  <data name="Heap_PeekPopOnEmptyHeap" xml:space="preserve">
+    <value>Peeking or removing elements is impossible, because the heap does not contain any items.</value>
+  </data>
   <data name="PreviewingObservableCollection_CollectionChangingReentrancy" xml:space="preserve">
     <value>Modifying the collection is impossible while another collection change is being processed.</value>
+  </data>
+  <data name="PriorityQueue_PeekDequeueOnEmptyHeap" xml:space="preserve">
+    <value>Peeking or removing elements is impossible, because the priority queue does not contain any items.</value>
   </data>
 </root>
