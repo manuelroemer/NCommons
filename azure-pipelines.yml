@@ -8,7 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  releaseVersion: '1.0.778'
+  releaseVersion: '1.0.888'
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -55,20 +55,20 @@ steps:
       eq(variables['system.pullrequest.isfork'], false)
     )
 
-# - task: NuGetCommand@2
-#   displayName: NuGet - Publish Packages
-#   inputs:
-#     command: push
-#     nuGetFeedType: external
-#     publishFeedCredentials: 'NuGet.org'
-#     versioningScheme: off
-#   condition: |
-#     and
-#     (
-#       succeeded(),
-#       eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-#       eq(variables['system.pullrequest.isfork'], false)
-#     )
+- task: NuGetCommand@2
+  displayName: NuGet - Publish Packages
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: 'NuGet.org'
+    versioningScheme: off
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
+      eq(variables['system.pullrequest.isfork'], false)
+    )
 
 - task: PublishBuildArtifacts@1
   inputs:
