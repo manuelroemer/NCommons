@@ -9,26 +9,44 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C6E7FD
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		CA.ruleset = CA.ruleset
 		Directory.Build.Props = Directory.Build.Props
+		NCommons\NCommons.nuspec = NCommons\NCommons.nuspec
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons", "NCommons\NCommons.csproj", "{56AD6684-277C-4487-B4EC-8C64285AAEA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Collections", "NCommons.Collections\NCommons.Collections.csproj", "{F7DF7225-E609-4A4C-8ED9-EFA861B39655}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Tests", "NCommons.Tests\NCommons.Tests.csproj", "{9E976B43-1A3E-4BA1-B630-29FE5757FE4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Monads", "NCommons.Monads\NCommons.Monads.csproj", "{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Monads.Tests", "NCommons.Monads.Tests\NCommons.Monads.Tests.csproj", "{D4D3561F-9729-4B84-9212-AA805426FB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Collections.Tests", "NCommons.Collections.Tests\NCommons.Collections.Tests.csproj", "{B049733A-C327-4EC9-939C-575BE629C620}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NCommons.Tests.Shared", "NCommons.Tests.Shared\NCommons.Tests.Shared.shproj", "{A94AEB4B-656D-4304-BD4B-1B84EFDFA124}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		NCommons.Tests.Shared\NCommons.Tests.Shared.projitems*{a94aeb4b-656d-4304-bd4b-1b84efdfa124}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{56AD6684-277C-4487-B4EC-8C64285AAEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56AD6684-277C-4487-B4EC-8C64285AAEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56AD6684-277C-4487-B4EC-8C64285AAEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56AD6684-277C-4487-B4EC-8C64285AAEA8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E976B43-1A3E-4BA1-B630-29FE5757FE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E976B43-1A3E-4BA1-B630-29FE5757FE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E976B43-1A3E-4BA1-B630-29FE5757FE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E976B43-1A3E-4BA1-B630-29FE5757FE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DF7225-E609-4A4C-8ED9-EFA861B39655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DF7225-E609-4A4C-8ED9-EFA861B39655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DF7225-E609-4A4C-8ED9-EFA861B39655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DF7225-E609-4A4C-8ED9-EFA861B39655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4D3561F-9729-4B84-9212-AA805426FB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4D3561F-9729-4B84-9212-AA805426FB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4D3561F-9729-4B84-9212-AA805426FB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4D3561F-9729-4B84-9212-AA805426FB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B049733A-C327-4EC9-939C-575BE629C620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B049733A-C327-4EC9-939C-575BE629C620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B049733A-C327-4EC9-939C-575BE629C620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B049733A-C327-4EC9-939C-575BE629C620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NCommons.Collections;
 using Xunit;
 
-namespace NCommons.Tests.Collections
+namespace NCommons.Collections.Tests
 {
 
     public sealed class BinaryHeapTests : IPriorityQueueTests

@@ -4,7 +4,7 @@ using System.Linq;
 using NCommons.Collections;
 using Xunit;
 
-namespace NCommons.Tests.Collections
+namespace NCommons.Collections.Tests
 {
 
     /// <summary>

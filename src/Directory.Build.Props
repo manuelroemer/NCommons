@@ -9,6 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     
+    <Version>0.0.999</Version>
     <Product>NCommons</Product>
     <Authors>Manuel Römer</Authors>
     <NeutralLanguage>en</NeutralLanguage>
@@ -16,7 +17,6 @@
     <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
     <PackageProjectUrl>https://github.com/manuelroemer/NCommons</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/manuelroemer/NCommons/blob/master/LICENSE</PackageLicenseUrl>
-    <!--<PackageLicenseFile>../../LICENSE.md</PackageLicenseFile>-->
   </PropertyGroup>
 
   <!-- Don't allow warnings in release builds. -->

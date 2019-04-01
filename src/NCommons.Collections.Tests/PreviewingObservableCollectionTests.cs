@@ -6,7 +6,7 @@ using Xunit;
 using static Xunit.Assert;
 using Assert = NCommons.Tests.AssertEx;
 
-namespace NCommons.Tests.Collections
+namespace NCommons.Collections.Tests
 {
 
     public sealed class PreviewingObservableCollectionTests
