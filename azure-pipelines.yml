@@ -52,7 +52,7 @@ steps:
     packDestination: $(Build.ArtifactStagingDirectory)
     versioningScheme: byEnvVar
     versionEnvVar: releaseVersion
-    arguments: '-Properties "releaseVersion=$(releaseVersion)"'
+    buildProperties: 'releaseVersion=$(releaseVersion)'
   condition: |
     and
     (
