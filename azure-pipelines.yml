@@ -17,14 +17,8 @@ steps:
     packageType: 'sdk'
     version: '3.0.100-preview3-010431'
 
-- task: DotNetCoreCLI@2
+- script: dotnet build src -c $(buildConfiguration) -p:Version=$(releaseVersion)
   displayName: Build
-  inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) -p:Version=$(releaseVersion)'
-    versioningScheme: byEnvVar
-    versionEnvVar: releaseVersion
 
 - task: DotNetCoreCLI@2
   displayName: Run Tests
