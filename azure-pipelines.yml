@@ -49,7 +49,7 @@ steps:
     packagesToPack: src/NCommons/NCommons.nuspec
     packDestination: $(Build.ArtifactStagingDirectory)
     versioningScheme: byEnvVar
-    arguments: '-Version $(releaseVersion)'
+    versionEnvVar: releaseVersion
   condition: |
     and
     (
