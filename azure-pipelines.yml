@@ -8,7 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  version: '0.0.999'
+  releaseVersion: '0.0.999'
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -22,9 +22,7 @@ steps:
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-    versioningScheme: byEnvVar
-    versionEnvVar: $(version)
+    arguments: '--configuration $(buildConfiguration) -p:Version=$(releaseVersion)'
 
 - task: DotNetCoreCLI@2
   displayName: Run Tests
@@ -51,7 +49,7 @@ steps:
     packagesToPack: src/NCommons/NCommons.nuspec
     packDestination: $(Build.ArtifactStagingDirectory)
     versioningScheme: byEnvVar
-    versionEnvVar: $(version)
+    versionEnvVar: $(releaseVersion)
   condition: |
     and
     (
