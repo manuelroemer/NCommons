@@ -22,7 +22,9 @@ steps:
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) -p:Version=$(releaseVersion)'
+    arguments: '--configuration $(buildConfiguration)'
+    versioningScheme: byEnvVar
+    versionEnvVar: releaseVersion
 
 # - task: DotNetCoreCLI@2
 #   displayName: Run Tests
@@ -62,17 +64,17 @@ steps:
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
  
-- task: NuGetCommand@2
-  displayName: NuGet - Publish Packages
-  inputs:
-    command: push
-    nuGetFeedType: external
-    publishFeedCredentials: 'NuGet.org'
-    versioningScheme: off
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-      eq(variables['system.pullrequest.isfork'], false)
-    )
+# - task: NuGetCommand@2
+#   displayName: NuGet - Publish Packages
+#   inputs:
+#     command: push
+#     nuGetFeedType: external
+#     publishFeedCredentials: 'NuGet.org'
+#     versioningScheme: off
+#   condition: |
+#     and
+#     (
+#       succeeded(),
+#       eq(variables['Build.SourceBranch'], 'refs/heads/master'),
+#       eq(variables['system.pullrequest.isfork'], false)
+#     )
