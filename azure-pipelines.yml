@@ -34,7 +34,7 @@ steps:
 #     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 #   condition: succeeded()
 
-- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration)
+- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration) -p:PackageVersion=$(releaseVersion)
   displayName: NuGet - Pack Projects
   condition: |
     and
