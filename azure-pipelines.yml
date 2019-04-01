@@ -20,12 +20,8 @@ steps:
 - script: dotnet build src -c $(buildConfiguration) -p:Version=$(releaseVersion)
   displayName: Build
 
-- task: DotNetCoreCLI@2
+- script: dotnet test src --no-build -c $(buildConfiguration) --collect "Code coverage"
   displayName: Run Tests
-  inputs:
-    command: test
-    projects: '**/*.csproj'
-    arguments: ' --no-build --configuration $(buildConfiguration) --collect "Code coverage"'
   condition: succeeded()
 
 - script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(releaseVersion)
