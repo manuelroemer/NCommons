@@ -61,11 +61,38 @@ namespace NCommons.Collections.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A collection&apos;s capacity cannot be set to a negative value..
+        /// </summary>
+        internal static string Generic_NegativeCapacity {
+            get {
+                return ResourceManager.GetString("Generic_NegativeCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peeking or removing elements is impossible, because the heap does not contain any items..
+        /// </summary>
+        internal static string Heap_PeekPopOnEmptyHeap {
+            get {
+                return ResourceManager.GetString("Heap_PeekPopOnEmptyHeap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modifying the collection is impossible while another collection change is being processed..
         /// </summary>
         internal static string PreviewingObservableCollection_CollectionChangingReentrancy {
             get {
                 return ResourceManager.GetString("PreviewingObservableCollection_CollectionChangingReentrancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peeking or removing elements is impossible, because the priority queue does not contain any items..
+        /// </summary>
+        internal static string PriorityQueue_PeekDequeueOnEmptyHeap {
+            get {
+                return ResourceManager.GetString("PriorityQueue_PeekDequeueOnEmptyHeap", resourceCulture);
             }
         }
     }
