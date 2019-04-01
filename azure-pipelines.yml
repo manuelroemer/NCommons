@@ -8,6 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  version: '0.0.999'
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -22,6 +23,8 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+    versioningScheme: byEnvVar
+    versionEnvVar: $(version)
 
 - task: DotNetCoreCLI@2
   displayName: Run Tests
@@ -47,6 +50,8 @@ steps:
     command: pack
     packagesToPack: src/NCommons/NCommons.nuspec
     packDestination: $(Build.ArtifactStagingDirectory)
+    versioningScheme: byEnvVar
+    versionEnvVar: $(version)
   condition: |
     and
     (
@@ -55,6 +60,10 @@ steps:
       eq(variables['system.pullrequest.isfork'], false)
     )
 
+- task: PublishBuildArtifacts
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+ 
 - task: NuGetCommand@2
   displayName: NuGet - Publish Packages
   inputs:
