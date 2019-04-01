@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NCommons.Collections.Resources;
 
 namespace NCommons.Collections
@@ -33,6 +34,8 @@ namespace NCommons.Collections
     ///     Both result in an (implicit) <see cref="IPriorityQueue{T}"/>, but the second line
     ///     makes that much more obvious.
     /// </remarks>
+    [DebuggerTypeProxy(typeof(PriorityQueueDebugView<>))]
+    [DebuggerDisplay("Count = {Count}")]
     public class PriorityQueue<T> : IPriorityQueue<T>
     {
         

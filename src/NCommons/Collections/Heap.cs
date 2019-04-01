@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NCommons.Collections.Resources;
 
 namespace NCommons.Collections
@@ -11,6 +12,8 @@ namespace NCommons.Collections
     ///     uses a heap of any kind for managing the data.
     /// </summary>
     /// <typeparam name="T">The type of items contained in the heap.</typeparam>
+    [DebuggerTypeProxy(typeof(PriorityQueueDebugView<>))]
+    [DebuggerDisplay("Count = {Count}")]
     public abstract class Heap<T> : IPriorityQueue<T>
     {
 
