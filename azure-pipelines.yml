@@ -23,6 +23,8 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) -p:Version=$(releaseVersion)'
+    versioningScheme: byEnvVar
+    versionEnvVar: releaseVersion
 
 - task: DotNetCoreCLI@2
   displayName: Run Tests
