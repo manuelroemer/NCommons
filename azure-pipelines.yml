@@ -60,7 +60,7 @@ steps:
       eq(variables['system.pullrequest.isfork'], false)
     )
 
-- task: PublishBuildArtifacts
+- task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
  
