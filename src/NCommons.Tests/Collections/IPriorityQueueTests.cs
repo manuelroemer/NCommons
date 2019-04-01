@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NCommons.Collections;
 using Xunit;
 
@@ -232,6 +231,14 @@ namespace NCommons.Tests.Collections
         }
 
         [Fact]
+        public void TryPeek_Returns_True_If_Not_Empty()
+        {
+            var queue = CreateQueue<int>();
+            queue.Enqueue(1);
+            Assert.True(queue.TryPeek(out _));
+        }
+        
+        [Fact]
         public void TryPeek_Returns_False_If_Empty()
         {
             var queue = CreateQueue<int>();
@@ -247,6 +254,14 @@ namespace NCommons.Tests.Collections
         {
             var queue = CreateQueue<int>();
             Assert.Throws<InvalidOperationException>(() => queue.Dequeue());
+        }
+
+        [Fact]
+        public void TryDequeue_Returns_True_If_Not_Empty()
+        {
+            var queue = CreateQueue<int>();
+            queue.Enqueue(1);
+            Assert.True(queue.TryDequeue(out _));
         }
 
         [Fact]
