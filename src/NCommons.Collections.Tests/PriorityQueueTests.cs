@@ -2,7 +2,7 @@
 using NCommons.Collections;
 using Xunit;
 
-namespace NCommons.Tests.Collections
+namespace NCommons.Collections.Tests
 {
 
     public sealed class PriorityQueueTests : IPriorityQueueTests
