@@ -25,7 +25,7 @@ steps:
   inputs:
     command: test
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    arguments: ' --no-build --configuration $(buildConfiguration) --collect "Code coverage"'
   condition: succeeded()
 
 - script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(releaseVersion)
