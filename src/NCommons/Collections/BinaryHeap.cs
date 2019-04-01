@@ -24,7 +24,7 @@ namespace NCommons.Collections
         /// <summary>
         ///     Gets the number of elements in the heap.
         /// </summary>
-        public override int Count => _items.Count;
+        public sealed override int Count => _items.Count;
 
         /// <summary>
         ///     Gets or sets the total number of elements the internal data structure can hold
