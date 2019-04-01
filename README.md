@@ -43,7 +43,7 @@ See the following table for the available packages:
 ### Installation and Package Notes
 
 **Versioning:**
-Every package will always have the same version. All package versions will be upgraded at the same time, even if there were no changes in a package.
+The packages will always have the same version. All package versions will be upgraded at the same time, even if there were no changes in a package.
 
 **Target Framework:**
 The library is compiled against .NET Standard 2.0. Even if some packages may be downgraded, I want all of the packages to have the same requirements.
