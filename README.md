@@ -18,22 +18,36 @@ Common examples are specialized collections (e.g. the `WeakReferenceCollection`)
 write but may be useful in any kind of larger project.
 
 
-## Installation and development notes
+## Installation
 
-Install the library via NuGet:
+The library is available on NuGet. Install it via:
 
+```sh
+Install-Package [Package-Name]
+
+--or--
+
+dotnet add package [Package-Name]
 ```
-Install-Package NCommons
 
--- or --
+See the following table for the available packages:
 
-dotnet add package NCommons
-```
+| Package Name           | NuGet Version | Description |
+| ---------------------- | --- |------------ |
+| **`NCommons`**         | ![Nuget](https://img.shields.io/nuget/v/NCommons.svg) | A meta package which references every package below. Install this if you are unsure which package to use. |
+|                        | | |
+| `NCommons.Collections` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Collections.svg) | Contains everything that is related to collections, for instance a `PriorityQueue` or a `PreviewingObservableCollection`. |
+| `NCommons.Monads`      | ![Nuget](https://img.shields.io/nuget/v/NCommons.Monads.svg) | Contains monadic types which typically aid API design, like `Either<TL, TR>`. |
 
-The project is using .NET Standard 2.0 as a compilation target.
+
+### Notes
+
+**Target Framework:**
+The library is compiled against .NET Standard 2.0. Even if some packages may be downgraded, I want all of the packages to have the same requirements.
+
+**Language Version/Features:**
 The library is also using C# 8.0 with *Nullable Reference Types*, if you have that feature flag
 enabled.
-
 If you want to work with the source code, you will need an editor/IDE that supports C# 8.0.
 
 
