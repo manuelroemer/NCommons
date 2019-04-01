@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using NCommons.Collections;
 using Xunit;
 
-namespace NCommons.Collections.Tests
+namespace NCommons.Tests.Collections
 {
 
     public class WeakReferenceCollectionTests
