@@ -67,7 +67,7 @@ namespace NCommons.Collections.Tests
 
             collection.Remove(null);
 
-            Assert.Equal(1, collection.Count());
+            Assert.Single(collection);
         }
 
         [Fact]
