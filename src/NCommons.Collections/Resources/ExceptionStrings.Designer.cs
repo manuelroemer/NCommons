@@ -61,6 +61,33 @@ namespace NCommons.Collections.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The enumeration has finished..
+        /// </summary>
+        internal static string Enumerator_EnumerationFinished {
+            get {
+                return ResourceManager.GetString("Enumerator_EnumerationFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The enumeration has not been started yet. Call MoveNext() to start the enumeration..
+        /// </summary>
+        internal static string Enumerator_EnumerationHasNotStarted {
+            get {
+                return ResourceManager.GetString("Enumerator_EnumerationHasNotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The collection has been changed. Enumeration with this enumerator is not possible anymore..
+        /// </summary>
+        internal static string Enumerator_MismatchingVersions {
+            get {
+                return ResourceManager.GetString("Enumerator_MismatchingVersions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A collection&apos;s capacity cannot be set to a negative value..
         /// </summary>
         internal static string Generic_NegativeCapacity {
