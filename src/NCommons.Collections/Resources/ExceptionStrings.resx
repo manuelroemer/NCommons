@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Enumerator_EnumerationFinished" xml:space="preserve">
+    <value>The enumeration has finished.</value>
+  </data>
+  <data name="Enumerator_EnumerationHasNotStarted" xml:space="preserve">
+    <value>The enumeration has not been started yet. Call MoveNext() to start the enumeration.</value>
+  </data>
+  <data name="Enumerator_MismatchingVersions" xml:space="preserve">
+    <value>The collection has been changed. Enumeration with this enumerator is not possible anymore.</value>
+  </data>
   <data name="Generic_NegativeCapacity" xml:space="preserve">
     <value>A collection's capacity cannot be set to a negative value.</value>
   </data>
