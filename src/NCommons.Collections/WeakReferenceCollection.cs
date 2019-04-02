@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using NCommons.Collections.Resources;
 
 namespace NCommons.Collections
 {
@@ -20,14 +23,18 @@ namespace NCommons.Collections
     public sealed class WeakReferenceCollection<T> : IEnumerable<T> where T : class
     {
 
-        private readonly List<WeakReference<T>> _underlyingCollection;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private readonly List<WeakReference<T>?> _underlyingCollection;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private int _version;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeakReferenceCollection{T}"/> class.
         /// </summary>
         public WeakReferenceCollection()
         {
-            _underlyingCollection = new List<WeakReference<T>>();
+            _underlyingCollection = new List<WeakReference<T>?>();
         }
 
         /// <summary>
@@ -36,7 +43,15 @@ namespace NCommons.Collections
         /// <param name="item">The item to be added to the collection.</param>
         public void Add(T item)
         {
-            _underlyingCollection.Add(new WeakReference<T>(item));
+            IncrementVersion();
+            if (item is null)
+            {
+                _underlyingCollection.Add(null);
+            }
+            else
+            {
+                _underlyingCollection.Add(new WeakReference<T>(item));
+            }
         }
 
         /// <summary>
@@ -51,26 +66,25 @@ namespace NCommons.Collections
         /// </returns>
         public bool Remove(T item)
         {
-            int itemIndex = -1;
-            int iterationIndex = 0;
-            var enumerator = GetEnumerator();
+            int currentIndex = 0;
+            int foundIndex = -1;
 
-            while (enumerator.MoveNext())
+            foreach (var currentItem in this)
             {
-                if (enumerator.Current == item)
+                if (currentItem == item)
                 {
-                    itemIndex = iterationIndex;
-                    break;
+                    foundIndex = currentIndex;
                 }
                 else
                 {
-                    iterationIndex++;
+                    currentIndex++;
                 }
             }
 
-            if (itemIndex >= 0)
+            if (foundIndex > -1)
             {
-                _underlyingCollection.RemoveAt(itemIndex);
+                IncrementVersion();
+                _underlyingCollection.RemoveAt(foundIndex);
                 return true;
             }
             else
@@ -116,7 +130,11 @@ namespace NCommons.Collections
         /// </summary>
         public void Clear()
         {
-            _underlyingCollection.Clear();
+            if (_underlyingCollection.Count > 0)
+            {
+                IncrementVersion();
+                _underlyingCollection.Clear();
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -131,29 +149,129 @@ namespace NCommons.Collections
         /// </summary>
         public IEnumerator<T> GetEnumerator()
         {
-            int index = 0;
-            int count = _underlyingCollection.Count;
+            return new Enumerator(this, _version);
+        }
 
-            // When creating an enumerator, we will heavily abuse yield return to automatically
-            // remove any dead reference we find during the enumeration.
-            // If a reference is dead, we skip it and head over to the next element.
-            // This leads to an automatic purge of dead references during every enumeration.
-            while (index < count)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void IncrementVersion()
+        {
+            unchecked
             {
-                if (_underlyingCollection[index].TryGetTarget(out var item))
+                _version++;
+            }
+        }
+
+        public struct Enumerator : IEnumerator<T>
+        {
+
+            private const int EnumerationNotStartedYet = -1;
+            private const int EnumerationFinished = -2;
+
+            private WeakReferenceCollection<T> _collection;
+            private readonly int _version;
+            private int _pos;
+            private T _current;
+
+            object IEnumerator.Current => Current;
+
+            public T Current
+            {
+                get
                 {
-                    index++;
-                    yield return item;
-                }
-                else
-                {
-                    // The reference at the current position is dead. Remove it and try the next
-                    // one.
-                    _underlyingCollection.RemoveAt(index);
-                    count--;
-                    continue;
+                    VerifyEnumerationStarted();
+                    VerifyEnumerationNotFinished();
+                    return _current;
                 }
             }
+
+            internal Enumerator(WeakReferenceCollection<T> collection, int version)
+            {
+#nullable disable
+                _collection = collection;
+                _version = version;
+                _pos = EnumerationNotStartedYet;
+                _current = null;
+#nullable enable
+            }
+
+            public bool MoveNext()
+            {
+                VerifyVersion();
+
+                while (++_pos < _collection._underlyingCollection.Count)
+                {
+                    var itemRef = _collection._underlyingCollection[_pos];
+                    if (itemRef is null)
+                    {
+#nullable disable
+                        // The WeakReference<T> is null. -> null was added to the collection.
+                        _current = null;
+                        return true;
+#nullable enable
+                    }
+                    else
+                    {
+                        if (itemRef.TryGetTarget(out var dereferencedItem))
+                        {
+                            // Valid item, all good. Store it in this enumerator so that it doesn't
+                            // get collected while enumerating.
+                            _current = dereferencedItem;
+                            return true;
+                        }
+                        else
+                        {
+                            // The item is dead. We can remove the WeakReference from the collection now.
+                            // The interesting part is that we must stay at the same pos, because the collection
+                            // "loses" a member. -> _pos--
+                            _collection._underlyingCollection.RemoveAt(_pos--);
+                            continue;
+                        }
+                    }
+                }
+
+#nullable disable
+                // If we get here, nothing was found, i.e. the enumeration ended.
+                _current = null;
+                _pos = EnumerationFinished;
+                return false;
+#nullable enable
+            }
+
+            public void Reset()
+            {
+#nullable disable
+                VerifyVersion();
+                _pos = EnumerationNotStartedYet;
+                _current = null;
+#nullable enable
+            }
+
+            public void Dispose() { }
+
+            private void VerifyVersion()
+            {
+                if (_version != _collection._version)
+                {
+                    throw new InvalidOperationException(ExceptionStrings.Enumerator_MismatchingVersions);
+                }
+            }
+
+            private void VerifyEnumerationStarted()
+            {
+                if (_pos == EnumerationNotStartedYet)
+                {
+                    throw new InvalidOperationException(ExceptionStrings.Enumerator_EnumerationHasNotStarted);
+                }
+            }
+
+            private void VerifyEnumerationNotFinished()
+            {
+                if (_pos == EnumerationFinished)
+                {
+                    throw new InvalidOperationException(ExceptionStrings.Enumerator_EnumerationFinished);
+                }
+            }
+
         }
 
     }
