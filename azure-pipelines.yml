@@ -8,7 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  releaseVersion: '1.1.0'
+  releaseVersion: '1.1.1'
 
 steps:
 - task: DotNetCoreInstaller@0
