@@ -24,7 +24,8 @@ namespace NCommons.Collections
         /// </summary>
         public event NotifyCollectionChangingEventHandler CollectionChanging;
 
-        private readonly ReentrancyMonitor _reentrancyMonitor = new ReentrancyMonitor();
+        private ReentrancyDisposable? _reentrancyDisposable;
+        private int _reentrancyCount;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PreviewingObservableCollection{T}"/> class.
@@ -196,8 +197,8 @@ namespace NCommons.Collections
         /// <seealso cref="ObservableCollection{T}.BlockReentrancy"/>
         protected IDisposable BlockCollectionChangingReentrancy()
         {
-            _reentrancyMonitor.Enter();
-            return _reentrancyMonitor;
+            ++_reentrancyCount;
+            return _reentrancyDisposable ?? (_reentrancyDisposable = new ReentrancyDisposable(this));
         }
 
         /// <summary>
@@ -208,9 +209,8 @@ namespace NCommons.Collections
         /// <seealso cref="ObservableCollection{T}.CheckReentrancy"/>
         protected void CheckCollectionChangingReentrancy()
         {
-            if (_reentrancyMonitor.IsBusy &&
-                CollectionChanging != null &&
-                CollectionChanging.GetInvocationList().Length > 1)
+            if (_reentrancyCount > 0 &&
+                CollectionChanging?.GetInvocationList()?.Length > 1)
             {
                 throw new InvalidOperationException(
                     ExceptionStrings.PreviewingObservableCollection_CollectionChangingReentrancy
@@ -222,12 +222,16 @@ namespace NCommons.Collections
         ///     Used for reentrancy checks. Follows the implementation of the
         ///     ObservableCollection{T}. See the reference source for details.
         /// </summary>
-        private class ReentrancyMonitor : IDisposable
+        private class ReentrancyDisposable : IDisposable
         {
-            private int _busyCount;
-            public bool IsBusy => _busyCount > 0;
-            public void Enter() => _busyCount++;
-            public void Dispose() => _busyCount--;
+            private readonly PreviewingObservableCollection<T> _collection;
+
+            public ReentrancyDisposable(PreviewingObservableCollection<T> collection)
+            {
+                _collection = collection;
+            }
+
+            public void Dispose() => _collection._reentrancyCount--;
         }
 
     }
