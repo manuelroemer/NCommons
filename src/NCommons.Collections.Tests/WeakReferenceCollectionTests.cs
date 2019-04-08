@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Xunit;
 
@@ -294,6 +295,7 @@ namespace NCommons.Collections.Tests
             if (enumerator.MoveNext())
             {
                 CollectGarbage();
+                Assert.NotNull(enumerator.Current); // Always keep this check, otherwise, enumerator may be GCed too.
                 Assert.Single(collection);
             }
         }
