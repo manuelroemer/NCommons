@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Provides members for quickly implementing observable objects which provide property change notifications.</Description>
+  </PropertyGroup>
+
+</Project>
