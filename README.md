@@ -38,6 +38,7 @@ See the following table for the available packages:
 |                        | | |
 | `NCommons.Collections` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Collections.svg) | Contains everything that is related to collections, for instance a `PriorityQueue` or a `PreviewingObservableCollection`. |
 | `NCommons.Monads`      | ![Nuget](https://img.shields.io/nuget/v/NCommons.Monads.svg) | Contains monadic types which typically aid API design, like `Either<TL, TR>`. |
+| `NCommons.Observables` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Observables.svg) | Contains members for quickly implementing observable objects which provide property change notifications. |
 
 
 ### Installation and Package Notes
