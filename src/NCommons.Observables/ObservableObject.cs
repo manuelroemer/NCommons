@@ -12,7 +12,7 @@ namespace NCommons.Observables
     ///     interface(s).
     ///     
     ///     Apart from implementing the boilerplate code, this class also provides utility
-    ///     methods for intuitively raising of these events.
+    ///     methods for intuitively raising these events.
     /// </summary>
     public abstract class ObservableObject : INotifyPropertyChanging, INotifyPropertyChanged
     {
