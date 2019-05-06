@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NCommons.Collections\NCommons.Collections.csproj" />
+    <ProjectReference Include="..\NCommons.Observables\NCommons.Observables.csproj" />
   </ItemGroup>
 
   <Import Project="..\NCommons.Tests.Shared\NCommons.Tests.Shared.projitems" Label="Shared" />

@@ -12,15 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C6E7FD
 		NCommons\NCommons.nuspec = NCommons\NCommons.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Collections", "NCommons.Collections\NCommons.Collections.csproj", "{F7DF7225-E609-4A4C-8ED9-EFA861B39655}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Collections", "NCommons.Collections\NCommons.Collections.csproj", "{F7DF7225-E609-4A4C-8ED9-EFA861B39655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Monads", "NCommons.Monads\NCommons.Monads.csproj", "{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Monads", "NCommons.Monads\NCommons.Monads.csproj", "{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Monads.Tests", "NCommons.Monads.Tests\NCommons.Monads.Tests.csproj", "{D4D3561F-9729-4B84-9212-AA805426FB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Monads.Tests", "NCommons.Monads.Tests\NCommons.Monads.Tests.csproj", "{D4D3561F-9729-4B84-9212-AA805426FB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommons.Collections.Tests", "NCommons.Collections.Tests\NCommons.Collections.Tests.csproj", "{B049733A-C327-4EC9-939C-575BE629C620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Collections.Tests", "NCommons.Collections.Tests\NCommons.Collections.Tests.csproj", "{B049733A-C327-4EC9-939C-575BE629C620}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NCommons.Tests.Shared", "NCommons.Tests.Shared\NCommons.Tests.Shared.shproj", "{A94AEB4B-656D-4304-BD4B-1B84EFDFA124}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Observables", "NCommons.Observables\NCommons.Observables.csproj", "{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Observables.Tests", "NCommons.Observables.Tests\NCommons.Observables.Tests.csproj", "{A54F7A03-82EC-45EC-8EDC-14B294F337B8}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -47,6 +51,14 @@ Global
 		{B049733A-C327-4EC9-939C-575BE629C620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B049733A-C327-4EC9-939C-575BE629C620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B049733A-C327-4EC9-939C-575BE629C620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A54F7A03-82EC-45EC-8EDC-14B294F337B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54F7A03-82EC-45EC-8EDC-14B294F337B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54F7A03-82EC-45EC-8EDC-14B294F337B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54F7A03-82EC-45EC-8EDC-14B294F337B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
