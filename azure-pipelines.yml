@@ -24,7 +24,6 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
     selectOrConfig: 'config'
-    nugetConfigPath: '$(nugetConfigPath)'
 
 - script: dotnet build $(buildDir) -c $(buildConfiguration)
   displayName: Build
