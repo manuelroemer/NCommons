@@ -95,3 +95,10 @@ steps:
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
     ArtifactName: 'NuGet Packages'
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
+      eq(variables['system.pullrequest.isfork'], false)
+    )
