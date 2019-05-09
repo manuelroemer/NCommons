@@ -34,23 +34,18 @@ See the following table for the available packages:
 
 | Package Name           | NuGet Version | Description |
 | ---------------------- | --- |------------ |
-| **`NCommons`**         | ![Nuget](https://img.shields.io/nuget/v/NCommons.svg) | A meta package which references every package below. Install this if you are unsure which package to use. |
-|                        | | |
 | `NCommons.Collections` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Collections.svg) | Contains everything that is related to collections, for instance a `PriorityQueue` or a `PreviewingObservableCollection`. |
 | `NCommons.Monads`      | ![Nuget](https://img.shields.io/nuget/v/NCommons.Monads.svg) | Contains monadic types which typically aid API design, like `Either<TL, TR>`. |
-| `NCommons.Observables` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Observables.svg) | Contains members for quickly implementing observable objects which provide property change notifications. |
+| `NCommons.Observables` | ![Nuget](https://img.shields.io/nuget/v/NCommons.Observables.svg) | Contains members which reduce boilerplate code when implementing types that should be observable (e.g. via the `INotifyPropertyChanged`) interface. |
 
 
 ### Installation and Package Notes
-
-**Versioning:**
-The packages will always have the same version. All package versions will be upgraded at the same time, even if there were no changes in a package.
 
 **Target Framework:**
 The library is compiled against .NET Standard 2.0. Even if some packages may be downgraded, I want all of the packages to have the same requirements.
 
 **Language Version/Features:**
-The library is also using C# 8.0 with *Nullable Reference Types*, if you have that feature flag
+The library is using C# 8.0 with *Nullable Reference Types*, if you have that feature flag
 enabled.
 If you want to work with the source code, you will need an editor/IDE that supports C# 8.0.
 
