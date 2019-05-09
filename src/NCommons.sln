@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Config", ".Config", "{C6E7
 		.editorconfig = .editorconfig
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		CA.ruleset = CA.ruleset
-		Directory.Build.Props = Directory.Build.Props
+		Directory.Build.props = Directory.Build.props
 		NCommons\NCommons.nuspec = NCommons\NCommons.nuspec
 	EndProjectSection
 EndProject
