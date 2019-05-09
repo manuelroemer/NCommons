@@ -4,20 +4,29 @@ trigger:
 name: $(SourceBranchName)_$(Date:yyyy-MM-dd)_$(Rev:.r)
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'Ubuntu-16.04'
 
 variables:
   buildConfiguration: 'Release'
-  releaseVersion: '1.2.0'
+  buildDir: 'src'
 
 steps:
-- task: DotNetCoreInstaller@0
-  displayName: Install .NET Core 3.0 Preview
+- task: DotNetCoreInstaller@1
+  displayName: Install .NET Core 3.0
   inputs:
     packageType: 'sdk'
-    version: '3.0.100-preview3-010431'
+    includePreviewVersions: true
+    version: '3.0.x'
 
-- script: dotnet build src -c $(buildConfiguration) -p:Version=$(releaseVersion)
+- task: DotNetCoreCLI@2
+  displayName: NuGet Restore
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    selectOrConfig: 'config'
+    nugetConfigPath: '$(nugetConfigPath)'
+
+- script: dotnet build $(buildDir) -c $(buildConfiguration)
   displayName: Build
 
 - task: DotNetCoreCLI@2
@@ -25,28 +34,41 @@ steps:
   inputs:
     command: test
     projects: '**/*.csproj'
-    arguments: ' --no-build -c $(buildConfiguration) --collect "Code coverage"'
-  condition: succeeded()
+    configuration: $(buildConfiguration)
+    nobuild: true
 
-- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(releaseVersion)
-  displayName: NuGet - Pack Projects
+- task: DotNetCoreInstaller@1
+  displayName: Install .NET Core 2.1 for InheritDoc
+  inputs:
+    packageType: 'sdk'
+    version: '2.1.x'
   condition: |
     and
     (
       succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-      eq(variables['system.pullrequest.isfork'], false)
+      eq(variables['Build.SourceBranch'], 'refs/heads/master')
     )
 
-- task: NuGetCommand@2
-  displayName: NuGet - Pack Metapackage
-  inputs:
-    command: pack
-    packagesToPack: src/NCommons/NCommons.nuspec
-    packDestination: $(Build.ArtifactStagingDirectory)
-    versioningScheme: byEnvVar
-    versionEnvVar: releaseVersion
-    buildProperties: 'releaseVersion=$(releaseVersion)'
+- script: dotnet tool install -g InheritDocTool
+  displayName: Install InheritDoc
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    )
+
+- script: InheritDoc -o
+  displayName: Run InheritDoc
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    )
+
+- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration)
+  displayName: NuGet - Pack Projects
   condition: |
     and
     (
@@ -62,6 +84,7 @@ steps:
     nuGetFeedType: external
     publishFeedCredentials: 'NuGet.org'
     versioningScheme: off
+    allowPackageConflicts: true
   condition: |
     and
     (
@@ -74,4 +97,3 @@ steps:
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
     ArtifactName: 'NuGet Packages'
- 
