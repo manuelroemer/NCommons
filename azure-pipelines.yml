@@ -23,7 +23,6 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
-    selectOrConfig: 'config'
 
 - script: dotnet build $(buildDir) -c $(buildConfiguration)
   displayName: Build
