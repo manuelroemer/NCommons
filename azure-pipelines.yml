@@ -86,19 +86,3 @@ steps:
       eq(variables['Build.SourceBranch'], 'refs/heads/master'),
       eq(variables['system.pullrequest.isfork'], false)
     )
-
-- task: NuGetCommand@2
-  displayName: NuGet - Publish Packages
-  inputs:
-    command: push
-    nuGetFeedType: external
-    publishFeedCredentials: 'NuGet.org'
-    versioningScheme: off
-    allowPackageConflicts: true
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-      eq(variables['system.pullrequest.isfork'], false)
-    )
