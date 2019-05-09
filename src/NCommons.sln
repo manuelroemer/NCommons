@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C6E7FD3B-AC1D-4C94-B0E6-103404248921}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Config", ".Config", "{C6E7FD3B-AC1D-4C94-B0E6-103404248921}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		CA.ruleset = CA.ruleset
-		Directory.Build.Props = Directory.Build.Props
+		Directory.Build.props = Directory.Build.props
 		NCommons\NCommons.nuspec = NCommons\NCommons.nuspec
 	EndProjectSection
 EndProject
@@ -25,6 +25,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Observables", "NCommons.Observables\NCommons.Observables.csproj", "{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Observables.Tests", "NCommons.Observables.Tests\NCommons.Observables.Tests.csproj", "{A54F7A03-82EC-45EC-8EDC-14B294F337B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Collections", "Collections", "{2DD9E9B4-6127-4EAF-9B59-5C5214D28BC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monads", "Monads", "{A17EF2A9-2E47-470A-B5B0-5CE78CC5C52A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Observables", "Observables", "{5DCDF34E-D852-4EDF-8E52-AA5E4B60BF99}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -62,6 +68,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7DF7225-E609-4A4C-8ED9-EFA861B39655} = {2DD9E9B4-6127-4EAF-9B59-5C5214D28BC2}
+		{7D9D8E75-BDE9-48E7-8A8F-726D5A37D96B} = {A17EF2A9-2E47-470A-B5B0-5CE78CC5C52A}
+		{D4D3561F-9729-4B84-9212-AA805426FB71} = {A17EF2A9-2E47-470A-B5B0-5CE78CC5C52A}
+		{B049733A-C327-4EC9-939C-575BE629C620} = {2DD9E9B4-6127-4EAF-9B59-5C5214D28BC2}
+		{B932AE85-D5B3-46F4-A7F6-3E87DC3995F0} = {5DCDF34E-D852-4EDF-8E52-AA5E4B60BF99}
+		{A54F7A03-82EC-45EC-8EDC-14B294F337B8} = {5DCDF34E-D852-4EDF-8E52-AA5E4B60BF99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C8A7BBD-58BC-4CB5-913B-BAC54787D343}
