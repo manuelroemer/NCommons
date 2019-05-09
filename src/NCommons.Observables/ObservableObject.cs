@@ -152,7 +152,6 @@ namespace NCommons.Observables
         /// </param>
         protected void OnPropertyChanging([CallerMemberName]string? propertyName = "")
         {
-            if (string.IsNullOrEmpty(propertyName)) return;
             OnPropertyChanging(new PropertyChangingEventArgs(propertyName));
         }
 
@@ -161,14 +160,12 @@ namespace NCommons.Observables
         /// </summary>
         /// <param name="args">
         ///     The event args which provide detail about the property that is about to change.
-        ///     If this is <c>null</c>, the event will not be raised.
+        ///     If this is <c>null</c>, or if <see cref="PropertyChangingEventArgs.PropertyName"/>
+        ///     is <c>null</c> or empty, the event will not be raised.
         /// </param>
-        /// <exception cref="ArgumentNullException">
-        ///     <paramref name="args"/>
-        /// </exception>
         protected virtual void OnPropertyChanging(PropertyChangingEventArgs? args)
         {
-            if (args != null)
+            if (!string.IsNullOrEmpty(args?.PropertyName))
             {
                 PropertyChanging?.Invoke(this, args);
             }
@@ -186,7 +183,6 @@ namespace NCommons.Observables
         /// </param>
         protected void OnPropertyChanged([CallerMemberName]string? propertyName = "")
         {
-            if (string.IsNullOrEmpty(propertyName)) return;
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
@@ -195,14 +191,12 @@ namespace NCommons.Observables
         /// </summary>
         /// <param name="args">
         ///     The event args which provide detail about the changed property.
-        ///     If this is <c>null</c>, the event will not be raised.
+        ///     If this is <c>null</c>, or if <see cref="PropertyChangedEventArgs.PropertyName"/>
+        ///     is <c>null</c> or empty, the event will not be raised.
         /// </param>
-        /// <exception cref="ArgumentNullException">
-        ///     <paramref name="args"/>
-        /// </exception>
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs? args)
         {
-            if (args != null)
+            if (!string.IsNullOrEmpty(args?.PropertyName))
             {
                 PropertyChanged?.Invoke(this, args);
             }

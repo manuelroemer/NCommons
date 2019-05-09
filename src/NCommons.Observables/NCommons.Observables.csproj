@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.2.0</Version>
-    <Description>Provides members for quickly implementing observable objects which provide property change notifications.</Description>
+    <Version>1.2.1</Version>
+    <Description>
+A reusable set of common members that are missing in the .NET Framework.
+This library contains members which reduce boilerplate code when implementing types that should be observable (e.g. via the INotifyPropertyChanged) interface.
+    </Description>
   </PropertyGroup>
 
 </Project>
