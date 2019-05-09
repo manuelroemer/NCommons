@@ -75,14 +75,10 @@ steps:
       eq(variables['system.pullrequest.isfork'], false)
     )
 
-- task: NuGetCommand@2
-  displayName: NuGet - Publish Packages
+- task: PublishBuildArtifacts@1
   inputs:
-    command: push
-    nuGetFeedType: external
-    publishFeedCredentials: 'NuGet.org'
-    versioningScheme: off
-    allowPackageConflicts: true
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: 'NuGet Packages'
   condition: |
     and
     (
@@ -91,10 +87,14 @@ steps:
       eq(variables['system.pullrequest.isfork'], false)
     )
 
-- task: PublishBuildArtifacts@1
+- task: NuGetCommand@2
+  displayName: NuGet - Publish Packages
   inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    ArtifactName: 'NuGet Packages'
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: 'NuGet.org'
+    versioningScheme: off
+    allowPackageConflicts: true
   condition: |
     and
     (
