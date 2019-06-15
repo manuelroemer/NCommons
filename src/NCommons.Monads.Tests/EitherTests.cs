@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using Xunit;
-
-namespace NCommons.Monads.Tests
+﻿namespace NCommons.Monads.Tests
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using Xunit;
+
 
     public sealed class EitherTests
     {

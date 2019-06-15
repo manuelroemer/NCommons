@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Xunit;
-
-namespace NCommons.Collections.Tests
+﻿namespace NCommons.Collections.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Xunit;
 
 #nullable disable
 

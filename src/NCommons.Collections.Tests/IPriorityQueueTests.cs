@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using NCommons.Collections;
-using Xunit;
-
-namespace NCommons.Collections.Tests
+﻿namespace NCommons.Collections.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using NCommons.Collections;
+    using Xunit;
 
     /// <summary>
     ///     Base tests which any <see cref="IPriorityQueue{T}"/> implementer should pass.
