@@ -19,10 +19,6 @@
     <ProjectReference Include="..\NCommons.Collections\NCommons.Collections.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="WeakReferenceCollection\" />
-  </ItemGroup>
-
   <Import Project="..\NCommons.Tests.Shared\NCommons.Tests.Shared.projitems" Label="Shared" />
 
 </Project>
