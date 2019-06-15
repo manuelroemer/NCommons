@@ -5,8 +5,6 @@
     using System.Linq;
     using Xunit;
 
-#nullable disable
-
     public class WeakReferenceCollectionTests
     {
 
@@ -358,7 +356,5 @@
         }
         
     }
-
-#nullable enable
 
 }

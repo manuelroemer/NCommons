@@ -9,19 +9,15 @@
         [Fact]
         public void IfLeft_Throws_For_Null()
         {
-#nullable disable
             var either = new Either<Left, Right>(new Left());
             Assert.Throws<ArgumentNullException>(() => either.IfLeft(null));
-#nullable enable
         }
 
         [Fact]
         public void IfRight_Throws_For_Null()
         {
-#nullable disable
             var either = new Either<Left, Right>(new Right());
             Assert.Throws<ArgumentNullException>(() => either.IfRight(null));
-#nullable enable
         }
 
         [Fact]

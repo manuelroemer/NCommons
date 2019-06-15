@@ -20,9 +20,7 @@
             Action testCode)
             where TArgs : EventArgs
         {
-#nullable disable
             TEventDelegate handler = default;
-#nullable enable
 
             return Assert.Raises<TArgs>(
                 h =>

@@ -147,7 +147,7 @@
 #nullable disable
                 result = default;
                 return false;
-#nullable enable
+#nullable restore
             }
         }
 
@@ -217,7 +217,7 @@
 #nullable disable
                 result = default;
                 return false;
-#nullable enable
+#nullable restore
             }
         }
 

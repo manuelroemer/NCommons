@@ -62,7 +62,7 @@
             _type = EitherType.Left;
             _left = left;
             _right = default;
-#nullable enable
+#nullable restore
         }
 
         /// <summary>
@@ -79,7 +79,7 @@
             _type = EitherType.Right;
             _left = default;
             _right = right;
-#nullable enable
+#nullable restore
         }
 
 #pragma warning disable CA1801
@@ -101,7 +101,7 @@
                 _left = default;
                 _right = (TR)serializationInfo.GetValue(nameof(_right), typeof(TR));
             }
-#nullable enable
+#nullable restore
         }
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
