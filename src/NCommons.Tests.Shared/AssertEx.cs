@@ -1,8 +1,7 @@
-﻿using System;
-using Xunit;
-
-namespace NCommons.Tests
+﻿namespace NCommons.Tests
 {
+    using System;
+    using Xunit;
 
     public class AssertEx : Assert
     {

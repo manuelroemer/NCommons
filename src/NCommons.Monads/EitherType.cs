@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace NCommons.Monads
+﻿namespace NCommons.Monads
 {
+    using System;
+
 
     /// <summary>
     ///     Defines whether an <see cref="Either{TL, TR}"/> holds a left or a right value.

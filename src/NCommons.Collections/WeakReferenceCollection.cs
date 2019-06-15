@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using NCommons.Collections.Resources;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
+    using NCommons.Collections.Resources;
 
     /// <summary>
     ///     A special collection which only holds weak references to the elements

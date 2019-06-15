@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using NCommons.Collections;
-using Xunit;
-
-namespace NCommons.Collections.Tests
+﻿namespace NCommons.Collections.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using NCommons.Collections;
+    using Xunit;
+
 
     public sealed class BinaryHeapTests : IPriorityQueueTests
     {

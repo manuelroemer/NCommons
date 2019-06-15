@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Linq;
+
 
 #pragma warning disable CA1812
 

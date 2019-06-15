@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using NCommons.Tests;
-using NCommons.Observables;
-using Xunit;
-
-namespace NCommons.Observables.Tests
+﻿namespace NCommons.Observables.Tests
 {
+    using System;
+    using System.ComponentModel;
+    using NCommons.Observables;
+    using NCommons.Tests;
+    using Xunit;
+
 
     // Instead of creating a separate class, we can trick around the abstract restrictions
     // by simply deriving from ObservableObject.

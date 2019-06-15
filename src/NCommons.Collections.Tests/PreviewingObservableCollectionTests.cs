@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using NCommons.Collections;
-using Xunit;
-using static Xunit.Assert;
-using Assert = NCommons.Tests.AssertEx;
-
-namespace NCommons.Collections.Tests
+﻿namespace NCommons.Collections.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using NCommons.Collections;
+    using Xunit;
+    using static Xunit.Assert;
+    using Assert = NCommons.Tests.AssertEx;
+
 
     public sealed class PreviewingObservableCollectionTests
     {

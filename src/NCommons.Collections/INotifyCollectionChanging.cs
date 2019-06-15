@@ -1,8 +1,7 @@
-﻿using System.Collections.Specialized;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
-
+    using System.Collections.Specialized;
+    
     /// <summary>
     ///     Represents the method that handles the <see cref="INotifyCollectionChanging.CollectionChanging"/>
     ///     event.

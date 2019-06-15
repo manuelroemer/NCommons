@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using NCommons.Collections.Resources;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using NCommons.Collections.Resources;
 
     /// <summary>
     ///     Stores and serves items ordered by a priority.
