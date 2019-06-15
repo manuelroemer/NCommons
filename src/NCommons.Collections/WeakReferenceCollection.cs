@@ -190,7 +190,7 @@
                 _version = version;
                 _pos = EnumerationNotStartedYet;
                 _current = null;
-#nullable enable
+#nullable restore
             }
 
             public bool MoveNext()
@@ -206,7 +206,7 @@
                         // The WeakReference<T> is null. -> null was added to the collection.
                         _current = null;
                         return true;
-#nullable enable
+#nullable restore
                     }
                     else
                     {
@@ -233,7 +233,7 @@
                 _current = null;
                 _pos = EnumerationFinished;
                 return false;
-#nullable enable
+#nullable restore
             }
 
             public void Reset()
@@ -242,7 +242,7 @@
                 VerifyVersion();
                 _pos = EnumerationNotStartedYet;
                 _current = null;
-#nullable enable
+#nullable restore
             }
 
             public void Dispose() { }
