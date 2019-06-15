@@ -10,7 +10,7 @@
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void PropertyChanging_Doesnt_Get_Raised_For_Certain_Strings(string? propertyName)
+        public void PropertyChanging_Doesnt_Get_Raised_For_Certain_Strings(string propertyName)
         {
             PropertyChanging += (sender, e) => throw new Exception();
             OnPropertyChanging(propertyName);

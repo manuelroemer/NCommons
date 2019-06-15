@@ -59,8 +59,8 @@
         [Fact]
         public void Equality_Correctly_Compares_Null()
         {
-            var e1 = new Either<object?, int>(null);
-            var e2 = new Either<object?, int>(null);
+            var e1 = new Either<object, int>(null);
+            var e2 = new Either<object, int>(null);
 
             AssertEquality(e1, e2);
         }

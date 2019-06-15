@@ -9,7 +9,7 @@
     public sealed class BinaryHeapTests : IPriorityQueueTests
     {
 
-        protected override IPriorityQueue<T> CreateQueue<T>(IComparer<T>? comparer = null)
+        protected override IPriorityQueue<T> CreateQueue<T>(IComparer<T> comparer = null)
         {
             // The base class already covers a lot of tests for this class.
             // We must only provide instances, with and without a comparer.

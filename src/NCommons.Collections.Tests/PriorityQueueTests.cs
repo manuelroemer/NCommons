@@ -8,7 +8,7 @@
     public sealed class PriorityQueueTests : IPriorityQueueTests
     {
 
-        protected override IPriorityQueue<T> CreateQueue<T>(IComparer<T>? comparer = null)
+        protected override IPriorityQueue<T> CreateQueue<T>(IComparer<T> comparer = null)
         {
             // The base class already covers a lot of tests for this class.
             // We must only provide instances, with and without a comparer.
@@ -22,8 +22,8 @@
         public void Ctor_Accepts_Null()
         {
             // Should not throw.
-            new PriorityQueue<int>((IComparer<int>?)null);
-            new PriorityQueue<int>((IPriorityQueue<int>?)null);
+            new PriorityQueue<int>((IComparer<int>)null);
+            new PriorityQueue<int>((IPriorityQueue<int>)null);
         }
 
         [Fact]

@@ -13,7 +13,7 @@
     {
 
         /// <summary>Creates a new instance of the priority queue type under test.</summary>
-        protected abstract IPriorityQueue<T> CreateQueue<T>(IComparer<T>? comparer = null);
+        protected abstract IPriorityQueue<T> CreateQueue<T>(IComparer<T> comparer = null);
 
         public static TheoryData<IEnumerable<int>> NumberData => new TheoryData<IEnumerable<int>>()
         {
@@ -141,7 +141,7 @@
         ///     This method has the side-effect of de-queueing every element in the queue.
         ///     Call it as the last assert, as it will modify the queue.
         /// </summary>
-        private static void AssertItemPriorityOrder<T>(IPriorityQueue<T> queue, IComparer<T>? comparer = null)
+        private static void AssertItemPriorityOrder<T>(IPriorityQueue<T> queue, IComparer<T> comparer = null)
         {
             comparer ??= Comparer<T>.Default;
 
