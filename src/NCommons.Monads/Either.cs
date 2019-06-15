@@ -1,9 +1,8 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-
-namespace NCommons.Monads
+﻿namespace NCommons.Monads
 {
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Runtime.Serialization;
 
 #pragma warning disable CA1066 // Should implement IEquatable<T>.    It is implemented?? Prob. confused by the explicit implementation.
 
