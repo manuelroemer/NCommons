@@ -707,7 +707,7 @@
                 onValue6: null,
                 onValue7: null,
                 onValue8: null,
-                onEmpty
+                onEmpty ?? throw new ArgumentNullException(nameof(onEmpty))
             );
         }
 

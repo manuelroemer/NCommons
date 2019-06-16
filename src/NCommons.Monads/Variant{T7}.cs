@@ -951,7 +951,7 @@
                 onValue6 ?? throw new ArgumentNullException(nameof(onValue6)),
                 onValue7 ?? throw new ArgumentNullException(nameof(onValue7)),
                 onValue8: null,
-                onEmpty
+                onEmpty ?? throw new ArgumentNullException(nameof(onEmpty))
             );
         }
 
