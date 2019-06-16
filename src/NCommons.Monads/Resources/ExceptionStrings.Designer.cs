@@ -68,5 +68,32 @@ namespace NCommons.Monads.Resources {
                 return ResourceManager.GetString("UnexpectedEitherTypeException_DefaultMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot retrieve a value of type &quot;{0}&quot; from the variant, because it is empty (i.e. it doesn&apos;t hold any value)..
+        /// </summary>
+        internal static string Variant_GetValue_Empty {
+            get {
+                return ResourceManager.GetString("Variant_GetValue_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot retrieve a value of type &quot;{0}&quot; from the variant, because it holds a value of type &quot;{1}&quot;..
+        /// </summary>
+        internal static string Variant_GetValue_HoldsOtherValue {
+            get {
+                return ResourceManager.GetString("Variant_GetValue_HoldsOtherValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The variant holds a type for which no match case was implemented. This is a bug within the library and must be fixed..
+        /// </summary>
+        internal static string Variant_Match_TypeShouldHaveBeenImplementedButWasnt {
+            get {
+                return ResourceManager.GetString("Variant_Match_TypeShouldHaveBeenImplementedButWasnt", resourceCulture);
+            }
+        }
     }
 }
