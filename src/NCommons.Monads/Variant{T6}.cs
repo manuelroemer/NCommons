@@ -4,7 +4,7 @@
     using Dummy = System.Object;
 
     /// <summary>
-    ///     A type which is able to hold one of up to 7 possible values and provides methods for
+    ///     A type which is able to hold one of up to 6 possible values and provides methods for
     ///     matching and retrieving that value.
     /// </summary>
     /// <typeparam name="T1">The type of the first possible value that the variant can hold.</typeparam>
@@ -13,10 +13,9 @@
     /// <typeparam name="T4">The type of the fourth possible value that the variant can hold.</typeparam>
     /// <typeparam name="T5">The type of the fifth possible value that the variant can hold.</typeparam>
     /// <typeparam name="T6">The type of the sixth possible value that the variant can hold.</typeparam>
-    /// <typeparam name="T7">The type of the seventh possible value that the variant can hold.</typeparam>
-    public readonly struct Variant<T1, T2, T3, T4, T5, T6, T7> :
+    public readonly struct Variant<T1, T2, T3, T4, T5, T6> :
         IVariant,
-        IEquatable<Variant<T1, T2, T3, T4, T5, T6, T7>>
+        IEquatable<Variant<T1, T2, T3, T4, T5, T6>>
     {
 
         private readonly object? _value;
@@ -37,7 +36,6 @@
             typeof(T4),
             typeof(T5),
             typeof(T6),
-            typeof(T7),
         };
 
         /// <summary>
@@ -77,11 +75,6 @@
         ///     Gets a value indicating whether the variant holds a value of type <typeparamref name="T6"/>.
         /// </summary>
         public bool IsSixth => _type == VariantType.V6;
-
-        /// <summary>
-        ///     Gets a value indicating whether the variant holds a value of type <typeparamref name="T7"/>.
-        /// </summary>
-        public bool IsSeventh => _type == VariantType.V7;
 
         /// <summary>
         ///     Initializes a new variant instance which holds the specified <paramref name="value"/>
@@ -142,16 +135,6 @@
         /// </param>
         public Variant(T6 value)
             : this(value, VariantType.V6) { }
-
-        /// <summary>
-        ///     Initializes a new variant instance which holds the specified <paramref name="value"/>
-        ///     of type <typeparamref name="T7"/>.
-        /// </summary>
-        /// <param name="value">
-        ///     The value which will be held by the variant.
-        /// </param>
-        public Variant(T7 value)
-            : this(value, VariantType.V7) { }
 
         private Variant(object? value, VariantType type)
         {
@@ -272,25 +255,6 @@
         /// </exception>
         public T6 GetValue(out T6 value6) =>
             this.GetValueInternal(VariantType.V6, out value6);
-
-        /// <summary>
-        ///     Retrieves a value of type <typeparamref name="T7"/> from the variant or throws
-        ///     an exception if the variant holds another value.
-        ///     The result of this function is both stored in <paramref name="value7"/> and returned.
-        /// </summary>
-        /// <param name="value7">
-        ///     An out parameter which will be set to the variant's value if the variant holds
-        ///     a value of type <typeparamref name="T7"/>.
-        /// </param>
-        /// <returns>
-        ///     The final result which was assigned to <paramref name="value7"/>.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">
-        ///     Thrown if the variant is empty or if it holds a value which is not of type
-        ///     <typeparamref name="T7"/>.
-        /// </exception>
-        public T7 GetValue(out T7 value7) =>
-            this.GetValueInternal(VariantType.V7, out value7);
 
         /// <summary>
         ///     Retrieves a value of type <typeparamref name="T1"/> from the variant.
@@ -417,27 +381,6 @@
         /// </returns>
         public T6 GetValueOr(T6 substitute, out T6 value6) =>
             this.GetValueOrInternal(VariantType.V6, substitute, out value6);
-
-        /// <summary>
-        ///     Retrieves a value of type <typeparamref name="T7"/> from the variant.
-        ///     If the variant holds another value, the specified <paramref name="substitute"/>
-        ///     is used instead.
-        ///     The result of this function is both stored in <paramref name="value7"/> and returned.
-        /// </summary>
-        /// <param name="substitute">
-        ///     An alternative value which is returned if the variant doesn't hold a value of type
-        ///     <typeparamref name="T7"/>.
-        /// </param>
-        /// <param name="value7">
-        ///     An out parameter which will be set to the variant's value if the variant holds
-        ///     a value of type <typeparamref name="T7"/>, or to <paramref name="substitute"/>
-        ///     if the variant holds another value.
-        /// </param>
-        /// <returns>
-        ///     The final result which was assigned to <paramref name="value7"/>.
-        /// </returns>
-        public T7 GetValueOr(T7 substitute, out T7 value7) =>
-            this.GetValueOrInternal(VariantType.V7, substitute, out value7);
 
         /// <summary>
         ///     Retrieves a value of type <typeparamref name="T1"/> from the variant.
@@ -590,31 +533,6 @@
             );
 
         /// <summary>
-        ///     Retrieves a value of type <typeparamref name="T7"/> from the variant.
-        ///     If the variant holds another value, the specified <paramref name="substituteProvider"/>
-        ///     function is used to retrieve an alternative value.
-        ///     The result of this function is both stored in <paramref name="value7"/> and returned.
-        /// </summary>
-        /// <param name="substituteProvider">
-        ///     A function which returns a substitute value which is returned if the variant
-        ///     doesn't hold a value of type <typeparamref name="T7"/>.
-        /// </param>
-        /// <param name="value7">
-        ///     An out parameter which will be set to the variant's value if the variant holds
-        ///     a value of type <typeparamref name="T7"/>, or to a value provided by the specified
-        ///     <paramref name="substituteProvider"/> function if the variant holds another value.
-        /// </param>
-        /// <returns>
-        ///     The final result which was assigned to <paramref name="value7"/>.
-        /// </returns>
-        public T7 GetValueOr(Func<T7> substituteProvider, out T7 value7) =>
-            this.GetValueOrInternal(
-                VariantType.V7,
-                substituteProvider ?? throw new ArgumentNullException(nameof(substituteProvider)),
-                out value7
-            );
-
-        /// <summary>
         ///     Retrieves a value of type <typeparamref name="T1"/> from the variant.
         ///     If the variant holds another value, a default value is retrieved instead.
         ///     The result of this function is both stored in <paramref name="value1"/> and returned.
@@ -709,22 +627,6 @@
         /// </returns>
         public T6 GetValueOrDefault(out T6 value6) =>
             this.GetValueOrDefaultInternal(VariantType.V6, out value6);
-
-        /// <summary>
-        ///     Retrieves a value of type <typeparamref name="T7"/> from the variant.
-        ///     If the variant holds another value, a default value is retrieved instead.
-        ///     The result of this function is both stored in <paramref name="value7"/> and returned.
-        /// </summary>
-        /// <param name="value7">
-        ///     An out parameter which will be set to the variant's value if the variant holds
-        ///     a value of type <typeparamref name="T7"/>, or to a default value if the variant
-        ///     holds another value.
-        /// </param>
-        /// <returns>
-        ///     The final result which was assigned to <paramref name="value7"/>.
-        /// </returns>
-        public T7 GetValueOrDefault(out T7 value7) =>
-            this.GetValueOrDefaultInternal(VariantType.V7, out value7);
 
         /// <summary>
         ///     Attempts to retrieve a value of type <typeparamref name="T1"/> from the variant.
@@ -835,24 +737,6 @@
             this.TryGetValueInternal(VariantType.V6, out value6);
 
         /// <summary>
-        ///     Attempts to retrieve a value of type <typeparamref name="T7"/> from the variant.
-        ///     If the variant holds a value of type <typeparamref name="T7"/>, this value is stored
-        ///     in <paramref name="value7"/> and this function returns <see langword="true"/>.
-        ///     Otherwise, <paramref name="value7"/> is set to a default value and this function
-        ///     returns <see langword="false"/>.
-        /// </summary>
-        /// <param name="value7">
-        ///     An out parameter which will be set to the variant's value if the variant holds
-        ///     a value of type <typeparamref name="T7"/>.
-        /// </param>
-        /// <returns>
-        ///     <see langword="true"/> if the variant holds a value of type <typeparamref name="T7"/>;
-        ///     <see langword="false"/> if not.
-        /// </returns>
-        public bool TryGetValue(out T7 value7) =>
-            this.TryGetValueInternal(VariantType.V7, out value7);
-
-        /// <summary>
         ///     Executes one of the specified functions, depending on which value the variant holds.
         /// </summary>
         /// <param name="onValue1">
@@ -873,9 +757,6 @@
         /// <param name="onValue6">
         ///     A function to be executed if the variant holds a value of type <typeparamref name="T6"/>.
         /// </param>
-        /// <param name="onValue7">
-        ///     A function to be executed if the variant holds a value of type <typeparamref name="T7"/>.
-        /// </param>
         /// <param name="onEmpty">
         ///     A function to be executed if the variant is empty.
         /// </param>
@@ -884,17 +765,17 @@
         /// </exception>
         public void Match(
             Action<T1> onValue1, Action<T2> onValue2, Action<T3> onValue3, Action<T4> onValue4,
-            Action<T5> onValue5, Action<T6> onValue6, Action<T7> onValue7,
+            Action<T5> onValue5, Action<T6> onValue6,
             Action onEmpty)
         {
-            this.MatchInternal<T1, T2, T3, T4, T5, T6, T7, Dummy>(
+            this.MatchInternal<T1, T2, T3, T4, T5, T6, Dummy, Dummy>(
                 onValue1 ?? throw new ArgumentNullException(nameof(onValue1)),
                 onValue2 ?? throw new ArgumentNullException(nameof(onValue2)),
                 onValue3 ?? throw new ArgumentNullException(nameof(onValue3)),
                 onValue4 ?? throw new ArgumentNullException(nameof(onValue4)),
                 onValue5 ?? throw new ArgumentNullException(nameof(onValue5)),
                 onValue6 ?? throw new ArgumentNullException(nameof(onValue6)),
-                onValue7 ?? throw new ArgumentNullException(nameof(onValue7)),
+                onValue7: null,
                 onValue8: null,
                 onEmpty ?? throw new ArgumentNullException(nameof(onEmpty))
             );
@@ -925,9 +806,6 @@
         /// <param name="onValue6">
         ///     A function to be executed if the variant holds a value of type <typeparamref name="T6"/>.
         /// </param>
-        /// <param name="onValue7">
-        ///     A function to be executed if the variant holds a value of type <typeparamref name="T7"/>.
-        /// </param>
         /// <param name="onEmpty">
         ///     A function to be executed if the variant is empty.
         /// </param>
@@ -939,17 +817,17 @@
         /// </exception>
         public T Match<T>(
             Func<T1, T> onValue1, Func<T2, T> onValue2, Func<T3, T> onValue3, Func<T4, T> onValue4,
-            Func<T5, T> onValue5, Func<T6, T> onValue6, Func<T7, T> onValue7,
+            Func<T5, T> onValue5, Func<T6, T> onValue6,
             Func<T> onEmpty)
         {
-            return this.MatchInternal<T, T1, T2, T3, T4, T5, T6, T7, Dummy>(
+            return this.MatchInternal<T, T1, T2, T3, T4, T5, T6, Dummy, Dummy>(
                 onValue1 ?? throw new ArgumentNullException(nameof(onValue1)),
                 onValue2 ?? throw new ArgumentNullException(nameof(onValue2)),
                 onValue3 ?? throw new ArgumentNullException(nameof(onValue3)),
                 onValue4 ?? throw new ArgumentNullException(nameof(onValue4)),
                 onValue5 ?? throw new ArgumentNullException(nameof(onValue5)),
                 onValue6 ?? throw new ArgumentNullException(nameof(onValue6)),
-                onValue7 ?? throw new ArgumentNullException(nameof(onValue7)),
+                onValue7: null,
                 onValue8: null,
                 onEmpty
             );
@@ -977,7 +855,7 @@
         ///     <see langword="true"/> if the two variants hold the same value;
         ///     <see langword="false"/> if not.
         /// </returns>
-        public bool Equals(Variant<T1, T2, T3, T4, T5, T6, T7> other) =>
+        public bool Equals(Variant<T1, T2, T3, T4, T5, T6> other) =>
             this.EqualsInternal(other);
 
         /// <summary>
@@ -994,18 +872,18 @@
         public override string ToString() =>
             this.ToStringInternal();
 
-        /// <see cref="Equals(Variant{T1, T2, T3, T4, T5, T6, T7})"/>
+        /// <see cref="Equals(Variant{T1, T2, T3, T4, T5, T6})"/>
         public static bool operator ==(
-            Variant<T1, T2, T3, T4, T5, T6, T7> left,
-            Variant<T1, T2, T3, T4, T5, T6, T7> right)
+            Variant<T1, T2, T3, T4, T5, T6> left,
+            Variant<T1, T2, T3, T4, T5, T6> right)
         {
             return left.EqualsInternal(right);
         }
 
-        /// <see cref="Equals(Variant{T1, T2, T3, T4, T5, T6, T7})"/>
+        /// <see cref="Equals(Variant{T1, T2, T3, T4, T5, T6})"/>
         public static bool operator !=(
-            Variant<T1, T2, T3, T4, T5, T6, T7> left,
-            Variant<T1, T2, T3, T4, T5, T6, T7> right)
+            Variant<T1, T2, T3, T4, T5, T6> left,
+            Variant<T1, T2, T3, T4, T5, T6> right)
         {
             return !(left.EqualsInternal(right));
         }
@@ -1024,7 +902,7 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T1"/>.
         /// </exception>
-        public static explicit operator T1(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T1(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T1>(VariantType.V1, out _);
 
         /// <summary>
@@ -1041,7 +919,7 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T2"/>.
         /// </exception>
-        public static explicit operator T2(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T2(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T2>(VariantType.V2, out _);
 
         /// <summary>
@@ -1058,7 +936,7 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T3"/>.
         /// </exception>
-        public static explicit operator T3(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T3(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T3>(VariantType.V3, out _);
 
         /// <summary>
@@ -1075,7 +953,7 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T4"/>.
         /// </exception>
-        public static explicit operator T4(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T4(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T4>(VariantType.V4, out _);
 
         /// <summary>
@@ -1092,7 +970,7 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T5"/>.
         /// </exception>
-        public static explicit operator T5(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T5(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T5>(VariantType.V5, out _);
 
         /// <summary>
@@ -1109,25 +987,8 @@
         ///     Thrown if the variant is empty or if it holds a value which is not of type
         ///     <typeparamref name="T6"/>.
         /// </exception>
-        public static explicit operator T6(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
+        public static explicit operator T6(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T6>(VariantType.V6, out _);
-
-        /// <summary>
-        ///     Returns the variant's value of type <typeparamref name="T7"/>, if it holds one.
-        ///     Otherwise, throws an exception.
-        /// </summary>
-        /// <param name="variant">
-        ///     The variant whose value should be returned.
-        /// </param>
-        /// <returns>
-        ///     The value of type <typeparamref name="T7"/> which the variant holds.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">
-        ///     Thrown if the variant is empty or if it holds a value which is not of type
-        ///     <typeparamref name="T7"/>.
-        /// </exception>
-        public static explicit operator T7(Variant<T1, T2, T3, T4, T5, T6, T7> variant) =>
-            variant.GetValueInternal<T7>(VariantType.V7, out _);
 
     }
 
