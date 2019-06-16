@@ -1,6 +1,7 @@
 ﻿namespace NCommons.Monads
 {
     using System;
+    using System.Diagnostics;
     using Dummy = System.Object;
 
     /// <summary>
@@ -16,16 +17,18 @@
         IEquatable<Variant<T1, T2, T3>>
     {
 
-        private readonly object? _value;
-        private readonly VariantType _type;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly object? _value;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly VariantType _type;
 
         /// <inheritdoc/>
         public object? Value => _value;
 
         /// <inheritdoc/>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         VariantType IVariant.Type => _type;
 
         /// <inheritdoc/>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         Type[] IVariant.GenericValueTypes => new Type[]
         {
             typeof(T1),
