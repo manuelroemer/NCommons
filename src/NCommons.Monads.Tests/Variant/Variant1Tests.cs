@@ -71,7 +71,7 @@
         }
 
         [Fact]
-        public void GetValueOr_Substitute_Returns_Alternative_Value()
+        public void GetValueOr_Substitute_First_Value_Returns_Alternative_Value()
         {
             var substitute = new P1();
             var v = CreateEmptyVariant();
@@ -86,7 +86,7 @@
         #region GetValueOr (Substitute Provider)
 
         [Fact]
-        public void GetValueOr_SubstituteProvider_Throws_ArgumentNullException()
+        public void GetValueOr_SubstituteProvider_First_Value_Throws_ArgumentNullException()
         {
             Func<P1> substituteProvider = null;
             var v = CreateVariant(new P1());
@@ -105,7 +105,7 @@
         }
 
         [Fact]
-        public void GetValueOr_SubstituteProvider_Returns_Alternative_Value()
+        public void GetValueOr_SubstituteProvider_First_Value_Returns_Alternative_Value()
         {
             var substitute = new P1();
             Func<P1> substituteProvider = () => substitute;
@@ -131,7 +131,7 @@
         }
 
         [Fact]
-        public void GetValueOrDefault_Returns_Alternative_Value()
+        public void GetValueOrDefault_First_Value_Returns_Alternative_Value()
         {
             var v = CreateEmptyVariant();
             var returnedValue = v.GetValueOrDefault(out P1 outValue);
@@ -258,7 +258,7 @@
             var v = new Variant<P1>();
 
             v.Match(
-                v1 => throw new Exception(),
+                v => throw new Exception(),
                 () => wasCalled = true
             );
 
@@ -272,7 +272,7 @@
             var v = new Variant<P1>(new P1());
 
             v.Match(
-                v1 => wasCalled = true,
+                v => wasCalled = true,
                 () => throw new Exception()
             );
 
@@ -290,7 +290,7 @@
             var v = new Variant<P1>();
             
             var matched = v.Match(
-                v1 => throw new Exception(),
+                v => throw new Exception(),
                 () => expected
             );
 
@@ -304,7 +304,7 @@
             var v = new Variant<P1>(new P1());
 
             var matched = v.Match(
-                v1 => expected,
+                v => expected,
                 () => throw new Exception()
             );
 
