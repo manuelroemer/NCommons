@@ -118,6 +118,30 @@
 
         #endregion
 
+        #region GetValueOrDefault
+
+        [Fact]
+        public void GetValueOrDefault_Retrieves_First_Value()
+        {
+            var v = CreateVariant(new P1());
+            var returnedValue = v.GetValueOrDefault(out P1 outValue);
+
+            Assert.Same(v.Value, outValue);
+            Assert.Same(v.Value, returnedValue);
+        }
+
+        [Fact]
+        public void GetValueOrDefault_Returns_Alternative_Value()
+        {
+            var v = CreateEmptyVariant();
+            var returnedValue = v.GetValueOrDefault(out P1 outValue);
+
+            Assert.Same(default(P1), outValue);
+            Assert.Same(default(P1), returnedValue);
+        }
+
+        #endregion
+
         #region TryGetValue
 
         [Fact]
