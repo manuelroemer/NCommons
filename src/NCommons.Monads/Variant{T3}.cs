@@ -4,7 +4,7 @@
     using Dummy = System.Object;
 
     /// <summary>
-    ///     A type which is able to hold one of up to 4 possible values and provides methods for
+    ///     A type which is able to hold one of up to 3 possible values and provides methods for
     ///     matching and retrieving that value.
     /// </summary>
     /// <typeparam name="T1">The type of the first possible value that the variant can hold.</typeparam>
