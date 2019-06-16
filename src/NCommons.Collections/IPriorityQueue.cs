@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections.Generic;
+
 
     /// <summary>
     ///     Represents a data structure which stores and serves items ordered by a priority.

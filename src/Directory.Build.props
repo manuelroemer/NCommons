@@ -30,15 +30,18 @@
   </PropertyGroup>
   
   <ItemGroup Condition=" !$(IsTestProject) ">
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2" PrivateAssets="all" />
+    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- Certain warnings make no sense in test projects. -->
   <PropertyGroup Condition=" $(IsTestProject) ">
+    <NullableReferenceTypes>false</NullableReferenceTypes>
+    <NullableContextOptions>disable</NullableContextOptions>
     <NoWarn>
       $(NoWarn);
-      CS1573 <!-- No matching XML comment for parameter -->
+      CS1573; <!-- No matching XML comment for parameter -->
+      CA2007  <!-- ConfigureAwait(false) leads to cluttered tests. -->
     </NoWarn>
   </PropertyGroup>
-  
+
 </Project>

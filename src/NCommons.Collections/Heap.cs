@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using NCommons.Collections.Resources;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using NCommons.Collections.Resources;
 
     /// <summary>
     ///     An abstract base class for any <see cref="PriorityQueue{T}"/> implementation that

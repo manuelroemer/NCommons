@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using NCommons.Collections.Resources;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+    using NCommons.Collections.Resources;
 
     /// <summary>
     ///     Stores and prioritizes elements based on a max binary heap.
@@ -148,7 +147,7 @@ namespace NCommons.Collections
 #nullable disable
                 result = default;
                 return false;
-#nullable enable
+#nullable restore
             }
         }
 
@@ -218,7 +217,7 @@ namespace NCommons.Collections
 #nullable disable
                 result = default;
                 return false;
-#nullable enable
+#nullable restore
             }
         }
 

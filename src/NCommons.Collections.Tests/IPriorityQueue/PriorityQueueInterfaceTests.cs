@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using NCommons.Collections;
-using Xunit;
-
-namespace NCommons.Collections.Tests
+﻿namespace NCommons.Collections.Tests.IPriorityQueue
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Xunit;
 
     /// <summary>
-    ///     Base tests which any <see cref="IPriorityQueue{T}"/> implementer should pass.
+    ///     An abstract test base for any <see cref="IPriorityQueue{T}"/> implementation.
+    ///     This class defines test cases which must be passed by every interface implementation.
     /// </summary>
-    public abstract class IPriorityQueueTests
+    public abstract class PriorityQueueInterfaceTestBase
     {
 
         /// <summary>Creates a new instance of the priority queue type under test.</summary>
-        protected abstract IPriorityQueue<T> CreateQueue<T>(IComparer<T>? comparer = null);
+        protected abstract IPriorityQueue<T> CreateQueue<T>(IComparer<T> comparer = null);
 
         public static TheoryData<IEnumerable<int>> NumberData => new TheoryData<IEnumerable<int>>()
         {
@@ -83,7 +82,7 @@ namespace NCommons.Collections.Tests
             {
                 queue.Dequeue();
             }
-            
+
             Assert.Equal(itemsToEnqueue - itemsToDequeue, queue.Count);
         }
 
@@ -113,7 +112,7 @@ namespace NCommons.Collections.Tests
             {
                 if (a == b)
                     return 0;
-                
+
                 // Just make up some non-normal rules now.
                 if (a == 13)
                     return 1;
@@ -142,7 +141,7 @@ namespace NCommons.Collections.Tests
         ///     This method has the side-effect of de-queueing every element in the queue.
         ///     Call it as the last assert, as it will modify the queue.
         /// </summary>
-        private static void AssertItemPriorityOrder<T>(IPriorityQueue<T> queue, IComparer<T>? comparer = null)
+        private static void AssertItemPriorityOrder<T>(IPriorityQueue<T> queue, IComparer<T> comparer = null)
         {
             comparer ??= Comparer<T>.Default;
 
@@ -176,7 +175,7 @@ namespace NCommons.Collections.Tests
             queue.Peek();
             Assert.Equal(1, queue.Count);
         }
-        
+
         [Fact]
         public void TryPeek_Doesnt_Remove_Item()
         {
@@ -203,7 +202,7 @@ namespace NCommons.Collections.Tests
                 Assert.Equal(currentHighest, queue.Peek());
             }
         }
-        
+
         [Theory]
         [MemberData(nameof(NumberData))]
         public void TryPeek_Returns_Item_With_Highest_Priority(IEnumerable<int> itemsToEnqueue)
@@ -237,7 +236,7 @@ namespace NCommons.Collections.Tests
             queue.Enqueue(1);
             Assert.True(queue.TryPeek(out _));
         }
-        
+
         [Fact]
         public void TryPeek_Returns_False_If_Empty()
         {
@@ -290,7 +289,7 @@ namespace NCommons.Collections.Tests
                 Assert.Equal(currentHighest, dequeueResult);
             }
         }
-        
+
         [Theory]
         [MemberData(nameof(NumberData))]
         public void TryDequeue_Returns_Item_With_Highest_Priority(IEnumerable<int> itemsToEnqueue)
@@ -355,7 +354,5 @@ namespace NCommons.Collections.Tests
         #endregion
 
     }
-
-
 
 }

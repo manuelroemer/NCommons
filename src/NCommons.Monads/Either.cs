@@ -1,9 +1,8 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-
-namespace NCommons.Monads
+﻿namespace NCommons.Monads
 {
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Runtime.Serialization;
 
 #pragma warning disable CA1066 // Should implement IEquatable<T>.    It is implemented?? Prob. confused by the explicit implementation.
 
@@ -63,7 +62,7 @@ namespace NCommons.Monads
             _type = EitherType.Left;
             _left = left;
             _right = default;
-#nullable enable
+#nullable restore
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace NCommons.Monads
             _type = EitherType.Right;
             _left = default;
             _right = right;
-#nullable enable
+#nullable restore
         }
 
 #pragma warning disable CA1801
@@ -102,7 +101,7 @@ namespace NCommons.Monads
                 _left = default;
                 _right = (TR)serializationInfo.GetValue(nameof(_right), typeof(TR));
             }
-#nullable enable
+#nullable restore
         }
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)

@@ -1,8 +1,7 @@
-﻿using System;
-using Xunit;
-
-namespace NCommons.Tests
+﻿namespace NCommons.Tests
 {
+    using System;
+    using Xunit;
 
     public class AssertEx : Assert
     {
@@ -21,9 +20,7 @@ namespace NCommons.Tests
             Action testCode)
             where TArgs : EventArgs
         {
-#nullable disable
             TEventDelegate handler = default;
-#nullable enable
 
             return Assert.Raises<TArgs>(
                 h =>

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using NCommons.Collections.Resources;
-
-namespace NCommons.Collections
+﻿namespace NCommons.Collections
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
+    using NCommons.Collections.Resources;
 
     /// <summary>
     ///     A special collection which only holds weak references to the elements
@@ -191,7 +190,7 @@ namespace NCommons.Collections
                 _version = version;
                 _pos = EnumerationNotStartedYet;
                 _current = null;
-#nullable enable
+#nullable restore
             }
 
             public bool MoveNext()
@@ -207,7 +206,7 @@ namespace NCommons.Collections
                         // The WeakReference<T> is null. -> null was added to the collection.
                         _current = null;
                         return true;
-#nullable enable
+#nullable restore
                     }
                     else
                     {
@@ -234,7 +233,7 @@ namespace NCommons.Collections
                 _current = null;
                 _pos = EnumerationFinished;
                 return false;
-#nullable enable
+#nullable restore
             }
 
             public void Reset()
@@ -243,7 +242,7 @@ namespace NCommons.Collections
                 VerifyVersion();
                 _pos = EnumerationNotStartedYet;
                 _current = null;
-#nullable enable
+#nullable restore
             }
 
             public void Dispose() { }
