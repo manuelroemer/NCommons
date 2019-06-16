@@ -83,21 +83,39 @@
 
         internal static void MatchInternal<T1, T2, T3, T4, T5, T6, T7, T8>(
             this IVariant variant,
-            Action<T1> onValue1, Action<T2> onValue2, Action<T3> onValue3, Action<T4> onValue4,
-            Action<T5> onValue5, Action<T6> onValue6, Action<T7> onValue7, Action<T8> onValue8,
+            Action<T1>? onValue1, 
+            Action<T2>? onValue2, 
+            Action<T3>? onValue3, 
+            Action<T4>? onValue4,
+            Action<T5>? onValue5, 
+            Action<T6>? onValue6, 
+            Action<T7>? onValue7, 
+            Action<T8>? onValue8,
             Action onEmpty)
         {
-            variant.MatchInternal<object?, T1, T2, T3, T4, T5, T6, T7, T8>(
-                v1 => { onValue1(v1); return null; },
-                v2 => { onValue2(v2); return null; },
-                v3 => { onValue3(v3); return null; },
-                v4 => { onValue4(v4); return null; },
-                v5 => { onValue5(v5); return null; },
-                v6 => { onValue6(v6); return null; },
-                v7 => { onValue7(v7); return null; },
-                v8 => { onValue8(v8); return null; },
-                () => { onEmpty(); return null; }
+            variant.MatchInternal(
+                MakeFn(onValue1),
+                MakeFn(onValue2),
+                MakeFn(onValue3),
+                MakeFn(onValue4),
+                MakeFn(onValue5),
+                MakeFn(onValue6),
+                MakeFn(onValue7),
+                MakeFn(onValue8),
+                MakeFnEmpty(onEmpty)
             );
+
+#nullable disable // There are warnings inside the lambdas. That case will never happen.
+            static Func<T, object> MakeFn<T>(Action<T> action) =>
+                action is null 
+                    ? (Func<T, object>)null 
+                    : (v => { action(v); return null; });
+
+            static Func<object> MakeFnEmpty(Action action) =>
+                action is null
+                    ? (Func<object>)null
+                    : () => { action(); return null; };
+#nullable restore
         }
 
         internal static TRes MatchInternal<TRes, T1, T2, T3, T4, T5, T6, T7, T8>(
