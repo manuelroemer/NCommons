@@ -8,6 +8,7 @@
     ///     or no value at all and provides methods for matching and retrieving that value.
     /// </summary>
     /// <typeparam name="T1">The type of the first possible value that the variant can hold.</typeparam>
+    [Serializable]
     public readonly struct Variant<T1> :
         IVariant,
         IEquatable<Variant<T1>>

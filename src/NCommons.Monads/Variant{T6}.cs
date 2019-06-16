@@ -13,6 +13,7 @@
     /// <typeparam name="T4">The type of the fourth possible value that the variant can hold.</typeparam>
     /// <typeparam name="T5">The type of the fifth possible value that the variant can hold.</typeparam>
     /// <typeparam name="T6">The type of the sixth possible value that the variant can hold.</typeparam>
+    [Serializable]
     public readonly struct Variant<T1, T2, T3, T4, T5, T6> :
         IVariant,
         IEquatable<Variant<T1, T2, T3, T4, T5, T6>>
