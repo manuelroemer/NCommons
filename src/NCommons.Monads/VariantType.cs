@@ -10,6 +10,9 @@
     {
         // Empty must always come first, so that a default struct initialization leads to an empty variant.
         Empty = 0,
+
+        // V stands for value.
+        // The numbers here should not change, because they are used for certain operations (like ToString).
         V1 = 1,
         V2 = 2,
         V3 = 3,
