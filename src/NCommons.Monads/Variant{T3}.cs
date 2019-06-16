@@ -233,6 +233,9 @@
         /// <returns>
         ///     The final result which was assigned to <paramref name="value1"/>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="substituteProvider"/>
+        /// </exception>
         public T1 GetValueOr(Func<T1> substituteProvider, out T1 value1) =>
             this.GetValueOrInternal(
                 VariantType.V1,
@@ -258,6 +261,9 @@
         /// <returns>
         ///     The final result which was assigned to <paramref name="value2"/>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="substituteProvider"/>
+        /// </exception>
         public T2 GetValueOr(Func<T2> substituteProvider, out T2 value2) =>
             this.GetValueOrInternal(
                 VariantType.V2,
@@ -283,6 +289,9 @@
         /// <returns>
         ///     The final result which was assigned to <paramref name="value3"/>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     <paramref name="substituteProvider"/>
+        /// </exception>
         public T3 GetValueOr(Func<T3> substituteProvider, out T3 value3) =>
             this.GetValueOrInternal(
                 VariantType.V3,
