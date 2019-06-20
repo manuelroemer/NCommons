@@ -265,6 +265,66 @@
 
         #endregion
 
+        #region Implicit Operator
+
+        [Fact]
+        public override void Implicit_Operator_Creates_First_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P1();
+            Assert.True(v.IsFirst);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Second_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P2();
+            Assert.True(v.IsSecond);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Third_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P3();
+            Assert.True(v.IsThird);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Fourth_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P4();
+            Assert.True(v.IsFourth);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Fifth_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P5();
+            Assert.True(v.IsFifth);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Sixth_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P6();
+            Assert.True(v.IsSixth);
+        }
+        
+        [Fact]
+        public override void Implicit_Operator_Creates_Seventh_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P7();
+            Assert.True(v.IsSeventh);
+        }
+        
+        [Fact]
+        public virtual void Implicit_Operator_Creates_Eigth_Variant()
+        {
+            Variant<P1, P2, P3, P4, P5, P6, P7, P8> v = new P8();
+            Assert.True(v.IsEigth);
+        }
+
+        #endregion
+
         #region Match (Action)
 
         [Fact]

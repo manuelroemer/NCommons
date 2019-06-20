@@ -253,6 +253,38 @@
 
         #endregion
 
+        #region Implicit Operator
+
+        [Fact]
+        public override void Implicit_Operator_Creates_First_Variant()
+        {
+            Variant<P1, P2, P3, P4> v = new P1();
+            Assert.True(v.IsFirst);
+        }
+
+        [Fact]
+        public override void Implicit_Operator_Creates_Second_Variant()
+        {
+            Variant<P1, P2, P3, P4> v = new P2();
+            Assert.True(v.IsSecond);
+        }
+
+        [Fact]
+        public override void Implicit_Operator_Creates_Third_Variant()
+        {
+            Variant<P1, P2, P3, P4> v = new P3();
+            Assert.True(v.IsThird);
+        }
+
+        [Fact]
+        public virtual void Implicit_Operator_Creates_Fourth_Variant()
+        {
+            Variant<P1, P2, P3, P4> v = new P4();
+            Assert.True(v.IsFourth);
+        }
+
+        #endregion
+
         #region Match (Action)
 
         [Fact]
