@@ -247,6 +247,24 @@
 
         #endregion
 
+        #region Implicit Operator
+
+        [Fact]
+        public override void Implicit_Operator_Creates_First_Variant()
+        {
+            Variant<P1, P2> v = new P1();
+            Assert.True(v.IsFirst);
+        }
+
+        [Fact]
+        public virtual void Implicit_Operator_Creates_Second_Variant()
+        {
+            Variant<P1, P2> v = new P2();
+            Assert.True(v.IsSecond);
+        }
+
+        #endregion
+
         #region Match (Action)
 
         [Fact]

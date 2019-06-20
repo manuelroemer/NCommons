@@ -290,6 +290,10 @@
         public static explicit operator T1(Variant<T1> variant) =>
             variant.GetValueInternal<T1>(VariantType.V1, out _);
 
+        /// <see cref="Variant{T1}.Variant(T1)"/>
+        public static implicit operator Variant<T1>(T1 value) =>
+            new Variant<T1>(value);
+
     }
 
 }

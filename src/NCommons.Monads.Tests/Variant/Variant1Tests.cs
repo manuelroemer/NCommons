@@ -150,14 +150,14 @@
             var v = CreateVariant(new P1());
             Assert.True(v.TryGetValue(out P1 _));
         }
-        
+
         [Fact]
         public void TryGetValue_Returns_False_If_First_Value_Was_Not_Retrieved()
         {
             var v = CreateEmptyVariant();
             Assert.False(v.TryGetValue(out P1 _));
         }
-        
+
         [Fact]
         public void TryGetValue_Retrieves_First_Value()
         {
@@ -196,7 +196,7 @@
             Assert.True(v1 != v2);
             Assert.NotEqual(v1.GetHashCode(), v2.GetHashCode());
         }
-        
+
         [Fact]
         public void Unequality_Fulfilled_For_Different_Type_With_First()
         {
@@ -245,6 +245,17 @@
         {
             var v = CreateEmptyVariant();
             Assert.Throws<InvalidOperationException>(() => (P1)v);
+        }
+
+        #endregion
+
+        #region Implicit Operator
+
+        [Fact]
+        public virtual void Implicit_Operator_Creates_First_Variant()
+        {
+            Variant<P1> v = new P1();
+            Assert.True(v.IsFirst);
         }
 
         #endregion
