@@ -726,6 +726,22 @@
         public static explicit operator T4(Variant<T1, T2, T3, T4> variant) =>
             variant.GetValueInternal<T4>(VariantType.V4, out _);
 
+        /// <see cref="Variant{T1, T2, T3, T4}.Variant(T1)"/>
+        public static implicit operator Variant<T1, T2, T3, T4>(T1 value) =>
+            new Variant<T1, T2, T3, T4>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4}.Variant(T2)"/>
+        public static implicit operator Variant<T1, T2, T3, T4>(T2 value) =>
+            new Variant<T1, T2, T3, T4>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4}.Variant(T3)"/>
+        public static implicit operator Variant<T1, T2, T3, T4>(T3 value) =>
+            new Variant<T1, T2, T3, T4>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4}.Variant(T4)"/>
+        public static implicit operator Variant<T1, T2, T3, T4>(T4 value) =>
+            new Variant<T1, T2, T3, T4>(value);
+
     }
 
 }

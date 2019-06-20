@@ -1012,6 +1012,30 @@
         public static explicit operator T6(Variant<T1, T2, T3, T4, T5, T6> variant) =>
             variant.GetValueInternal<T6>(VariantType.V6, out _);
 
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T1)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T1 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T2)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T2 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T3)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T3 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T4)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T4 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T5)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T5 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
+        /// <see cref="Variant{T1, T2, T3, T4, T5, T6}.Variant(T6)"/>
+        public static implicit operator Variant<T1, T2, T3, T4, T5, T6>(T6 value) =>
+            new Variant<T1, T2, T3, T4, T5, T6>(value);
+
     }
 
 }
