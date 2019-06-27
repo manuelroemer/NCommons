@@ -9,6 +9,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
 
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../key.snk</AssemblyOriginatorKeyFile>
+
     <Version Condition=" $(Version) == '' ">0.0.0-dev</Version>
     <Product>NCommons</Product>
     <Authors>Manuel Römer</Authors>
