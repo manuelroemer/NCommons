@@ -11,7 +11,7 @@ namespace NCommons.Monads
     {
 
         /// <summary>
-        ///     Gets or sets the value which the variant holds as an <see cref="object"/>.
+        ///     Gets the value which the variant holds as an <see cref="object"/>.
         ///     This may be <see langword="null"/>, depending on the value with which the variant
         ///     was initialized.
         ///     
