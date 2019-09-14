@@ -21,7 +21,7 @@
         ///     Occurs when the collection is about to change, but before the change has actually
         ///     happened.
         /// </summary>
-        public event NotifyCollectionChangingEventHandler CollectionChanging;
+        public event NotifyCollectionChangingEventHandler? CollectionChanging;
 
         private ReentrancyDisposable? _reentrancyDisposable;
         private int _reentrancyCount;
