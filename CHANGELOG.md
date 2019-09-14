@@ -10,3 +10,6 @@
 
 * Correctly flagged `ObservableObject.PropertyChanged` as nullable.
 * Correctly flagged `ObservableObject.PropertyChanging` as nullable.
+
+
+_Changes earlier than this have sadly not been recorded yet. If you are interested in details, consider going through old pull requests._
