@@ -21,12 +21,12 @@
         ///     Occurs when a property's value is about to change, but before the change
         ///     has actually been made yet.
         /// </summary>
-        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangingEventHandler? PropertyChanging;
 
         /// <summary>
         ///     Occurs when a property's value has changed.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ObservableObject"/> class.
