@@ -33,7 +33,7 @@
   </PropertyGroup>
   
   <ItemGroup Condition=" !$(IsTestProject) ">
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.5" PrivateAssets="all" />
+    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- Certain warnings make no sense in test projects. -->
