@@ -61,6 +61,15 @@ namespace NCommons.Monads.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It is impossible to retrieve a value from an empty optional which does not hold a value..
+        /// </summary>
+        internal static string Optional_IsEmpty {
+            get {
+                return ResourceManager.GetString("Optional_IsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An attempt was made to read the value of an either of type &quot;{0}&quot;. The either is, however, of type &quot;{1}&quot;..
         /// </summary>
         internal static string UnexpectedEitherTypeException_DefaultMessage {
