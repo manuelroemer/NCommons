@@ -61,7 +61,7 @@ namespace NCommons.Monads.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It is impossible to retrieve a value from an empty optional which does not hold a value..
+        ///   Looks up a localized string similar to The optional is empty..
         /// </summary>
         internal static string Optional_IsEmpty {
             get {

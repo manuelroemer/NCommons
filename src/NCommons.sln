@@ -7,8 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Config", ".Config", "{C6E7
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
-		CA.ruleset = CA.ruleset
+		Default.ruleset = Default.ruleset
 		Directory.Build.props = Directory.Build.props
+		Tests.ruleset = Tests.ruleset
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCommons.Collections", "NCommons.Collections\NCommons.Collections.csproj", "{F7DF7225-E609-4A4C-8ED9-EFA861B39655}"
