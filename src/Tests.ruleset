@@ -5,6 +5,7 @@
     <Rule Id="CA1034" Action="None" /> <!-- Nested types should not be visible -->
     <Rule Id="CA1052" Action="None" /> <!-- Static holder types should be Static or NotInheritable -->
     <Rule Id="CA1065" Action="None" /> <!-- Do not raise exceptions in unexpected locations -->
+    <Rule Id="CA1305" Action="None" /> <!-- TODO -->
     <Rule Id="CA1707" Action="None" /> <!-- Identifiers should not contain underscores -->
     <Rule Id="CA1716" Action="None" /> <!-- Identifiers should not match keywords -->
     <Rule Id="CA1720" Action="None" /> <!-- Identifiers should not contain type names -->

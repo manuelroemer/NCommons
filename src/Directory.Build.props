@@ -42,8 +42,6 @@
 
   <!-- Certain warnings make no sense in test projects. -->
   <PropertyGroup Condition=" $(IsTestProject) ">
-    <NullableContextOptions>disable</NullableContextOptions>
-    <Nullable>disable</Nullable>
     <NoWarn>
       $(NoWarn);
       CS1573; <!-- No matching XML comment for parameter -->

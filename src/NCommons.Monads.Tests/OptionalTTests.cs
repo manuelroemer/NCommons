@@ -354,13 +354,13 @@
         public class EqualityTests
         {
 
-            public static TheoryData<Optional<int?>, Optional<int?>> EqualOptionalsData = new TheoryData<Optional<int?>, Optional<int?>>()
+            public static TheoryData<Optional<int?>, Optional<int?>> EqualOptionalsData => new TheoryData<Optional<int?>, Optional<int?>>()
             {
                 { Optional<int?>.Empty, Optional<int?>.Empty },
                 { 123, 123 }
             };
 
-            public static TheoryData<Optional<int?>, Optional<int?>> UnequalOptionalsData = new TheoryData<Optional<int?>, Optional<int?>>()
+            public static TheoryData<Optional<int?>, Optional<int?>> UnequalOptionalsData => new TheoryData<Optional<int?>, Optional<int?>>()
             {
                 { Optional<int?>.Empty, new Optional<int?>(123) },
                 { new Optional<int?>(123), Optional<int?>.Empty },
@@ -410,7 +410,7 @@
             [MemberData(nameof(EqualValuesData))]
             public void Value_Equality(Optional<int?> left, int? right)
             {
-                Assert.True(left.Equals((object)right));
+                Assert.True(left.Equals((object?)right));
                 Assert.True(left.Equals(right));
                 Assert.True(left == right);
                 Assert.True(right == left);
@@ -423,7 +423,7 @@
             [MemberData(nameof(UnequalValuesData))]
             public void Value_Inequality(Optional<int?> left, int? right)
             {
-                Assert.False(left.Equals((object)right));
+                Assert.False(left.Equals((object?)right));
                 Assert.False(left.Equals(right));
                 Assert.False(left == right);
                 Assert.False(right == left);
