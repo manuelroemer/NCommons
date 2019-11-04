@@ -551,27 +551,27 @@
         }
 
         /// <summary>
-        ///     If the optional is non-empty, the specified <paramref name="onValue"/> function
+        ///     If the optional is non-empty, the specified <paramref name="mapValue"/> function
         ///     is invoked with the optional's held value. The return value is then wrapped in a new
         ///     <see cref="Optional{TResult}"/> instance and returned by this method.
         ///     
-        ///     If the optional is empty, the <paramref name="onValue"/> function is not invoked.
+        ///     If the optional is empty, the <paramref name="mapValue"/> function is not invoked.
         ///     Instead, an empty <see cref="Optional{TResult}"/> instance is returned.
         /// </summary>
         /// <typeparam name="TResult">
         ///     The type held by the optional to be returned.
         /// </typeparam>
-        /// <param name="onValue">
+        /// <param name="mapValue">
         ///     The function to be invoked if the optional is non-empty.
         ///     This function receives the optional's held value as a parameter.
         /// </param>
         /// <returns>
         ///     An <see cref="Optional{TResult}"/> instance holding the returned value of the
-        ///     <paramref name="onValue"/> function if the optional is non-empty;
+        ///     <paramref name="mapValue"/> function if the optional is non-empty;
         ///     an empty <see cref="Optional{TResult}"/> instance if the optional is empty.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        ///     * <paramref name="onValue"/>
+        ///     * <paramref name="mapValue"/>
         /// </exception>
         /// <remarks>
         ///     <see cref="Map{TResult}(Func{T, TResult})"/> allows you to transform the held value
@@ -609,33 +609,33 @@
         ///     <see cref="Map{TResult}(Func{T, TResult})"/> does not.
         /// </remarks>
         /// <seealso cref="FlatMap{TResult}(Func{T, Optional{TResult}})"/>
-        public Optional<TResult> Map<TResult>(Func<T, TResult> onValue)
+        public Optional<TResult> Map<TResult>(Func<T, TResult> mapValue)
         {
-            _ = onValue ?? throw new ArgumentNullException(nameof(onValue));
-            return _hasValue ? onValue(_value) : Optional<TResult>.Empty;
+            _ = mapValue ?? throw new ArgumentNullException(nameof(mapValue));
+            return _hasValue ? mapValue(_value) : Optional<TResult>.Empty;
         }
 
         /// <summary>
-        ///     If the optional is non-empty, the specified <paramref name="onValue"/> function
+        ///     If the optional is non-empty, the specified <paramref name="flatMapValue"/> function
         ///     is invoked with the optional's held value. The return value is then returned by this method.
         ///     
-        ///     If the optional is empty, the <paramref name="onValue"/> function is not invoked.
+        ///     If the optional is empty, the <paramref name="flatMapValue"/> function is not invoked.
         ///     Instead, an empty <see cref="Optional{TResult}"/> instance is returned.
         /// </summary>
         /// <typeparam name="TResult">
         ///     The type held by the optional to be returned.
         /// </typeparam>
-        /// <param name="onValue">
+        /// <param name="flatMapValue">
         ///     The function to be invoked if the optional is non-empty.
         ///     This function receives the optional's held value as a parameter.
         /// </param>
         /// <returns>
         ///     The <see cref="Optional{TResult}"/> instance returned by the
-        ///     <paramref name="onValue"/> function if the optional is non-empty;
+        ///     <paramref name="flatMapValue"/> function if the optional is non-empty;
         ///     an empty <see cref="Optional{TResult}"/> instance if the optional is empty.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        ///     * <paramref name="onValue"/>
+        ///     * <paramref name="flatMapValue"/>
         /// </exception>
         /// <remarks>
         ///     <see cref="FlatMap{TResult}(Func{T, Optional{TResult}})"/> allows you to transform
@@ -673,10 +673,10 @@
         ///     <see cref="Map{TResult}(Func{T, TResult})"/> does not.
         /// </remarks>
         /// <seealso cref="Map{TResult}(Func{T, TResult})"/>
-        public Optional<TResult> FlatMap<TResult>(Func<T, Optional<TResult>> onValue)
+        public Optional<TResult> FlatMap<TResult>(Func<T, Optional<TResult>> flatMapValue)
         {
-            _ = onValue ?? throw new ArgumentNullException(nameof(onValue));
-            return _hasValue ? onValue(_value) : Optional<TResult>.Empty;
+            _ = flatMapValue ?? throw new ArgumentNullException(nameof(flatMapValue));
+            return _hasValue ? flatMapValue(_value) : Optional<TResult>.Empty;
         }
 
         /// <summary>
@@ -760,7 +760,7 @@
         ///     <see langword="true"/> if the optional is non-empty and the held value is equal to the specified value;
         ///     <see langword="false"/> if the optional is empty or the values are unequal. 
         /// </returns>
-        public bool Equals(T value)
+        public bool Equals([AllowNull] T value)
         {
             return _hasValue && EqualityComparer<T>.Default.Equals(_value, value);
         }
