@@ -1,0 +1,38 @@
+<#+
+public string T(int index) {
+	return $"T{index}";
+}
+
+public string[] Ts(int to) => Ts(1, to);
+public string[] Ts(int from, int to) {
+	return FromTo(from, to)
+        .Select(n => T(n)).ToArray();
+}
+	
+public string TList(int to) => TList(1, to);
+public string TList(int from, int to) {
+	return string.Join(", ", Ts(from, to));
+}
+
+public string TDefinition(int to) => TDefinition(1, to);
+public string TDefinition(int from, int to) {
+	return $"<{TList(from, to)}>";
+}
+
+public string TXmlDefinition(int to) => TXmlDefinition(1, to);
+public string TXmlDefinition(int from, int to) {
+    return $"{{{TList(from, to)}}}";
+}
+
+public string TParameters(int to, Func<int, string> createParameter) => TParameters(1, to, createParameter);
+public string TParameters(int from, int to, Func<int, string> createParameter) {
+    return string.Join(
+        ", ", 
+        FromTo(from, to).Select(index => createParameter(index))
+    );
+}
+
+private IEnumerable<int> FromTo(int from, int to) {
+    return Enumerable.Range(from, Math.Max(0, to - from + 1));
+}
+#>

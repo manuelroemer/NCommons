@@ -79,20 +79,11 @@ namespace NCommons.Monads.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot retrieve a value of type &quot;{0}&quot; from the variant, because it is empty (i.e. it doesn&apos;t hold any value)..
+        ///   Looks up a localized string similar to The variant is either empty or holds a value of another type..
         /// </summary>
-        internal static string Variant_GetValue_Empty {
+        internal static string Variant_GetValue_HoldsOtherType {
             get {
-                return ResourceManager.GetString("Variant_GetValue_Empty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot retrieve a value of type &quot;{0}&quot; from the variant, because it holds a value of type &quot;{1}&quot;..
-        /// </summary>
-        internal static string Variant_GetValue_HoldsOtherValue {
-            get {
-                return ResourceManager.GetString("Variant_GetValue_HoldsOtherValue", resourceCulture);
+                return ResourceManager.GetString("Variant_GetValue_HoldsOtherType", resourceCulture);
             }
         }
         

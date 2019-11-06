@@ -6,9 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Config", ".Config", "{C6E7FD3B-AC1D-4C94-B0E6-103404248921}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\.gitignore = ..\.gitignore
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		..\CHANGELOG.md = ..\CHANGELOG.md
 		Default.ruleset = Default.ruleset
 		Directory.Build.props = Directory.Build.props
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 		Tests.ruleset = Tests.ruleset
 	EndProjectSection
 EndProject
@@ -31,6 +35,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monads", "Monads", "{A17EF2A9-2E47-470A-B5B0-5CE78CC5C52A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Observables", "Observables", "{5DCDF34E-D852-4EDF-8E52-AA5E4B60BF99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGen", "CodeGen", "{DA920175-5CED-4747-91B8-D851A994E2EE}"
+	ProjectSection(SolutionItems) = preProject
+		CodeGen\Generics.tt = CodeGen\Generics.tt
+		CodeGen\Ordinals.tt = CodeGen\Ordinals.tt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

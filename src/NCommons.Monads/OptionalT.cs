@@ -368,6 +368,7 @@
         ///     The function to be invoked if the optional is non-empty.
         ///     This function receives the optional's held value as a parameter.
         /// </param>
+        /// <returns>The same <see cref="Optional{T}"/> instance.</returns>
         /// <exception cref="ArgumentNullException">
         ///     * <paramref name="onValue"/>
         /// </exception>
@@ -391,14 +392,27 @@
         ///     // 2)
         ///     opt.IfValue(value => Console.WriteLine(value));
         ///     </code>
+        ///     
+        ///     Because this method returns the same optional instance, method chaining is possible:
+        ///     
+        ///     <code>
+        ///     Optional&lt;int&gt; opt = Optional&lt;int&gt;.Empty;
+        ///     
+        ///     opt.IfEmpty(() => Console.WriteLine("Empty"))
+        ///        .IfValue(value => Console.WriteLine(value));
+        ///        
+        ///     // Output:
+        ///     // "Empty"
+        ///     </code>
         /// </remarks>
-        public void IfValue(Action<T> onValue)
+        public Optional<T> IfValue(Action<T> onValue)
         {
             _ = onValue ?? throw new ArgumentNullException(nameof(onValue));
             if (_hasValue)
             {
                 onValue(_value);
             }
+            return this;
         }
 
         /// <summary>
@@ -407,6 +421,7 @@
         /// <param name="onEmpty">
         ///     The function to be invoked if the optional is empty.
         /// </param>
+        /// <returns>The same <see cref="Optional{T}"/> instance.</returns>
         /// <exception cref="ArgumentNullException">
         ///     * <paramref name="onEmpty"/>
         /// </exception>
@@ -430,14 +445,27 @@
         ///     // 2)
         ///     opt.IfEmpty(value => Console.WriteLine("The optional is empty."));
         ///     </code>
+        ///     
+        ///     Because this method returns the same optional instance, method chaining is possible:
+        ///     
+        ///     <code>
+        ///     Optional&lt;int&gt; opt = Optional&lt;int&gt;.Empty;
+        ///     
+        ///     opt.IfEmpty(() => Console.WriteLine("Empty"))
+        ///        .IfValue(value => Console.WriteLine(value));
+        ///        
+        ///     // Output:
+        ///     // "Empty"
+        ///     </code>
         /// </remarks>
-        public void IfEmpty(Action onEmpty)
+        public Optional<T> IfEmpty(Action onEmpty)
         {
             _ = onEmpty ?? throw new ArgumentNullException(nameof(onEmpty));
             if (!_hasValue)
             {
                 onEmpty();
             }
+            return this;
         }
 
         /// <summary>

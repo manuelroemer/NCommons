@@ -201,8 +201,16 @@
                 opt.IfValue(value => Assert.Equal(123, value));
             }
 
+            [Fact]
+            public void Returns_Same_Optional()
+            {
+                var opt = new Optional<int>(123);
+                var returned = opt.IfValue(_ => { });
+                Assert.Equal(opt, returned);
+            }
+
         }
-        
+
         public class IfEmptyTests
         {
 
@@ -222,6 +230,14 @@
                 var opt = Optional<int>.Empty;
                 opt.IfEmpty(() => wasCalled = true);
                 Assert.True(wasCalled);
+            }
+
+            [Fact]
+            public void Returns_Same_Optional()
+            {
+                var opt = Optional<int>.Empty;
+                var returned = opt.IfEmpty(() => { });
+                Assert.Equal(opt, returned);
             }
 
         }

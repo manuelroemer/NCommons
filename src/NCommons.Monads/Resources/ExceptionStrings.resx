@@ -124,11 +124,8 @@
     <value>An attempt was made to read the value of an either of type "{0}". The either is, however, of type "{1}".</value>
     <comment>{0} and {1} stand for Left/Right respectively.</comment>
   </data>
-  <data name="Variant_GetValue_Empty" xml:space="preserve">
-    <value>Cannot retrieve a value of type "{0}" from the variant, because it is empty (i.e. it doesn't hold any value).</value>
-  </data>
-  <data name="Variant_GetValue_HoldsOtherValue" xml:space="preserve">
-    <value>Cannot retrieve a value of type "{0}" from the variant, because it holds a value of type "{1}".</value>
+  <data name="Variant_GetValue_HoldsOtherType" xml:space="preserve">
+    <value>The variant is either empty or holds a value of another type.</value>
   </data>
   <data name="Variant_Match_TypeShouldHaveBeenImplementedButWasnt" xml:space="preserve">
     <value>The variant holds a type for which no match case was implemented. This is a bug within the library and must be fixed.</value>
