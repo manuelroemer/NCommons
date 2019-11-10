@@ -84,14 +84,20 @@ namespace NCommons.Monads
         /// <remarks>
         ///     The <see cref="IsEmpty"/> property can be used to determine whether the variant is empty.
         ///
-        ///     <code>
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(From)#>();
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
-        ///
-        ///     Console.WriteLine(variant1.IsEmpty);
-        ///     Console.WriteLine(variant2.IsEmpty);
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
         ///     
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.IsEmpty);
+        ///     Console.WriteLine(intVariant.IsEmpty);
+        ///     Console.WriteLine(emptyVariant.IsEmpty);
+        ///
         ///     // Output:
+        ///     // "False"
         ///     // "False"
         ///     // "True"
         ///     </code>
@@ -117,15 +123,27 @@ namespace NCommons.Monads
         ///     The <see cref="IsValue<#=i#>"/> property can be used to determine whether the variant
         ///     holds a value of that type.
         ///     
-        ///     <code>
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(i)#>();
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
-        ///
-        ///     Console.WriteLine(variant1.IsValue<#=i#>);
-        ///     Console.WriteLine(variant2.IsValue<#=i#>);
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
         ///     
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.IsValue1);
+        ///     Console.WriteLine(stringVariant.IsValue2);
+        ///     Console.WriteLine(intVariant.IsValue1);
+        ///     Console.WriteLine(intVariant.IsValue2);
+        ///     Console.WriteLine(emptyVariant.IsValue1);
+        ///     Console.WriteLine(emptyVariant.IsValue2);
+        ///
         ///     // Output:
         ///     // "True"
+        ///     // "False"
+        ///     // "False"
+        ///     // "True"
+        ///     // "False"
         ///     // "False"
         ///     </code>
         ///
@@ -149,15 +167,27 @@ namespace NCommons.Monads
         ///     Instead, an empty <see cref="Optional{T}"/> is returned, allowing you to safely
         ///     handle both the empty and non-empty case.
         ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
         ///     <code>
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(i)#>();
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
-        ///     
-        ///     Console.WriteLine(variant1.Value<#=i#>.HasValue);
-        ///     Console.WriteLine(variant2.Value<#=i#>.HasValue);
-        ///     
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.Value1.HasValue);
+        ///     Console.WriteLine(stringVariant.Value2.HasValue);
+        ///     Console.WriteLine(intVariant.Value1.HasValue);
+        ///     Console.WriteLine(intVariant.Value2.HasValue);
+        ///     Console.WriteLine(emptyVariant.Value1.HasValue);
+        ///     Console.WriteLine(emptyVariant.Value2.HasValue);
+        ///
         ///     // Output:
         ///     // "True"
+        ///     // "False"
+        ///     // "False"
+        ///     // "True"
+        ///     // "False"
         ///     // "False"
         ///     </code>
         /// </remarks>
@@ -175,19 +205,28 @@ namespace NCommons.Monads
         ///     The <see cref="Value"/> property allows you to access the underlying value of the
         ///     variant if it is non-empty, independent of what exact type the variant holds.
         ///     
-        ///     <code>
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(From)#>();
-        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
         ///     
-        ///     Console.WriteLine(variant1.Value.HasValue);
-        ///     Console.WriteLine(variant2.Value.HasValue);
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
         ///
-        ///     Console.WriteLine(variant1.Value.GetValue().GetType().Name);
+        ///     Console.WriteLine(stringVariant.HasValue);
+        ///     Console.WriteLine(stringVariant.Value);
+        ///     Console.WriteLine(intVariant.HasValue);
+        ///     Console.WriteLine(intVariant.Value);
+        ///     Console.WriteLine(emptyVariant.HasValue);
+        ///     Console.WriteLine(emptyVariant.Value);
         ///     
         ///     // Output:
         ///     // "True"
+        ///     // "Hello"
+        ///     // "True"
+        ///     // "123"
         ///     // "False"
-        ///     // "<#=XmlCodeDummy(From)#>"
+        ///     // ""
         ///     </code>
         ///
         ///     This property can be very useful if you want to do pattern matching on a variant's
@@ -253,16 +292,22 @@ namespace NCommons.Monads
         ///     type parameters:
         ///     
         ///     <code>
-        ///     <#=XmlCodeDummyVariant(2)#> variant1 = new <#=XmlCodeDummy(1)#>();
-        ///     <#=XmlCodeDummyVariant(2)#> variant2 = new <#=XmlCodeDummy(2)#>();
-        ///     <#=XmlCodeDummyVariant(2)#> variant3 = <#=XmlCodeDummyVariant(2)#>.Empty;
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
         ///
-        ///     Console.WriteLine(variant1.GetValue1());
-        ///     Console.WriteLine(variant2.GetValue1());
-        ///     Console.WriteLine(variant3.GetValue1());
+        ///     Console.WriteLine(stringVariant.GetValue1());
+        ///     Console.WriteLine(stringVariant.GetValue2());
+        ///     Console.WriteLine(intVariant.GetValue1());
+        ///     Console.WriteLine(intVariant.GetValue2());
+        ///     Console.WriteLine(emptyVariant.GetValue1());
+        ///     Console.WriteLine(emptyVariant.GetValue2());
         ///     
         ///     // Output:
-        ///     // "<#=XmlCodeDummy(1)#>"
+        ///     // "Hello"
+        ///     // InvalidOperationException
+        ///     // InvalidOperationException
+        ///     // "123"
         ///     // InvalidOperationException
         ///     // InvalidOperationException
         ///     </code>
@@ -918,11 +963,3 @@ namespace NCommons.Monads
 #>
 
 }
-
-<#+
-public string XmlCodeDummyVariant(int to) =>
-    $"Variant&lt;{string.Join(", ", FromTo(1, to).Select(i => $"Obj{i}"))}&gt;";
-
-public string XmlCodeDummy(int i) =>
-    $"Obj{i}";
-#>
