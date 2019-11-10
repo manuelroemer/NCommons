@@ -1,14 +1,14 @@
 ﻿namespace NCommons.Monads
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
 
     /// <summary>
     ///     Defines static functions which assist with the creation of and interaction with
     ///     <see cref="Optional{T}"/> instances.
     /// </summary>
+#pragma warning disable CA1716 // Identifiers should not match keywords
     public static class Optional
+#pragma warning restore CA1716
     {
 
         /// <summary>

@@ -28,6 +28,7 @@ const int To = 8;
 namespace NCommons.Monads
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
@@ -62,20 +63,137 @@ namespace NCommons.Monads
 #>
         internal readonly VariantType _type;
 
+        /// <summary>
+        ///     An empty <see cref="Variant<#=TXmlDefinition(currentTo)#>"/> instance which does not hold any value.
+        ///     This is equivalent to an instance created via the parameterless constructor.
+        /// </summary>
+        /// <remarks>
+        ///     Be aware that this property has a <c>ref readonly</c> return value.
+        ///     In most cases, using this field instead of the parameterless constructor will be the
+        ///     more performant choice.
+        /// </remarks>
         public static ref readonly Variant<#=TDefinition(currentTo)#> Empty => ref _empty;
 
+        /// <summary>
+        ///     Gets a value indicating whether the variant is empty, i.e. if it does not hold any value.
+        /// </summary>
+        /// <returns>
+        ///     <see langword="true"/> if the optional is empty, i.e. it does not hold any value.
+        ///     <see langword="false"/> if the optional holds a value of one of the generic type parameters.
+        /// </returns>
+        /// <remarks>
+        ///     The <see cref="IsEmpty"/> property can be used to determine whether the variant is empty.
+        ///
+        ///     <code>
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(From)#>();
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
+        ///
+        ///     Console.WriteLine(variant1.IsEmpty);
+        ///     Console.WriteLine(variant2.IsEmpty);
+        ///     
+        ///     // Output:
+        ///     // "False"
+        ///     // "True"
+        ///     </code>
+        ///
+        ///     The <see cref="IsEmpty"/> property is ideally used in conjunction with methods like
+        ///     <see cref="GetValue1"/>.  You can, for example, use <see cref="IsEmpty"/>
+        ///     to safely determine whether methods like <see cref="GetValue1"/> can be called
+        ///     without leading to an exception.
+        /// </remarks>
         public bool IsEmpty => _type == VariantType.Empty;
 
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-        public bool Is<#=LongOrdinal(i)#> => _type == VariantType.<#=T(i)#>;
+        /// <summary>
+        ///     Gets a value indicating whether the variant holds a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </summary>
+        /// <returns>
+        ///     <see langword="true"/> if the variant holds a value of type <typeparamref name="<#=T(i)#>"/>.
+        ///     <see langword="false"/> if not.
+        /// </returns>
+        /// <remarks>
+        ///     The <see cref="IsValue<#=i#>"/> property can be used to determine whether the variant
+        ///     holds a value of that type.
+        ///     
+        ///     <code>
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(i)#>();
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
+        ///
+        ///     Console.WriteLine(variant1.IsValue<#=i#>);
+        ///     Console.WriteLine(variant2.IsValue<#=i#>);
+        ///     
+        ///     // Output:
+        ///     // "True"
+        ///     // "False"
+        ///     </code>
+        ///
+        ///     The <see cref="IsValue<#=i#>"/> property is ideally used in conjunction with methods like
+        ///     <see cref="GetValue<#=i#>"/>. You can, for example, use <see cref="IsValue<#=i#>"/>
+        ///     to safely determine whether <see cref="GetValue<#=i#>"/> can be called without
+        ///     leading to an exception.
+        /// </remarks>
+        public bool IsValue<#=i#> => _type == VariantType.<#=T(i)#>;
 
-        public Optional<<#=T(i)#>> <#=LongOrdinal(i)#> => Is<#=LongOrdinal(i)#> ? _value<#=i#> : Optional<<#=T(i)#>>.Empty;
+        /// <summary>
+        ///     Gets an <see cref="Optional{T}"/> which, if the variant holds a value of type
+        ///     <typeparamref name="<#=T(i)#>"/>, holds the same value.
+        ///     Otherwise, the optional is empty.
+        /// </summary>
+        /// <remarks>
+        ///     The <see cref="Value<#=i#>"/> property allows you to safely access the variant's
+        ///     held value of type <typeparamref name="<#=T(i)#>"/>.
+        ///     In comparison to <see cref="GetValue<#=i#>"/>, this property never throws an exception
+        ///     if the variant doesn't hold a value of type <typeparamref name="<#=T(i)#>"/>.
+        ///     Instead, an empty <see cref="Optional{T}"/> is returned, allowing you to safely
+        ///     handle both the empty and non-empty case.
+        ///     
+        ///     <code>
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(i)#>();
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
+        ///     
+        ///     Console.WriteLine(variant1.Value<#=i#>.HasValue);
+        ///     Console.WriteLine(variant2.Value<#=i#>.HasValue);
+        ///     
+        ///     // Output:
+        ///     // "True"
+        ///     // "False"
+        ///     </code>
+        /// </remarks>
+        public Optional<<#=T(i)#>> Value<#=i#> => IsValue<#=i#> ? _value<#=i#> : Optional<<#=T(i)#>>.Empty;
 
 <#
         }
 #>
+        /// <summary>
+        ///     Gets an <see cref="Optional{T}"/> which, if the variant holds a value of any of the
+        ///     given type parameters, holds the same value.
+        ///     Otherwise, the optional is empty.
+        /// </summary>
+        /// <remarks>
+        ///     The <see cref="Value"/> property allows you to access the underlying value of the
+        ///     variant if it is non-empty, independent of what exact type the variant holds.
+        ///     
+        ///     <code>
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant1 = new <#=XmlCodeDummy(From)#>();
+        ///     <#=XmlCodeDummyVariant(currentTo)#> variant2 = <#=XmlCodeDummyVariant(currentTo)#>.Empty;
+        ///     
+        ///     Console.WriteLine(variant1.Value.HasValue);
+        ///     Console.WriteLine(variant2.Value.HasValue);
+        ///
+        ///     Console.WriteLine(variant1.Value.GetValue().GetType().Name);
+        ///     
+        ///     // Output:
+        ///     // "True"
+        ///     // "False"
+        ///     // "<#=XmlCodeDummy(From)#>"
+        ///     </code>
+        ///
+        ///     This property can be very useful if you want to do pattern matching on a variant's
+        ///     held value, or if you simply need to call a method like <c>ToString</c> on the
+        ///     variant's held value.
+        /// </remarks>
         public Optional<object?> Value => _type switch
         {
 <#
@@ -91,6 +209,11 @@ namespace NCommons.Monads
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
+        /// <summary>
+        ///     Initializes a new <see cref="Variant<#=TXmlDefinition(currentTo)#>"/> instance which
+        ///     holds the specified <paramref name="value"/> of type <typeparamref name="<#=T(i)#>"/>.
+        /// </summary>
+        /// <param name="value">The value to be held by the variant.</param>
         public Variant(<#=T(i)#> value)
         {
             _type = VariantType.<#=T(i)#>;
@@ -112,86 +235,268 @@ namespace NCommons.Monads
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-        public T<#=i#> Get<#=LongOrdinal(i)#>()
+        /// <summary>
+        ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
+        ///     Otherwise an exception is thrown.
+        /// </summary>
+        /// <returns>
+        ///     The held value of type <typeparamref name="<#=T(i)#>"/> if the variant holds such a value.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        ///     The variant doesn't hold a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </exception>
+        /// <remarks>
+        ///     The <see cref="GetValue<#=i#>"/> function should be used if you either know or must ensure
+        ///     that a variant holds a value of a specific type.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     <#=XmlCodeDummyVariant(2)#> variant1 = new <#=XmlCodeDummy(1)#>();
+        ///     <#=XmlCodeDummyVariant(2)#> variant2 = new <#=XmlCodeDummy(2)#>();
+        ///     <#=XmlCodeDummyVariant(2)#> variant3 = <#=XmlCodeDummyVariant(2)#>.Empty;
+        ///
+        ///     Console.WriteLine(variant1.GetValue1());
+        ///     Console.WriteLine(variant2.GetValue1());
+        ///     Console.WriteLine(variant3.GetValue1());
+        ///     
+        ///     // Output:
+        ///     // "<#=XmlCodeDummy(1)#>"
+        ///     // InvalidOperationException
+        ///     // InvalidOperationException
+        ///     </code>
+        /// </remarks>
+        public T<#=i#> GetValue<#=i#>()
         {
-            if (!Is<#=LongOrdinal(i)#>)
+            if (!IsValue<#=i#>)
             {
                 throw new InvalidOperationException(ExceptionStrings.Variant_GetValue_HoldsOtherType);
             }
             return _value<#=i#>;
         }
 
+        /// <summary>
+        ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
+        ///     Otherwise the default value of the type <typeparamref name="<#=T(i)#>"/> is returned.
+        /// </summary>
+        /// <returns>
+        ///     The held value of type <typeparamref name="<#=T(i)#>"/> if the variant holds such a value.
+        ///     The default value of the type <typeparamref name="<#=T(i)#>"/> otherwise.
+        /// </returns>
+        /// <remarks>
+        ///     <see cref="GetValue<#=i#>OrDefault"/> is useful when you must retrieve a value of type
+        ///     <typeparamref name="<#=T(i)#>"/>, independent of whether that is a default value or not.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.GetValue1OrDefault());
+        ///     Console.WriteLine(stringVariant.GetValue2OrDefault());
+        ///     Console.WriteLine(intVariant.GetValue1OrDefault());
+        ///     Console.WriteLine(intVariant.GetValue2OrDefault());
+        ///     Console.WriteLine(emptyVariant.GetValue1OrDefault());
+        ///     Console.WriteLine(emptyVariant.GetValue2OrDefault());
+        ///     
+        ///     // Output:
+        ///     // "Hello"
+        ///     // "0"
+        ///     // "null"
+        ///     // "123"
+        ///     // "null"
+        ///     // "0"
+        ///     </code>
+        /// </remarks>
         [return: MaybeNull]
-        public T<#=i#> Get<#=LongOrdinal(i)#>OrDefault()
+        public T<#=i#> GetValue<#=i#>OrDefault()
         {
             return _value<#=i#>;
         }
 
-        public T<#=i#> Get<#=LongOrdinal(i)#>Or(<#=T(i)#> substitute)
+        /// <summary>
+        ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
+        ///     Otherwise the specified <paramref name="substitute"/> value is returned.
+        /// </summary>
+        /// <param name="substitute">
+        ///     A value to be returned if the variant doesn't hold a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </param>
+        /// <returns>
+        ///     The held value of type <typeparamref name="<#=T(i)#>"/> if the variant holds such a value.
+        ///     <paramref name="substitute"/> otherwise.
+        /// </returns>
+        /// <remarks>
+        ///     <see cref="GetValue<#=i#>Or(<#=T(i)#>)"/> behaves similarly to <see cref="GetValue<#=i#>OrDefault"/>,
+        ///     with the exception that you can choose the result of the function if the optional
+        ///     is empty.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.GetValue1Or("Substitute"));
+        ///     Console.WriteLine(stringVariant.GetValue2Or(1337));
+        ///     Console.WriteLine(intVariant.GetValue1Or("Substitute"));
+        ///     Console.WriteLine(intVariant.GetValue2Or(1337));
+        ///     Console.WriteLine(emptyVariant.GetValue1Or("Substitute"));
+        ///     Console.WriteLine(emptyVariant.GetValue2Or(1337));
+        ///     
+        ///     // Output:
+        ///     // "Hello"
+        ///     // "1337"
+        ///     // "Substitute"
+        ///     // "123"
+        ///     // "Substitute"
+        ///     // "1337"
+        ///     </code>
+        /// </remarks>
+        public T<#=i#> GetValue<#=i#>Or(<#=T(i)#> substitute)
         {
-            return Is<#=LongOrdinal(i)#> ? _value<#=i#> : substitute;
+            return IsValue<#=i#> ? _value<#=i#> : substitute;
         }
 
-        public T<#=i#> Get<#=LongOrdinal(i)#>Or(Func<<#=T(i)#>> substituteProvider)
+        /// <summary>
+        ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
+        ///     Otherwise the value returned by the specified <paramref name="substituteProvider"/> function
+        ///     is returned.
+        /// </summary>
+        /// <param name="substituteProvider">
+        ///     A function which returns a value which is supposed to be returned
+        ///     if the variant doesn't hold a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </param>
+        /// <returns>
+        ///     The held value of type <typeparamref name="<#=T(i)#>"/> if the variant holds such a value.
+        ///     A value returned by <paramref name="substituteProvider"/> otherwise.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     * <paramref name="substituteProvider"/>
+        /// </exception>
+        /// <remarks>
+        ///     <see cref="GetValue<#=i#>Or(Func{<#=T(i)#>})"/> behaves similarly to <see cref="GetValue<#=i#>OrDefault"/>,
+        ///     with the exception that you can choose the result of the function if the optional
+        ///     is empty.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///
+        ///     Console.WriteLine(stringVariant.GetValue1Or(() => "Substitute"));
+        ///     Console.WriteLine(stringVariant.GetValue2Or(() => 1337));
+        ///     Console.WriteLine(intVariant.GetValue1Or(() => "Substitute"));
+        ///     Console.WriteLine(intVariant.GetValue2Or(() => 1337));
+        ///     Console.WriteLine(emptyVariant.GetValue1Or(() => "Substitute"));
+        ///     Console.WriteLine(emptyVariant.GetValue2Or(() => 1337));
+        ///     
+        ///     // Output:
+        ///     // "Hello"
+        ///     // "1337"
+        ///     // "Substitute"
+        ///     // "123"
+        ///     // "Substitute"
+        ///     // "1337"
+        ///     </code>
+        /// </remarks>
+        public T<#=i#> GetValue<#=i#>Or(Func<<#=T(i)#>> substituteProvider)
         {
             _ = substituteProvider ?? throw new ArgumentNullException(nameof(substituteProvider));
-            return Is<#=LongOrdinal(i)#> ? _value<#=i#> : substituteProvider();
+            return IsValue<#=i#> ? _value<#=i#> : substituteProvider();
         }
 
-        public bool TryGet<#=LongOrdinal(i)#>(out <#=T(i)#> value)
+        /// <summary>
+        ///     Attempts to retrieve a value of type <typeparamref name="<#=T(i)#>"/> from the variant
+        ///     and returns a value indicating whether the retrieval was successful, i.e. if the variant
+        ///     actually held a value of that type.
+        /// </summary>
+        /// <param name="value">
+        ///     A parameter which will hold the value of type <typeparamref name="<#=T(i)#>"/> if
+        ///     the variant held one.
+        /// </param>
+        /// <returns>
+        ///     <see langword="true"/> if the variant held a value of type <typeparamref name="<#=T(i)#>"/>.
+        ///     <see langword="false"/> otherwise.
+        /// </returns>
+        public bool TryGetValue<#=i#>(out <#=T(i)#> value)
         {
             value = _value<#=i#>;
-            return Is<#=LongOrdinal(i)#>;
-        }
-
-        public Variant<<#=$"{(i > 1 ? $"{TList(From, i - 1)}, " : "")}TResult{(i < currentTo ? $", {TList(i + 1, currentTo)}" : "")}"#>> Map<#=LongOrdinal(i)#><TResult>(Func<<#=T(i)#>, TResult> map<#=LongOrdinal(i)#>)
-        {
-            _ = map<#=LongOrdinal(i)#> ?? throw new ArgumentNullException(nameof(map<#=LongOrdinal(i)#>));
-            
-            return _type switch
-            {
-<#
-            for (var j = From; j <= currentTo; j++) {
-                if (i == j) continue;
-#>
-                VariantType.<#=T(j)#> => _value<#=j#>,
-<#
-            }
-#>
-                VariantType.<#=T(i)#> => map<#=LongOrdinal(i)#>(_value<#=i#>),
-                _ => Variant<<#=$"{(i > 1 ? $"{TList(From, i - 1)}, " : "")}TResult{(i < currentTo ? $", {TList(i + 1, currentTo)}" : "")}"#>>.Empty
-            };
-        }
-
-        public Variant<#=TDefinition(currentTo)#> If<#=LongOrdinal(i)#>(Action<<#=T(i)#>> on<#=LongOrdinal(i)#>)
-        {
-            _ = on<#=LongOrdinal(i)#> ?? throw new ArgumentNullException(nameof(on<#=LongOrdinal(i)#>));
-            if (Is<#=LongOrdinal(i)#>)
-            {
-                on<#=LongOrdinal(i)#>(_value<#=i#>);
-            }
-            return this;
+            return IsValue<#=i#>;
         }
 
 <#
+            }
+#>
+        /// <summary>
+        ///     Executes one of the specified functions depending on which value the variant holds.
+        /// </summary>
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+        /// <param name="onValue<#=i#>">
+        ///     The function to be invoked if the variant holds a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </param>
+<#
         }
 #>
-        public Variant<#=TDefinition(currentTo)#> IfEmpty(Action onEmpty)
-        {
-            _ = onEmpty ?? throw new ArgumentNullException(nameof(onEmpty));
-            if (IsEmpty)
-            {
-                onEmpty();
-            }
-            return this;
+        /// <param name="onEmpty">
+        ///     The function to be invoked if the variant is empty.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+        ///     * <paramref name="onValue<#=i#>"/>
+<#
         }
-
-        public void Match(<#=TParameters(currentTo, index => $"Action<{T(index)}> on{LongOrdinal(index)}")#>, Action onEmpty)
+#>
+        ///     * <paramref name="onEmpty"/>
+        /// </exception>
+        /// <remarks>
+        ///     <see cref="Match(<#=TList(currentTo, "Action{{T{0}}}")#>, Action)"/> is a utility function
+        ///     which allows you to invoke one of multiple functions, depending on which value a variant
+        ///     currently holds.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     static void Print(Variant&lt;string, int&gt; variant) =>
+        ///         variant.Match(
+        ///             str    => Console.WriteLine("string: {0}", str),
+        ///             number => Console.WriteLine("int: {0}", number),
+        ///             ()     => Console.WriteLine("Empty")
+        ///         );
+        /// 
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///     
+        ///     Print(stringVariant);
+        ///     Print(intVariant);
+        ///     Print(emptyVariant);
+        ///     
+        ///     // Output:
+        ///     // "string: Hello"
+        ///     // "int: 123"
+        ///     // "Empty"
+        ///     </code>
+        /// </remarks>
+        public void Match(<#=TList(currentTo, "Action<T{0}> onValue{0}")#>, Action onEmpty)
         {
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-            _ = on<#=LongOrdinal(i)#> ?? throw new ArgumentNullException(nameof(on<#=LongOrdinal(i)#>));
+            _ = onValue<#=i#> ?? throw new ArgumentNullException(nameof(onValue<#=i#>));
 <#
         }
 #>
@@ -203,7 +508,7 @@ namespace NCommons.Monads
         for (var i = From; i <= currentTo; i++) {
 #>
                 case VariantType.<#=T(i)#>:
-                    on<#=LongOrdinal(i)#>(_value<#=i#>);
+                    onValue<#=i#>(_value<#=i#>);
                     break;
 <#
 }
@@ -211,15 +516,74 @@ namespace NCommons.Monads
                 default:
                     onEmpty();
                     break;
-            };
+            }
         }
 
-        public TResult Match<TResult>(<#=TParameters(currentTo, index => $"Func<{T(index)}, TResult> on{LongOrdinal(index)}")#>, Func<TResult> onEmpty)
+        /// <summary>
+        ///     Executes one of the specified functions depending on which value the variant holds
+        ///     and returns that function's return value.
+        /// </summary>
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+        /// <param name="onValue<#=i#>">
+        ///     The function to be invoked if the variant holds a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </param>
+<#
+        }
+#>
+        /// <param name="onEmpty">
+        ///     The function to be invoked if the variant is empty.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+        ///     * <paramref name="onValue<#=i#>"/>
+<#
+        }
+#>
+        ///     * <paramref name="onEmpty"/>
+        /// </exception>
+        /// <remarks>
+        ///     <see cref="Match(<#=TList(currentTo, "Action{{T{0}}}")#>, Action)"/> is a utility function
+        ///     which allows you to invoke one of multiple functions, depending on which value a variant
+        ///     currently holds.
+        ///     
+        ///     In comparison to the <see cref="Match(<#=TList(currentTo, "Action{{T{0}}}")#>, Action)"/>
+        ///     overload, this method supports returning a value.
+        ///     
+        ///     The following code segment demonstrates this behavior using a variant with two
+        ///     type parameters:
+        ///     
+        ///     <code>
+        ///     static string Stringify(Variant&lt;string, int&gt; variant) =>
+        ///         variant.Match(
+        ///             str    => $"string: {str}",
+        ///             number => $"int: {number}",
+        ///             ()     => $"Empty"
+        ///         );
+        /// 
+        ///     Variant&lt;string, int&gt; stringVariant = "Hello";
+        ///     Variant&lt;string, int&gt; intVariant = 123;
+        ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
+        ///     
+        ///     Console.WriteLine(Stringify(stringVariant));
+        ///     Console.WriteLine(Stringify(intVariant));
+        ///     Console.WriteLine(Stringify(emptyVariant));
+        ///     
+        ///     // Output:
+        ///     // "string: Hello"
+        ///     // "int: 123"
+        ///     // "Empty"
+        ///     </code>
+        /// </remarks>
+        public TResult Match<TResult>(<#=TList(currentTo, "Func<T{0}, TResult> onValue{0}")#>, Func<TResult> onEmpty)
         {
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-            _ = on<#=LongOrdinal(i)#> ?? throw new ArgumentNullException(nameof(on<#=LongOrdinal(i)#>));
+            _ = onValue<#=i#> ?? throw new ArgumentNullException(nameof(onValue<#=i#>));
 <#
         }
 #>
@@ -230,7 +594,7 @@ namespace NCommons.Monads
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-                VariantType.<#=T(i)#> => on<#=LongOrdinal(i)#>(_value<#=i#>),
+                VariantType.<#=T(i)#> => onValue<#=i#>(_value<#=i#>),
 <#
 }
 #>
@@ -238,20 +602,73 @@ namespace NCommons.Monads
             };
         }
 
+        /// <summary>
+        ///     Returns a value indicating whether the variant or its held value is equal to
+        ///     the specified object.
+        /// </summary>
+        /// <param name="obj">
+        ///     An object to be compared with the variant.
+        /// </param>
+        /// <returns>
+        ///     <see langword="true"/> if the specified object is equal to the variant or its held value;
+        ///     <see langword="false"/> if not.
+        /// </returns>
+        /// <remarks>
+        ///     See <see cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/> for additional
+        ///     information on how the equality comparison works.
+        /// </remarks>
+        /// <seealso cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/>
         public override bool Equals(object? obj)
         {
             return obj switch
             {
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+                <#=T(i)#> other => Equals(other),
+<#
+        }
+#>
                 Variant<#=TDefinition(currentTo)#> other => Equals(other),
                 _ => false
             };
         }
 
+        /// <inheritdoc cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/>
         bool IEquatable<Variant<#=TDefinition(currentTo)#>>.Equals(Variant<#=TDefinition(currentTo)#> other)
         {
             return Equals(in other);
         }
 
+        /// <summary>
+        ///     Returns a value indicating whether the variant or its held value is equal to another variant.
+        /// </summary>
+        /// <param name="other">
+        ///     Another <see cref="Variant<#=TXmlDefinition(currentTo)#>"/> instance to be compared with the variant.
+        /// </param>
+        /// <returns>
+        ///     <see langword="true"/> if the two variants are equal;
+        ///     <see langword="false"/> if not.
+        /// </returns>
+        /// <remarks>
+        ///     Two variants are considered equal if:
+        ///     
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>
+        ///                 They are both empty.
+        ///             </description>
+        ///         </item>
+        ///         <item>
+        ///             <description>
+        ///                 They both hold a value of the same generic type parameter and the held values
+        ///                 are considered equal by a default <see cref="EqualityComparer{T}"/> instance.
+        ///             </description>
+        ///         </item>
+        ///     </list>
+        ///     
+        ///     If the above conditions are not met, the two variants are considered to be unequal.
+        /// </remarks>
         public bool Equals(in Variant<#=TDefinition(currentTo)#> other)
         {
             if (_type != other._type)
@@ -278,44 +695,160 @@ namespace NCommons.Monads
             };
         }
 
+        /// <summary>
+        ///     Returns a unique hash code for the current instance.
+        /// </summary>
+        /// <returns>
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>
+        ///                 <c>-1</c> if the variant is empty.
+        ///             </description>
+        ///         </item>
+        ///         <item>
+        ///             <description>
+        ///                 <c>0</c> if the variant holds a value which is <see langword="null"/>.
+        ///             </description>
+        ///         </item>
+        ///         <item>
+        ///             <description>
+        ///                 The hash code of the held value if it is not <see langword="null"/>.
+        ///             </description>
+        ///         </item>
+        ///     </list>
+        /// </returns>
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return _type switch
+            {
+<#
+        for (var i = 1; i <= currentTo; i++) {
+#>
+                VariantType.<#=T(i)#> => _value<#=i#>?.GetHashCode() ?? 0,
+<#
+        }
+#>
+                _ => -1
+            };
         }
 
+        /// <summary>
+        ///     Returns a string representation of the variant or its held value.
+        /// </summary>
+        /// <returns>
+        ///     An empty string if the variant is either empty or its held value is <see langword="null"/>.
+        ///     Otherwise, returns the value of calling <see cref="object.ToString"/> on the
+        ///     held value.
+        /// </returns>
         public override string? ToString()
         {
-            return Value.ToString();
+            return _type switch
+            {
+<#
+        for (var i = 1; i <= currentTo; i++) {
+#>
+                VariantType.<#=T(i)#> => _value<#=i#> is null ? string.Empty : _value<#=i#>.ToString(),
+<#
+        }
+#>
+                _ => string.Empty
+            };
         }
         
 <#
         if (currentTo == 1) {
 #>
+        /// <summary>
+        ///     Returns a new <see cref="Optional{T}"/> which represents the same state as the variant,
+        ///     i.e. it holds a value if the variant holds a value or it is empty if the variant is empty.
+        /// </summary>
+        /// <returns>
+        ///     A new <see cref="Optional{T}"/> holding the variant's value if it holds one.
+        ///     An empty <see cref="Optional{T}"/> if the variant is empty.
+        /// </returns>
+        /// <remarks>
+        ///     The <see cref="Variant{T1}"/> essentially has the same functionality as an <see cref="Optional{T}"/>.
+        ///     Both types either hold a value or are empty. Therefore, any <see cref="Optional{T}"/> can
+        ///     easily be converted to a <see cref="Variant{T1}"/> and vice versa.
+        ///     
+        ///     Nevertheless, the two types serve different purposes. While an <see cref="Optional{T}"/> is mainly
+        ///     designed for modeling the absence of a value, the variant family is designed for scenarios where
+        ///     one needs to accept or provide an instance of one or many types, or none.
+        ///     Depending on the use case, you may pick either type for your scenario. If you ever
+        ///     need to switch between the two, you can use one of the available conversion methods.
+        /// </remarks>
         public Optional<T1> ToOptional()
         {
-            return IsFirst ? new Optional<T1>(_value1) : Optional<T1>.Empty; 
+            return IsValue1 ? new Optional<T1>(_value1) : Optional<T1>.Empty; 
         }
 
 <#
         }
 #>
+        /// <summary>
+        ///     Deconstructs the variant into its set of possible values, represented as
+        ///     <see cref="Optional{T}"/> instances.
+        /// </summary>
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+        /// <param name="value<#=i#>">A parameter holding the value of type <typeparamref name="<#=T(i)#>"/> after the deconstruction.</param>
+<#
+        }
+#>
+        /// <remarks>
+        ///     Deconstructing a variant returns the same result as accessing properties like <see cref="Value1"/>.
+        ///     Nontheless, it can be incredibly useful to give context to the values which a variant holds,
+        ///     because the variant's possible values can be named during deconstruction. This can make a huge
+        ///     difference when trying to understand code.
+        ///     For example, <c>Transfer(variant.GetValue1())</c> is much harder to understand than:
+        ///     
+        ///     <code>
+        ///     (Optional&lt;double&gt; bankAccountBalance, _) = variant;
+        ///     Transfer(bankAccountBalance.GetValue());
+        ///     </code>
+        /// </remarks>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void Deconstruct(<#=TParameters(currentTo, index => $"out Optional<{T(index)}> value{index}")#>)
         {
 <#
         for (var i = 1; i <= currentTo; i++) {
 #>
-            value<#=i#> = <#=LongOrdinal(i)#>;
+            value<#=i#> = Value<#=i#>;
 <#
         }
 #>
         }
 
+        /// <summary>
+        ///     Returns a value indicating whether the two variant instances are equal.
+        ///     See <see cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/> for additional information how the
+        ///     equality comparison works.
+        /// </summary>
+        /// <param name="left">The first variant instance.</param>
+        /// <param name="right">The second variant instance.</param>
+        /// <returns>
+        ///     <see langword="true"/> if the two variant instances are equal;
+        ///     <see langword="false"/> if not.
+        /// </returns>
+        /// <seealso cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/>
         public static bool operator ==(in Variant<#=TDefinition(currentTo)#> left, in Variant<#=TDefinition(currentTo)#> right)
         {
             return left.Equals(right);
         }
 
+        /// <summary>
+        ///     Returns a value indicating whether the two variant instances are unequal.
+        ///     See <see cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/> for additional information how the
+        ///     equality comparison works.
+        /// </summary>
+        /// <param name="left">The first variant instance.</param>
+        /// <param name="right">The second variant instance.</param>
+        /// <returns>
+        ///     <see langword="true"/> if the two variant instances are unequal;
+        ///     <see langword="false"/> if not.
+        /// </returns>
+        /// <seealso cref="Equals(in Variant<#=TXmlDefinition(currentTo)#>)"/>
         public static bool operator !=(in Variant<#=TDefinition(currentTo)#> left, in Variant<#=TDefinition(currentTo)#> right)
         {
             return !(left == right);
@@ -324,14 +857,30 @@ namespace NCommons.Monads
 <#
         for (var i = From; i <= currentTo; i++) {
 #>
-        public static explicit operator <#=T(i)#>(in Variant<#=TDefinition(currentTo)#> variant)
-        {
-            return variant.Get<#=LongOrdinal(i)#>();
-        }
-
+        /// <summary>
+        ///     Returns a new <see cref="Variant<#=TXmlDefinition(currentTo)#>"/> instance which holds the
+        ///     specified <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">The value to be held by the variant.</param>
         public static implicit operator Variant<#=TDefinition(currentTo)#>(<#=T(i)#> value)
         {
             return new Variant<#=TDefinition(currentTo)#>(value);
+        }
+
+        /// <summary>
+        ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
+        ///     Otherwise an exception is thrown.
+        /// </summary>
+        /// <returns>
+        ///     The held value of type <typeparamref name="<#=T(i)#>"/> if the variant holds such a value.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        ///     The variant doesn't hold a value of type <typeparamref name="<#=T(i)#>"/>.
+        /// </exception>
+        /// <seealso cref="GetValue<#=i#>"/>
+        public static explicit operator <#=T(i)#>(in Variant<#=TDefinition(currentTo)#> variant)
+        {
+            return variant.GetValue<#=i#>();
         }
 
 <#
@@ -340,6 +889,11 @@ namespace NCommons.Monads
 <#
         for (var i = From; i <= currentTo - 1; i++) {
 #>
+        /// <summary>
+        ///     Implicitly converts the specified <paramref name="variant"/> to a <see cref="Variant<#=TXmlDefinition(currentTo)#>"/>,
+        ///     by enhancing it with one or more additional type parameters.
+        /// </summary>
+        /// <param name="variant">The variant to be converted.</param>
         public static implicit operator Variant<#=TDefinition(currentTo)#>(in Variant<#=TDefinition(i)#> variant)
         {
             return variant._type switch
@@ -347,11 +901,11 @@ namespace NCommons.Monads
 <#
             for (var j = From; j <= i; j++) {
 #>
-                VariantType.<#=T(j)#> => new Variant<#=TDefinition(currentTo)#>(variant._value<#=j#>),
+                Variant<#=TDefinition(i)#>.VariantType.<#=T(j)#> => new Variant<#=TDefinition(currentTo)#>(variant._value<#=j#>),
 <#
             }
 #>
-                _ => Variant<#=TDefinition(currentTo)#>.Empty
+                _ => Empty
             };
         }
 
@@ -364,3 +918,11 @@ namespace NCommons.Monads
 #>
 
 }
+
+<#+
+public string XmlCodeDummyVariant(int to) =>
+    $"Variant&lt;{string.Join(", ", FromTo(1, to).Select(i => $"Obj{i}"))}&gt;";
+
+public string XmlCodeDummy(int i) =>
+    $"Obj{i}";
+#>

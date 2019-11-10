@@ -3,7 +3,7 @@
     using System;
     using Xunit;
 
-    public class OptionalTTests
+    public class Optional1Tests
     {
 
         public class EmptyTests
@@ -169,75 +169,6 @@
                 var result = opt.TryGetValue(out var value);
                 Assert.False(result);
                 Assert.Equal(default, value);
-            }
-
-        }
-
-        public class IfValueTests
-        {
-
-            [Fact]
-            public void Invokes_Function_For_Non_Empty_Optional()
-            {
-                var wasCalled = false;
-                var opt = new Optional<int>(123);
-                opt.IfValue(_ => wasCalled = true);
-                Assert.True(wasCalled);
-            }
-
-            [Fact]
-            public void Doesnt_Invoke_Function_For_Empty_Optional()
-            {
-                var wasCalled = false;
-                var opt = Optional<int>.Empty;
-                opt.IfValue(_ => wasCalled = true);
-                Assert.False(wasCalled);
-            }
-
-            [Fact]
-            public void Passes_Value_To_Function()
-            {
-                var opt = new Optional<int>(123);
-                opt.IfValue(value => Assert.Equal(123, value));
-            }
-
-            [Fact]
-            public void Returns_Same_Optional()
-            {
-                var opt = new Optional<int>(123);
-                var returned = opt.IfValue(_ => { });
-                Assert.Equal(opt, returned);
-            }
-
-        }
-
-        public class IfEmptyTests
-        {
-
-            [Fact]
-            public void Doesnt_Invoke_Function_For_Non_Empty_Optional()
-            {
-                var wasCalled = false;
-                var opt = new Optional<int>(123);
-                opt.IfEmpty(() => wasCalled = true);
-                Assert.False(wasCalled);
-            }
-
-            [Fact]
-            public void Invokes_Function_For_Empty_Optional()
-            {
-                var wasCalled = false;
-                var opt = Optional<int>.Empty;
-                opt.IfEmpty(() => wasCalled = true);
-                Assert.True(wasCalled);
-            }
-
-            [Fact]
-            public void Returns_Same_Optional()
-            {
-                var opt = Optional<int>.Empty;
-                var returned = opt.IfEmpty(() => { });
-                Assert.Equal(opt, returned);
             }
 
         }

@@ -1,27 +1,28 @@
 <#+
-public string T(int index) {
-	return $"T{index}";
+public string T(int index, string format = null) {
+    format = format ?? "T{0}";
+	return string.Format(format, index);
 }
 
-public string[] Ts(int to) => Ts(1, to);
-public string[] Ts(int from, int to) {
+public string[] Ts(int to, string format = null) => Ts(1, to, format);
+public string[] Ts(int from, int to, string format = null) {
 	return FromTo(from, to)
-        .Select(n => T(n)).ToArray();
+        .Select(n => T(n, format)).ToArray();
 }
 	
-public string TList(int to) => TList(1, to);
-public string TList(int from, int to) {
-	return string.Join(", ", Ts(from, to));
+public string TList(int to, string format = null) => TList(1, to, format);
+public string TList(int from, int to, string format = null) {
+	return string.Join(", ", Ts(from, to, format));
 }
 
-public string TDefinition(int to) => TDefinition(1, to);
-public string TDefinition(int from, int to) {
-	return $"<{TList(from, to)}>";
+public string TDefinition(int to, string format = null) => TDefinition(1, to, format);
+public string TDefinition(int from, int to, string format = null) {
+	return $"<{TList(from, to, format)}>";
 }
 
-public string TXmlDefinition(int to) => TXmlDefinition(1, to);
-public string TXmlDefinition(int from, int to) {
-    return $"{{{TList(from, to)}}}";
+public string TXmlDefinition(int to, string format = null) => TXmlDefinition(1, to, format);
+public string TXmlDefinition(int from, int to, string format = null) {
+    return $"{{{TList(from, to, format)}}}";
 }
 
 public string TParameters(int to, Func<int, string> createParameter) => TParameters(1, to, createParameter);

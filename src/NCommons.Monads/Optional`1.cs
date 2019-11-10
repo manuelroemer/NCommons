@@ -1,6 +1,7 @@
 ﻿namespace NCommons.Monads
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
@@ -104,12 +105,14 @@
     ///     <see cref="Optional{T}"/> type.
     /// </remarks>
     /// <seealso cref="Optional"/>
+#pragma warning disable CA1716 // Identifiers should not match keywords
     public readonly struct Optional<T> : IEquatable<T>, IEquatable<Optional<T>>
+#pragma warning restore CA1716
     {
 
         /// <summary>
         ///     An empty <see cref="Optional{T}"/> instance which does not hold any value.
-        ///     This value is equivalent to an instance created via the parameterless constructor.
+        ///     This is equivalent to an instance created via the parameterless constructor.
         /// </summary>
         public static readonly Optional<T> Empty = new Optional<T>();
 
@@ -131,7 +134,8 @@
         ///     to determine whether <see cref="GetValue"/> can safely be called. 
         ///     
         ///     <code>
-        ///     Optional&lt;int&gt; opt = GetOptionalNumber();
+        ///     Optional&lt;int&gt; opt = 123;
+        ///     
         ///     if (opt.HasValue)
         ///     {
         ///         Console.WriteLine("The value is: {0}", opt.GetValue());
@@ -140,6 +144,9 @@
         ///     {
         ///         Console.WriteLine("The optional is empty.");
         ///     }
+        ///     
+        ///     // Output:
+        ///     // "The value is: 123"
         ///     </code>
         /// </remarks>
         public bool HasValue => _hasValue;
@@ -359,113 +366,6 @@
         {
             value = _value;
             return _hasValue;
-        }
-
-        /// <summary>
-        ///     Executes the specified function if the optional is non-empty.
-        /// </summary>
-        /// <param name="onValue">
-        ///     The function to be invoked if the optional is non-empty.
-        ///     This function receives the optional's held value as a parameter.
-        /// </param>
-        /// <returns>The same <see cref="Optional{T}"/> instance.</returns>
-        /// <exception cref="ArgumentNullException">
-        ///     * <paramref name="onValue"/>
-        /// </exception>
-        /// <remarks>
-        ///     <see cref="IfValue(Action{T})"/> is a utility function which allows you to run a
-        ///     piece of code if the optional is non-empty.
-        ///     
-        ///     The following code segment shows two possible ways of printing an optional's held
-        ///     value to the console:
-        ///     
-        ///     <code>
-        ///     Optional&lt;int&gt; opt = 123;
-        ///     
-        ///     // The following two code segments do exactly the same:
-        ///     // 1)
-        ///     if (opt.HasValue)
-        ///     {
-        ///         Console.WriteLine(opt.GetValue());
-        ///     }
-        ///     
-        ///     // 2)
-        ///     opt.IfValue(value => Console.WriteLine(value));
-        ///     </code>
-        ///     
-        ///     Because this method returns the same optional instance, method chaining is possible:
-        ///     
-        ///     <code>
-        ///     Optional&lt;int&gt; opt = Optional&lt;int&gt;.Empty;
-        ///     
-        ///     opt.IfEmpty(() => Console.WriteLine("Empty"))
-        ///        .IfValue(value => Console.WriteLine(value));
-        ///        
-        ///     // Output:
-        ///     // "Empty"
-        ///     </code>
-        /// </remarks>
-        public Optional<T> IfValue(Action<T> onValue)
-        {
-            _ = onValue ?? throw new ArgumentNullException(nameof(onValue));
-            if (_hasValue)
-            {
-                onValue(_value);
-            }
-            return this;
-        }
-
-        /// <summary>
-        ///     Executes the specified function if the optional is empty.
-        /// </summary>
-        /// <param name="onEmpty">
-        ///     The function to be invoked if the optional is empty.
-        /// </param>
-        /// <returns>The same <see cref="Optional{T}"/> instance.</returns>
-        /// <exception cref="ArgumentNullException">
-        ///     * <paramref name="onEmpty"/>
-        /// </exception>
-        /// <remarks>
-        ///     <see cref="IfEmpty(Action)"/> is a utility function which allows you to run a
-        ///     piece of code if the optional is empty.
-        ///     
-        ///     The following code segment shows two possible ways of printing an optional's empty
-        ///     state to the console:
-        ///     
-        ///     <code>
-        ///     Optional&lt;int&gt; opt = Optional&lt;int&gt;.Empty;
-        ///     
-        ///     // The following two code segments do exactly the same:
-        ///     // 1)
-        ///     if (!opt.HasValue)
-        ///     {
-        ///         Console.WriteLine("The optional is empty.");
-        ///     }
-        ///     
-        ///     // 2)
-        ///     opt.IfEmpty(value => Console.WriteLine("The optional is empty."));
-        ///     </code>
-        ///     
-        ///     Because this method returns the same optional instance, method chaining is possible:
-        ///     
-        ///     <code>
-        ///     Optional&lt;int&gt; opt = Optional&lt;int&gt;.Empty;
-        ///     
-        ///     opt.IfEmpty(() => Console.WriteLine("Empty"))
-        ///        .IfValue(value => Console.WriteLine(value));
-        ///        
-        ///     // Output:
-        ///     // "Empty"
-        ///     </code>
-        /// </remarks>
-        public Optional<T> IfEmpty(Action onEmpty)
-        {
-            _ = onEmpty ?? throw new ArgumentNullException(nameof(onEmpty));
-            if (!_hasValue)
-            {
-                onEmpty();
-            }
-            return this;
         }
 
         /// <summary>
@@ -720,7 +620,7 @@
         /// </returns>
         /// <remarks>
         ///     See <see cref="Equals(Optional{T})"/> and <see cref="Equals(T)"/> for additional
-        ///     information how the optional equality comparison works.
+        ///     information on how the equality comparison works.
         /// </remarks>
         /// <seealso cref="Equals(Optional{T})"/>
         /// <seealso cref="Equals(T)"/>
@@ -752,13 +652,13 @@
         ///     <list type="bullet">
         ///         <item>
         ///             <description>
-        ///                 The two optionals are both empty.
+        ///                 They are both empty.
         ///             </description>
         ///         </item>
         ///         <item>
         ///             <description>
-        ///                 The two optionals are both non-empty and the two values held by the
-        ///                 optionals are considered equal by a default <see cref="EqualityComparer{T}"/> instance.
+        ///                 They are both non-empty and their two held values are considered equal
+        ///                 by a default <see cref="EqualityComparer{T}"/> instance.
         ///             </description>
         ///         </item>
         ///     </list>
@@ -868,7 +768,7 @@
 
         /// <summary>
         ///     Returns a value indicating whether the two optional instances are equal.
-        ///     See <see cref="Equals(Optional{T})"/> for additional information how the optional
+        ///     See <see cref="Equals(Optional{T})"/> for additional information how the
         ///     equality comparison works.
         /// </summary>
         /// <param name="left">The first optional instance.</param>
@@ -885,7 +785,7 @@
 
         /// <summary>
         ///     Returns a value indicating whether the two optional instances are unequal.
-        ///     See <see cref="Equals(Optional{T})"/> for additional information how the optional
+        ///     See <see cref="Equals(Optional{T})"/> for additional information how the
         ///     equality comparison works.
         /// </summary>
         /// <param name="left">The first optional instance.</param>
@@ -903,7 +803,7 @@
         /// <summary>
         ///     Returns a value indicating whether the specified value is equal to the specified
         ///     optional instance.
-        ///     See <see cref="Equals(T)"/> for additional information how the optional
+        ///     See <see cref="Equals(T)"/> for additional information how the
         ///     equality comparison works.
         /// </summary>
         /// <param name="value">A value to be compared with the held value of the optional.</param>
@@ -921,7 +821,7 @@
         /// <summary>
         ///     Returns a value indicating whether the specified value is unequal to the specified
         ///     optional instance.
-        ///     See <see cref="Equals(T)"/> for additional information how the optional
+        ///     See <see cref="Equals(T)"/> for additional information how the
         ///     equality comparison works.
         /// </summary>
         /// <param name="value">A value to be compared with the held value of the optional.</param>
