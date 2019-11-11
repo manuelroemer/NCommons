@@ -591,6 +591,26 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
     }
 #>
 
+        public class DeconstructTests
+        {
+
+            [Fact]
+            public void Correctly_Deconstructs_Components()
+            {
+                var v = new <#=Variant(currentTo)#>(new Obj1());
+                v.Deconstruct(<#=TList(currentTo, "out var v{0}")#>);
+
+<#
+    for (var i = From; i <= currentTo; i++) {
+#>
+                Assert.Equal(v.Value<#=i#>, v<#=i#>);
+<#
+    }
+#>
+            }
+
+        }
+
         public class ImplicitOperatorTests
         {
         
