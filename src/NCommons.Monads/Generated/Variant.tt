@@ -1079,32 +1079,6 @@ namespace NCommons.Monads
 <#
         }
 #>
-<#
-        for (var i = From; i <= currentTo - 1; i++) {
-#>
-        /// <summary>
-        ///     Implicitly converts the specified <paramref name="variant"/> to a <see cref="Variant<#=TXmlDefinition(currentTo)#>"/>,
-        ///     by enhancing it with one or more additional type parameters.
-        /// </summary>
-        /// <param name="variant">The variant to be converted.</param>
-        public static implicit operator Variant<#=TDefinition(currentTo)#>(in Variant<#=TDefinition(i)#> variant)
-        {
-            return variant._type switch
-            {
-<#
-            for (var j = From; j <= i; j++) {
-#>
-                Variant<#=TDefinition(i)#>.VariantType.<#=T(j)#> => new Variant<#=TDefinition(currentTo)#>(variant._value<#=j#>),
-<#
-            }
-#>
-                _ => Empty
-            };
-        }
-
-<#
-        }
-#>
     }
 <#
 }

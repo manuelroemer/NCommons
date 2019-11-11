@@ -3,7 +3,7 @@
     using System;
     using Xunit;
 
-    public class Optional1Tests
+    public class OptionalTTests
     {
 
         public class EmptyTests
@@ -403,6 +403,27 @@
             {
                 var opt = new Optional<int>(123);
                 Assert.Equal(123.ToString(), opt.ToString());
+            }
+
+        }
+
+        public class ToVariantTests
+        {
+
+            [Fact]
+            public void Converts_Empty_Optional_To_Empty_Variant()
+            {
+                var opt = Optional<int>.Empty;
+                var v = opt.ToVariant();
+                Assert.True(v.IsEmpty);
+            }
+
+            [Fact]
+            public void Converts_Non_Empty_Optional_To_Variant_With_Same_Value()
+            {
+                var opt = new Optional<int>(123);
+                var v = opt.ToVariant();
+                Assert.Equal(123, v.GetValue1());
             }
 
         }

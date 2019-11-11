@@ -114,7 +114,7 @@
         ///     An empty <see cref="Optional{T}"/> instance which does not hold any value.
         ///     This is equivalent to an instance created via the parameterless constructor.
         /// </summary>
-        public static readonly Optional<T> Empty = new Optional<T>();
+        public static Optional<T> Empty { get; } = new Optional<T>();
 
         private readonly T _value;
         private readonly bool _hasValue;
@@ -763,7 +763,7 @@
         /// </remarks>
         public Variant<T> ToVariant()
         {
-            return _hasValue ? new Variant<T>(_value) : new Variant<T>();
+            return _hasValue ? new Variant<T>(_value) : Variant<T>.Empty;
         }
 
         /// <summary>
