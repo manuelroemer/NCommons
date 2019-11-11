@@ -1,4 +1,4 @@
-﻿<#
+<#
     // Recommendation:
     // Don't edit this file in Visual Studio. Download VS Code and this extension:
     // https://marketplace.visualstudio.com/items?itemName=zbecknell.t4-support
@@ -9,8 +9,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#@ include file=".\..\CodeGen\Generics.tt" #>
-<#@ include file=".\..\CodeGen\Ordinals.tt" #>
+<#@ include file="../CodeGen/Generics.tt" #>
 <#
 const int From = 1;
 const int To = 8;
