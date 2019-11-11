@@ -42,6 +42,8 @@ namespace NCommons.Monads
     ///     See remarks for details.
     /// </summary>
     /// <remarks>
+    ///     <h3>General Usage</h3>
+    ///
     ///     In essence, the <see cref="Variant<#=TXmlDefinition(currentTo)#>"/> is a utility class which simply acts
     ///     as a data storage for one out of multiple different values. In that sense, it is very
     ///     similar to unions in other programming languages, but with the difference that a variant
@@ -148,6 +150,39 @@ namespace NCommons.Monads
     ///     else
     ///     {
     ///         Console.WriteLine("The function returned neither a string nor an int.");
+    ///     }
+    ///     </code>
+    ///
+    ///
+    ///     <h3>Application Areas and Limitations</h3>
+    ///     
+    ///     The variant has been created to artifically add pseudo-support for unions to C#, because
+    ///     the language is currently lacking this feature.
+    ///     Due to that limited language support, the variant has a few limitations though.
+    ///     For example, it is not possible to implicitly convert two variants having the same type parameters,
+    ///     but in a different order, to and from each other. For example, the <c>Variant&lt;string, int&gt;</c>
+    ///     and <c>Variant&lt;int, string&gt;</c> in theory represent the same set of values, but cannot
+    ///     be assigned to each other.
+    /// 
+    ///     To minimize confusion amonst users, it is recommended to only use a variant as the return value
+    ///     of a function. This means that it can immediately be deconstructed and processed and is thus
+    ///     going to provide the least amount of problems.
+    ///
+    ///
+    ///     <h3>Performance Notes</h3>
+    ///     
+    ///     All variant classes are value types (structs). Internally, the variants store each possible
+    ///     type parameter as a separate field to avoid boxing value types. While this results in one
+    ///     internal field for the <see cref="Variant{T1}"/>, the <see cref="Variant{T1, T2, T3, T4, T5, T6, T7, T8}"/>
+    ///     has eight fields.
+    ///     This results in a lot of data being copied when passing such a variant around.
+    ///     This can be avoided by using the <see langword="in"/> modifier when using a variant as a parameter:
+    ///
+    ///     <code>
+    ///     // Try to use the "in" modifier whenever appropriate.
+    ///     public void Fn(in Variant&lt;string, int&gt; variant)
+    ///     {
+    ///         // ...
     ///     }
     ///     </code>
     /// </remarks>
