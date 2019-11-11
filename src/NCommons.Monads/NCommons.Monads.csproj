@@ -1,12 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <IsPackable>true</IsPackable>
-    <Version>1.3.2</Version>
+    <Version>2.0.0</Version>
     <Description>
-A reusable set of common members that are missing in the .NET Framework.
-This library contains a set of monadic members and helpers.
+A reusable set of common members which may be useful in any kind project.
+
+This library provides several monadic and pseudo-monadic members.
+
+Commonly Used Types:
+Optional&lt;T&gt;
+Variant&lt;T1&gt;, ..., Variant&lt;T1,...,T8&gt;
+
+You can find additional information and documentation on the library's GitHub page: https://github.com/manuelroemer/NCommons
     </Description>
   </PropertyGroup>
 

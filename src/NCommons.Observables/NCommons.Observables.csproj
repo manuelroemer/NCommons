@@ -3,10 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>1.2.3</Version>
+    <Version>1.2.4</Version>
     <Description>
-A reusable set of common members that are missing in the .NET Framework.
-This library contains members which reduce boilerplate code when implementing types that should be observable (e.g. via the INotifyPropertyChanged) interface.
+A reusable set of common members which may be useful in any kind project.
+
+This library provides members for quickly setting up classes which require property change notifications.
+
+Commonly Used Types:
+ObservableObject
+
+You can find additional information and documentation on the library's GitHub page: https://github.com/manuelroemer/NCommons
     </Description>
   </PropertyGroup>
 

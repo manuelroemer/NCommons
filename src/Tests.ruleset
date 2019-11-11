@@ -5,6 +5,7 @@
     <Rule Id="CA1034" Action="None" /> <!-- Nested types should not be visible -->
     <Rule Id="CA1051" Action="None" /> <!-- Do not declare visible instance fields -->
     <Rule Id="CA1052" Action="None" /> <!-- Static holder types should be Static or NotInheritable -->
+    <Rule Id="CA1062" Action="None" /> <!-- Validate arguments of public methods -->
     <Rule Id="CA1065" Action="None" /> <!-- Do not raise exceptions in unexpected locations -->
     <Rule Id="CA1721" Action="Info" /> <!-- Property names should not match get methods -->
     <Rule Id="CA1305" Action="None" /> <!-- Specify IFormatProvider -->

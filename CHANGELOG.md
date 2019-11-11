@@ -7,6 +7,19 @@
 * Enhanced `Variant<T1-8>` with new utility methods (e.g. support for deconstruction).
 * Added `Optional<T>`.
 * Added `Optional`.
+* Updated the NuGet package description.
+
+
+## NCommons.Collections v2.0.0
+
+* **[Breaking]** Made the `WeakReferenceCollection.Enumerator` struct private.
+* Relaxed the `WeakReferenceCollection<T> where T : class` constraint to `WeakReferenceCollection<T> where T : class?`.
+* Updated the NuGet package description.
+
+
+## NCommons.Observables v1.2.4
+
+* Updated the NuGet package description.
 
 
 ## NCommons.Collections v1.2.2
