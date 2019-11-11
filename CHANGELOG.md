@@ -1,5 +1,26 @@
 # Changelog
 
+## NCommons.Monads v2.0.0
+
+* **[Breaking]** Removed `Either<TL, TR>`.
+* **[Breaking]** Reworked `Variant<T1-8>` to follow the naming conventions of `Optional`.
+* Enhanced `Variant<T1-8>` with new utility methods (e.g. support for deconstruction).
+* Added `Optional<T>`.
+* Added `Optional`.
+* Updated the NuGet package description.
+
+
+## NCommons.Collections v2.0.0
+
+* **[Breaking]** Made the `WeakReferenceCollection.Enumerator` struct private.
+* Relaxed the `WeakReferenceCollection<T> where T : class` constraint to `WeakReferenceCollection<T> where T : class?`.
+* Updated the NuGet package description.
+
+
+## NCommons.Observables v1.2.4
+
+* Updated the NuGet package description.
+
 
 ## NCommons.Collections v1.2.2
 
@@ -12,4 +33,6 @@
 * Correctly flagged `ObservableObject.PropertyChanging` as nullable.
 
 
-_Changes earlier than this have sadly not been recorded. If you are interested in details, consider going through old pull requests._
+## Older Versions
+
+_Changes earlier than this have sadly not been documented. If you are interested in details, consider looking through old pull requests._

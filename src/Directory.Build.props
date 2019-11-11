@@ -3,43 +3,55 @@
   <!-- Default C# Project properties that are expected for all sub-projects. -->
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <NullableContextOptions>enable</NullableContextOptions>
     <Nullable>enable</Nullable>
     
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../key.snk</AssemblyOriginatorKeyFile>
+    <CodeAnalysisRuleSet>../Default.ruleset</CodeAnalysisRuleSet>
+
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
 
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>../key.snk</AssemblyOriginatorKeyFile>
-
     <Version Condition=" $(Version) == '' ">0.0.0-dev</Version>
+    <IsPackable>false</IsPackable>
     <Product>NCommons</Product>
     <Authors>Manuel Römer</Authors>
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
     <PackageProjectUrl>https://github.com/manuelroemer/NCommons</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/manuelroemer/NCommons/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    
+    <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" $(IsTestProject) ">
+    <CodeAnalysisRuleSet>../Tests.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nullable" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="SauceControl.InheritDoc" Version="0.4.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- netstandard2.0 inheritdoc fixes. -->
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <NoWarn>$(NoWarn);IDT001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageDownload Include="NETStandard.Library.Ref" Version="[2.1.0]" />
+    <InheritDocReference Include="$([MSBuild]::EnsureTrailingSlash('$(NugetPackageRoot)'))netstandard.library.ref\2.1.0\ref\netstandard2.1\netstandard.xml" />
+  </ItemGroup>
+  
   <!-- Don't allow warnings in release builds. -->
   <PropertyGroup Condition=" $(Configuration) == 'Release' ">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
-    <CodeAnalysisRuleSet>../CA.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  
-  <ItemGroup Condition=" !$(IsTestProject) ">
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7" PrivateAssets="all" />
-  </ItemGroup>
-
   <!-- Certain warnings make no sense in test projects. -->
   <PropertyGroup Condition=" $(IsTestProject) ">
-    <NullableContextOptions>disable</NullableContextOptions>
-    <Nullable>disable</Nullable>
     <NoWarn>
       $(NoWarn);
       CS1573; <!-- No matching XML comment for parameter -->

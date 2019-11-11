@@ -1,11 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.2.2</Version>
+    <IsPackable>true</IsPackable>
+    <Version>2.0.0</Version>
     <Description>
-A reusable set of common members that are missing in the .NET Framework.
-This library contains a set of collection-type members.
+A reusable set of common members which may be useful in any kind project.
+
+This library provides several generic and specialized collection-type members.
+
+Commonly Used Types:
+IPriorityQueue&lt;T&gt;
+PriorityQueue&lt;T&gt;
+Heap&lt;T&gt;
+BinaryHeap&lt;T&gt;
+INotifyCollectionChanging
+PreviewingObservableCollection&lt;T&gt;
+WeakReferenceCollection&lt;T&gt;
+
+You can find additional information and documentation on the library's GitHub page: https://github.com/manuelroemer/NCommons
     </Description>
   </PropertyGroup>
 
