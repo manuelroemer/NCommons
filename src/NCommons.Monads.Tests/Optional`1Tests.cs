@@ -415,7 +415,7 @@
             {
                 var opt = Optional<int>.Empty;
                 var v = opt.ToVariant();
-                Assert.True(v.IsEmpty);
+                Assert.False(v.HasValue);
             }
 
             [Fact]

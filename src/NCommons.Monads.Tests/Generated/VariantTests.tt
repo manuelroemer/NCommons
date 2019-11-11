@@ -37,7 +37,7 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
             public void Is_Empty_Variant()
             {
                 var v = <#=Variant(currentTo)#>.Empty;
-                Assert.True(v.IsEmpty);
+                Assert.False(v.HasValue);
             }
 
         }
@@ -49,7 +49,7 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
             public void Default_Initializes_Empty_Variant()
             {
                 var v = <#=Variant(currentTo)#>.Empty;
-                Assert.True(v.IsEmpty);
+                Assert.False(v.HasValue);
             }
 
 <#
@@ -59,7 +59,7 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
             public void Value<#=i#>_Initializes_Value<#=i#>_Variant()
             {
                 var v = new <#=Variant(currentTo)#>(new Obj<#=i#>());
-                Assert.True(v.IsValue<#=i#>);
+                Assert.True(v.HasValue<#=i#>);
             }
 
 <#
@@ -67,21 +67,21 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
 #>
         }
 
-        public class IsEmptyTests
+        public class HasValueTests
         {
 
             [Fact]
             public void Returns_True_For_Empty_Variant()
             {
                 var v = <#=Variant(currentTo)#>.Empty;
-                Assert.True(v.IsEmpty);
+                Assert.False(v.HasValue);
             }
 
             [Fact]
             public void Returns_False_For_Non_Empty_Variant()
             {
                 var v = new <#=Variant(currentTo)#>(new Obj1());
-                Assert.False(v.IsEmpty);
+                Assert.True(v.HasValue);
             }
 
         }
@@ -89,21 +89,21 @@ for (var currentTo = From; currentTo <= To; currentTo++) {
 <#
     for (var i = From; i <= currentTo; i++) {
 #>
-        public class IsValue<#=i#>Tests
+        public class HasValue<#=i#>Tests
         {
 
             [Fact]
             public void Returns_True_If_Variant_Holds_That_Value()
             {
                 var v = new <#=Variant(currentTo)#>(new Obj<#=i#>());
-                Assert.True(v.IsValue<#=i#>);
+                Assert.True(v.HasValue<#=i#>);
             }
 
             [Fact]
             public void Returns_False_If_Variant_Holds_Other_Value()
             {
                 var v = <#=Variant(currentTo)#>.Empty;
-                Assert.False(v.IsValue<#=i#>);
+                Assert.False(v.HasValue<#=i#>);
             }
 
         }

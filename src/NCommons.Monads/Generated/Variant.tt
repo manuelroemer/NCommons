@@ -98,15 +98,15 @@ namespace NCommons.Monads
     ///         "Hello";
     ///     
     ///     var variant = GetTwoValues();
-    ///     if (variant.IsValue1)
+    ///     if (variant.HasValue1)
     ///     {
     ///         Console.WriteLine("String: {0}", variant.Value1);
     ///     }
-    ///     else if (variant.IsValue2)
+    ///     else if (variant.HasValue2)
     ///     {
     ///         Console.WriteLine("Int: {0}", variant.Value2);
     ///     }
-    ///     else /* if (variant.IsEmpty) */
+    ///     else /* if (!variant.HasValue) */
     ///     {
     ///         Console.WriteLine("The function returned neither a string nor an int.");
     ///     }
@@ -223,14 +223,15 @@ namespace NCommons.Monads
         public static ref readonly Variant<#=TDefinition(currentTo)#> Empty => ref _empty;
 
         /// <summary>
-        ///     Gets a value indicating whether the variant is empty, i.e. if it does not hold any value.
+        ///     Gets a value indicating whether the variant holds a value of one of the generic type parameters.
+        ///     This return <see langword="false"/> if the variant is empty, i.e. if it doesn't hold any value.
         /// </summary>
         /// <returns>
         ///     <see langword="true"/> if the variant is empty, i.e. it does not hold any value.
         ///     <see langword="false"/> if the variant holds a value of one of the generic type parameters.
         /// </returns>
         /// <remarks>
-        ///     The <see cref="IsEmpty"/> property can be used to determine whether the variant is empty.
+        ///     The <see cref="HasValue"/> property can be used to determine whether the variant is empty.
         ///
         ///     The following code segment demonstrates this behavior using a variant with two
         ///     type parameters:
@@ -240,22 +241,22 @@ namespace NCommons.Monads
         ///     Variant&lt;string, int&gt; intVariant = 123;
         ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
         ///
-        ///     Console.WriteLine(stringVariant.IsEmpty);
-        ///     Console.WriteLine(intVariant.IsEmpty);
-        ///     Console.WriteLine(emptyVariant.IsEmpty);
+        ///     Console.WriteLine(stringVariant.HasValue);
+        ///     Console.WriteLine(intVariant.HasValue);
+        ///     Console.WriteLine(emptyVariant.HasValue);
         ///
         ///     // Output:
-        ///     // "False"
-        ///     // "False"
         ///     // "True"
+        ///     // "True"
+        ///     // "False"
         ///     </code>
         ///
-        ///     The <see cref="IsEmpty"/> property is ideally used in conjunction with methods like
-        ///     <see cref="GetValue1"/>.  You can, for example, use <see cref="IsEmpty"/>
+        ///     The <see cref="HasValue"/> property is ideally used in conjunction with methods like
+        ///     <see cref="GetValue1"/>.  You can, for example, use <see cref="HasValue"/>
         ///     to safely determine whether methods like <see cref="GetValue1"/> can be called
         ///     without leading to an exception.
         /// </remarks>
-        public bool IsEmpty => _type == VariantType.Empty;
+        public bool HasValue => _type != VariantType.Empty;
 
 <#
         for (var i = From; i <= currentTo; i++) {
@@ -268,7 +269,7 @@ namespace NCommons.Monads
         ///     <see langword="false"/> if not.
         /// </returns>
         /// <remarks>
-        ///     The <see cref="IsValue<#=i#>"/> property can be used to determine whether the variant
+        ///     The <see cref="HasValue<#=i#>"/> property can be used to determine whether the variant
         ///     holds a value of that type.
         ///     
         ///     The following code segment demonstrates this behavior using a variant with two
@@ -279,12 +280,12 @@ namespace NCommons.Monads
         ///     Variant&lt;string, int&gt; intVariant = 123;
         ///     Variant&lt;string, int&gt; emptyVariant = Variant&lt;string, int&gt;.Empty;
         ///
-        ///     Console.WriteLine(stringVariant.IsValue1);
-        ///     Console.WriteLine(stringVariant.IsValue2);
-        ///     Console.WriteLine(intVariant.IsValue1);
-        ///     Console.WriteLine(intVariant.IsValue2);
-        ///     Console.WriteLine(emptyVariant.IsValue1);
-        ///     Console.WriteLine(emptyVariant.IsValue2);
+        ///     Console.WriteLine(stringVariant.HasValue1);
+        ///     Console.WriteLine(stringVariant.HasValue2);
+        ///     Console.WriteLine(intVariant.HasValue1);
+        ///     Console.WriteLine(intVariant.HasValue2);
+        ///     Console.WriteLine(emptyVariant.HasValue1);
+        ///     Console.WriteLine(emptyVariant.HasValue2);
         ///
         ///     // Output:
         ///     // "True"
@@ -295,12 +296,12 @@ namespace NCommons.Monads
         ///     // "False"
         ///     </code>
         ///
-        ///     The <see cref="IsValue<#=i#>"/> property is ideally used in conjunction with methods like
-        ///     <see cref="GetValue<#=i#>"/>. You can, for example, use <see cref="IsValue<#=i#>"/>
+        ///     The <see cref="HasValue<#=i#>"/> property is ideally used in conjunction with methods like
+        ///     <see cref="GetValue<#=i#>"/>. You can, for example, use <see cref="HasValue<#=i#>"/>
         ///     to safely determine whether <see cref="GetValue<#=i#>"/> can be called without
         ///     leading to an exception.
         /// </remarks>
-        public bool IsValue<#=i#> => _type == VariantType.<#=T(i)#>;
+        public bool HasValue<#=i#> => _type == VariantType.<#=T(i)#>;
 
         /// <summary>
         ///     Gets an <see cref="Optional{T}"/> which, if the variant holds a value of type
@@ -339,7 +340,7 @@ namespace NCommons.Monads
         ///     // "False"
         ///     </code>
         /// </remarks>
-        public Optional<<#=T(i)#>> Value<#=i#> => IsValue<#=i#> ? _value<#=i#> : Optional<<#=T(i)#>>.Empty;
+        public Optional<<#=T(i)#>> Value<#=i#> => HasValue<#=i#> ? _value<#=i#> : Optional<<#=T(i)#>>.Empty;
 
 <#
         }
@@ -462,7 +463,7 @@ namespace NCommons.Monads
         /// </remarks>
         public T<#=i#> GetValue<#=i#>()
         {
-            if (!IsValue<#=i#>)
+            if (!HasValue<#=i#>)
             {
                 throw new InvalidOperationException(ExceptionStrings.Variant_GetValue_HoldsOtherType);
             }
@@ -553,7 +554,7 @@ namespace NCommons.Monads
         /// </remarks>
         public T<#=i#> GetValue<#=i#>Or(<#=T(i)#> substitute)
         {
-            return IsValue<#=i#> ? _value<#=i#> : substitute;
+            return HasValue<#=i#> ? _value<#=i#> : substitute;
         }
 
         /// <summary>
@@ -604,7 +605,7 @@ namespace NCommons.Monads
         public T<#=i#> GetValue<#=i#>Or(Func<<#=T(i)#>> substituteProvider)
         {
             _ = substituteProvider ?? throw new ArgumentNullException(nameof(substituteProvider));
-            return IsValue<#=i#> ? _value<#=i#> : substituteProvider();
+            return HasValue<#=i#> ? _value<#=i#> : substituteProvider();
         }
 
         /// <summary>
@@ -623,7 +624,7 @@ namespace NCommons.Monads
         public bool TryGetValue<#=i#>(out <#=T(i)#> value)
         {
             value = _value<#=i#>;
-            return IsValue<#=i#>;
+            return HasValue<#=i#>;
         }
 
 <#
@@ -870,7 +871,7 @@ namespace NCommons.Monads
             }
 
             // The two variants hold a value of the same type at this point.
-            if (IsEmpty)
+            if (!HasValue)
             {
                 return true;
             }
@@ -972,7 +973,7 @@ namespace NCommons.Monads
         /// </remarks>
         public Optional<T1> ToOptional()
         {
-            return IsValue1 ? new Optional<T1>(_value1) : Optional<T1>.Empty; 
+            return HasValue1 ? new Optional<T1>(_value1) : Optional<T1>.Empty; 
         }
 
 <#
