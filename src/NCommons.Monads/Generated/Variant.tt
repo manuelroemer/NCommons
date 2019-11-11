@@ -226,8 +226,8 @@ namespace NCommons.Monads
         ///     Gets a value indicating whether the variant is empty, i.e. if it does not hold any value.
         /// </summary>
         /// <returns>
-        ///     <see langword="true"/> if the optional is empty, i.e. it does not hold any value.
-        ///     <see langword="false"/> if the optional holds a value of one of the generic type parameters.
+        ///     <see langword="true"/> if the variant is empty, i.e. it does not hold any value.
+        ///     <see langword="false"/> if the variant holds a value of one of the generic type parameters.
         /// </returns>
         /// <remarks>
         ///     The <see cref="IsEmpty"/> property can be used to determine whether the variant is empty.
@@ -524,7 +524,7 @@ namespace NCommons.Monads
         /// </returns>
         /// <remarks>
         ///     <see cref="GetValue<#=i#>Or(<#=T(i)#>)"/> behaves similarly to <see cref="GetValue<#=i#>OrDefault"/>,
-        ///     with the exception that you can choose the result of the function if the optional
+        ///     with the exception that you can choose the result of the function if the variant
         ///     is empty.
         ///     
         ///     The following code segment demonstrates this behavior using a variant with two
@@ -574,7 +574,7 @@ namespace NCommons.Monads
         /// </exception>
         /// <remarks>
         ///     <see cref="GetValue<#=i#>Or(Func{<#=T(i)#>})"/> behaves similarly to <see cref="GetValue<#=i#>OrDefault"/>,
-        ///     with the exception that you can choose the result of the function if the optional
+        ///     with the exception that you can choose the result of the function if the variant
         ///     is empty.
         ///     
         ///     The following code segment demonstrates this behavior using a variant with two
