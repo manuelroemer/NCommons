@@ -26,24 +26,33 @@ steps:
     version: '3.0.x'
 
 - task: DotNetCoreCLI@2
-  displayName: NuGet Restore
+  displayName: 'Restore NuGet Packages'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
-
-- script: dotnet build $(buildDir) -c $(buildConfiguration)
-  displayName: Build
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: Run Tests
+  displayName: 'Test'
   inputs:
     command: test
     projects: '**/*.csproj'
     configuration: $(buildConfiguration)
     nobuild: true
-
-- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration)
-  displayName: NuGet - Pack Projects
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Pack NuGet Packages'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
+    outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
   condition: |
     and
     (
@@ -51,10 +60,11 @@ steps:
       eq(variables['Build.SourceBranch'], 'refs/heads/master'),
       eq(variables['system.pullrequest.isfork'], false)
     )
-
+    
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish NuGet Package Artifacts'
   inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
     ArtifactName: 'NuGet Packages'
   condition: |
     and
