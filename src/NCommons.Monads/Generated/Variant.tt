@@ -277,7 +277,7 @@ namespace NCommons.Monads
         /// </returns>
         /// <remarks>
         ///     The <see cref="HasValue<#=i#>"/> property can be used to determine whether the variant
-        ///     holds a value of that type.
+        ///     holds a value of type <typeparamref name="<#=T(i)#>"/>.
         ///     
         ///     The following code segment demonstrates this behavior using a variant with two
         ///     type parameters:
