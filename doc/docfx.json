@@ -1,0 +1,66 @@
+{
+    "metadata": [
+      {
+        "src": [
+          {
+            "src": "../src",
+            "files": ["**/Debug/netstandard2.0/NCommons*.dll"],
+            "exclude": ["**/*Test*/**"]
+          }
+        ],
+        "dest": "api"
+      }
+    ],
+    "build": {
+      "content": [
+        {
+          "files": [
+            "api/**.yml",
+            "api/index.md"
+          ]
+        },
+        {
+          "files": [
+            "articles/**.md",
+            "articles/**/toc.yml",
+            "toc.yml",
+            "*.md"
+          ]
+        }
+      ],
+      "resource": [
+        {
+          "files": [
+            "assets/**"
+          ]
+        }
+      ],
+      "dest": "_site",
+      "globalMetadataFiles": [],
+      "fileMetadataFiles": [],
+      "template": [
+        "default",
+        "templates/condensed"
+      ],
+      "xrefService": [
+        "https://xref.docs.microsoft.com/query?uid={uid}"
+      ],
+      "postProcessors": [],
+      "markdownEngineName": "markdig",
+      "noLangKeyword": false,
+      "keepFileLink": false,
+      "cleanupCacheHistory": false,
+      "disableGitFeatures": true,
+      "globalMetadata": {
+        "_appName": "NCommons",
+        "_appTitle": "NCommons",
+        "_appFooter": "Copyright &copy; 2019 Manuel Römer - Generated with <a href=\"https://github.com/dotnet/docfx\">DocFX</a> - <a href=\"https://gist.github.com/manuelroemer/2aa8fc4e377874ae93dbd26e779cdbf6\">Impressum (Imprint)</a>",
+        "_disableContribution": true,
+        "_gitContribute": {
+          "repo": "https://github.com/manuelroemer/NCommons",
+          "branch": "master"
+        },
+        "_gitUrlPattern": "github"
+      }
+    }
+  }
