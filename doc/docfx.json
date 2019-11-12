@@ -40,7 +40,7 @@
       "fileMetadataFiles": [],
       "template": [
         "default",
-        "templates/condensed"
+        "templates/modernized-docfx"
       ],
       "xrefService": [
         "https://xref.docs.microsoft.com/query?uid={uid}"

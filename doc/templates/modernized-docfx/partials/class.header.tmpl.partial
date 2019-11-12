@@ -25,23 +25,6 @@
 {{#implements.0}}
 </div>
 {{/implements.0}}
-{{#inheritedMembers.0}}
-<div class="inheritedMembers">
-  <h5>{{__global.inheritedMembers}}</h5>
-{{/inheritedMembers.0}}
-{{#inheritedMembers}}
-  <div>
-  {{#definition}}
-    <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  {{^definition}}
-    <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  </div>
-{{/inheritedMembers}}
-{{#inheritedMembers.0}}
-</div>
-{{/inheritedMembers.0}}
 <h6><strong>{{__global.namespace}}</strong>: {{{namespace.specName.0.value}}}</h6>
 <h6><strong>{{__global.assembly}}</strong>: {{assemblies.0}}.dll</h6>
 <h5 id="{{id}}_syntax">{{__global.syntax}}</h5>
@@ -50,27 +33,12 @@
 </div>
 {{#syntax.parameters.0}}
 <h5 class="parameters">{{__global.parameters}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.name}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
 {{/syntax.parameters.0}}
 {{#syntax.parameters}}
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td><span class="parametername">{{{id}}}</span></td>
-      <td>{{{description}}}</td>
-    </tr>
+<code><strong>{{{type.specName.0.value}}}</code></strong>
+<span class="parametername">{{{id}}}</span>
+<p>{{{description}}}</p>
 {{/syntax.parameters}}
-{{#syntax.parameters.0}}
-  </tbody>
-</table>
-{{/syntax.parameters.0}}
 {{#syntax.return}}
 <h5 class="returns">{{__global.returns}}</h5>
 <table class="table table-bordered table-striped table-condensed">
@@ -90,31 +58,17 @@
 {{/syntax.return}}
 {{#syntax.typeParameters.0}}
 <h5 class="typeParameters">{{__global.typeParameters}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.name}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
 {{/syntax.typeParameters.0}}
 {{#syntax.typeParameters}}
-    <tr>
-      <td><span class="parametername">{{{id}}}</span></td>
-      <td>{{{description}}}</td>
-    </tr>
+<code><strong><span class="parametername">{{{id}}}</span></strong></code>
+<p>{{{description}}}</code>
 {{/syntax.typeParameters}}
-{{#syntax.typeParameters.0}}
-  </tbody>
-</table>
-{{/syntax.typeParameters.0}}
 {{#remarks}}
-<h5 id="{{id}}_remarks"><strong>{{__global.remarks}}</strong></h5>
+<h2 id="{{id}}_remarks">{{__global.remarks}}</h2>
 <div class="markdown level0 remarks">{{{remarks}}}</div>
 {{/remarks}}
 {{#example.0}}
-<h5 id="{{id}}_examples"><strong>{{__global.examples}}</strong></h5>
+<h2 id="{{id}}_examples">{{__global.examples}}</h2>
 {{/example.0}}
 {{#example}}
 {{{.}}}

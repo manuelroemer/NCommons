@@ -40,6 +40,14 @@ namespace NCommons.Monads
     ///     A container which either holds a value of one of the generic type parameters or no value at all.
     ///     See remarks for details.
     /// </summary>
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+    /// <typeparam name="<#=T(i)#>">A type which may be held by the variant.</typeparam>
+<#
+        }
+#>
+    /// 
     /// <remarks>
     ///     <h3>General Usage</h3>
     ///

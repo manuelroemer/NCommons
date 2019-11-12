@@ -954,3 +954,100 @@ div.embeddedvideo iframe {
 
 .mainContainer[dir='rtl'] main ul[role="tablist"] {
   margin: 0; }
+
+/* Tweaks */
+
+body {
+  font-size: 16px;
+}
+
+code {
+  color: #171717;
+  background-color: #f2f2f2;
+  white-space: pre !important;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 52px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36.4px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24.7px;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.8px;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19.5px;
+}
+
+h6 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18.2px;
+}
+
+article h4 {
+  border: none;
+}
+
+article h1,
+article h2,
+article h3 {
+  margin-top: 35px;
+}
+
+article h4 {
+  margin-top: 25px;
+}
+
+span.parametername {
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .article {
+    margin-top: 85px;
+  }
+
+  /* Give space for the larger sidetoc */
+  .article.grid-right {
+    margin-left: 350px;
+  }
+
+  .sidefilter,
+  .sidetoc {
+    width: 330px;
+  }
+
+  main {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}

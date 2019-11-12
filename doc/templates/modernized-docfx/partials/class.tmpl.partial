@@ -2,7 +2,7 @@
 
 {{>partials/class.header}}
 {{#children}}
-<h3 id="{{id}}">{{>partials/classSubtitle}}</h3>
+<h2 id="{{id}}">{{>partials/classSubtitle}}</h2>
 {{#children}}
 {{^_disableContribution}}
 {{#docurl}}
@@ -18,164 +18,63 @@
 {{#overload}}
 <a id="{{id}}" data-uid="{{uid}}"></a>
 {{/overload}}
-<h4 id="{{id}}" data-uid="{{uid}}">{{name.0.value}}</h4>
+<h3 id="{{id}}" data-uid="{{uid}}">{{name.0.value}}</h3>
 <div class="markdown level1 summary">{{{summary}}}</div>
 <div class="markdown level1 conceptual">{{{conceptual}}}</div>
-<h5 class="decalaration">{{__global.declaration}}</h5>
+<h4 class="declaration">{{__global.declaration}}</h4>
 {{#syntax}}
 <div class="codewrapper">
   <pre><code class="lang-{{_lang}} hljs">{{syntax.content.0.value}}</code></pre>
 </div>
 {{#parameters.0}}
-<h5 class="parameters">{{__global.parameters}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.name}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
+<h4 class="parameters">{{__global.parameters}}</h4>
 {{/parameters.0}}
 {{#parameters}}
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td><span class="parametername">{{{id}}}</span></td>
-      <td>{{{description}}}</td>
-    </tr>
+{{{type.specName.0.value}}}
+<code><strong><span class="parametername">{{{id}}}</span></strong></code>
+<p>{{{description}}}</p>
 {{/parameters}}
-{{#parameters.0}}
-  </tbody>
-</table>
-{{/parameters.0}}
 {{#return}}
-<h5 class="returns">{{__global.returns}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
-  </tbody>
-</table>
+<h4 class="returns">{{__global.returns}}</h4>
+{{{type.specName.0.value}}}
+<p>{{{description}}}</p>
 {{/return}}
 {{#typeParameters.0}}
-<h5 class="typeParameters">{{__global.typeParameters}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.name}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
+<h4 class="typeParameters">{{__global.typeParameters}}</h4>
 {{/typeParameters.0}}
 {{#typeParameters}}
-    <tr>
-      <td><span class="parametername">{{{id}}}</span></td>
-      <td>{{{description}}}</td>
-    </tr>
+<code><strong><span class="parametername">{{{id}}}</span></strong></code>
+<p>{{{description}}}</p>
 {{/typeParameters}}
-{{#typeParameters.0}}
-  </tbody>
-</table>
-{{/typeParameters.0}}
-{{#fieldValue}}
-<h5 class="fieldValue">{{__global.fieldValue}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
-  </tbody>
-</table>
-{{/fieldValue}}
-{{#propertyValue}}
-<h5 class="propertyValue">{{__global.propertyValue}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
-  </tbody>
-</table>
-{{/propertyValue}}
 {{#eventType}}
-<h5 class="eventType">{{__global.eventType}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
-  </tbody>
-</table>
+<h4 class="eventType">{{__global.eventType}}</h4>
+<code><strong>{{{type.specName.0.value}}}</strong></code>
+<p>{{{description}}}</p>
 {{/eventType}}
 {{/syntax}}
 {{#overridden}}
-<h5 class="overrides">{{__global.overrides}}</h5>
+<h4 class="overrides">{{__global.overrides}}</h4>
 <div><xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/></div>
 {{/overridden}}
 {{#remarks}}
-<h5 id="{{id}}_remarks">{{__global.remarks}}</h5>
+<h4 id="{{id}}_remarks">{{__global.remarks}}</h4>
 <div class="markdown level1 remarks">{{{remarks}}}</div>
 {{/remarks}}
 {{#example.0}}
-<h5 id="{{id}}_examples">{{__global.examples}}</h5>
+<h4 id="{{id}}_examples">{{__global.examples}}</h4>
 {{/example.0}}
 {{#example}}
 {{{.}}}
 {{/example}}
 {{#exceptions.0}}
-<h5 class="exceptions">{{__global.exceptions}}</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.condition}}</th>
-    </tr>
-  </thead>
-  <tbody>
+<h4 class="exceptions">{{__global.exceptions}}</h4>
 {{/exceptions.0}}
 {{#exceptions}}
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
+{{{type.specName.0.value}}}
+{{{description}}}
 {{/exceptions}}
-{{#exceptions.0}}
-  </tbody>
-</table>
-{{/exceptions.0}}
 {{#seealso.0}}
-<h5 id="{{id}}_seealso">{{__global.seealso}}</h5>
+<h4 id="{{id}}_seealso">{{__global.seealso}}</h4>
 <div class="seealso">
 {{/seealso.0}}
 {{#seealso}}
@@ -192,7 +91,7 @@
 {{/children}}
 {{/children}}
 {{#implements.0}}
-<h3 id="implements">{{__global.implements}}</h3>
+<h2 id="implements">{{__global.implements}}</h2>
 {{/implements.0}}
 {{#implements}}
 <div>
@@ -205,7 +104,7 @@
 </div>
 {{/implements}}
 {{#extensionMethods.0}}
-<h3 id="extensionmethods">{{__global.extensionMethods}}</h3>
+<h2 id="extensionmethods">{{__global.extensionMethods}}</h2>
 {{/extensionMethods.0}}
 {{#extensionMethods}}
 <div>
@@ -218,7 +117,7 @@
 </div>
 {{/extensionMethods}}
 {{#seealso.0}}
-<h3 id="seealso">{{__global.seealso}}</h3>
+<h2 id="seealso">{{__global.seealso}}</h2>
 <div class="seealso">
 {{/seealso.0}}
 {{#seealso}}
