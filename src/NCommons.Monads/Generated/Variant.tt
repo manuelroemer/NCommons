@@ -40,6 +40,14 @@ namespace NCommons.Monads
     ///     A container which either holds a value of one of the generic type parameters or no value at all.
     ///     See remarks for details.
     /// </summary>
+<#
+        for (var i = From; i <= currentTo; i++) {
+#>
+    /// <typeparam name="<#=T(i)#>">A type which may be held by the variant.</typeparam>
+<#
+        }
+#>
+    /// 
     /// <remarks>
     ///     <h3>General Usage</h3>
     ///
@@ -175,7 +183,7 @@ namespace NCommons.Monads
     ///     internal field for the <see cref="Variant{T1}"/>, the <see cref="Variant{T1, T2, T3, T4, T5, T6, T7, T8}"/>
     ///     has eight fields.
     ///     This results in a lot of data being copied when passing such a variant around.
-    ///     This can be avoided by using the <see langword="in"/> modifier when using a variant as a parameter:
+    ///     This can be avoided by using the <c>in</c> modifier when using a variant as a parameter:
     ///
     ///     <code>
     ///     // Try to use the "in" modifier whenever appropriate.
@@ -269,7 +277,7 @@ namespace NCommons.Monads
         /// </returns>
         /// <remarks>
         ///     The <see cref="HasValue<#=i#>"/> property can be used to determine whether the variant
-        ///     holds a value of that type.
+        ///     holds a value of type <typeparamref name="<#=T(i)#>"/>.
         ///     
         ///     The following code segment demonstrates this behavior using a variant with two
         ///     type parameters:

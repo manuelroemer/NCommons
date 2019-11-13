@@ -2,6 +2,16 @@
 **/Generated/*
 !**/Generated/**/*.tt
 
+# DocFx
+DROP/
+TEMP/
+packages/
+bin/
+obj/
+_site/
+doc/api/*.yml
+doc/api/.manifest
+
 # MacOS
 .DS_Store
 .AppleDouble
