@@ -53,26 +53,13 @@ jobs:
       packagesToPack: '**/*.csproj'
       arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
       outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
-    condition: |
-      and
-      (
-        succeeded(),
-        eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-        eq(variables['system.pullrequest.isfork'], false)
-      )
+    condition: eq(variables['system.pullrequest.isfork'], false)
       
   - task: PublishBuildArtifacts@1
     displayName: Publish NuGet Package Artifacts
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
       ArtifactName: 'NuGet Packages'
-    condition: |
-      and
-      (
-        succeeded(),
-        eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-        eq(variables['system.pullrequest.isfork'], false)
-      )
 
 - job: Doc
   dependsOn: Build
@@ -93,10 +80,4 @@ jobs:
     inputs:
       pathtoPublish: 'doc/_site'
       ArtifactName: 'Site'
-    condition: |
-      and
-      (
-        succeeded(),
-        eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-        eq(variables['system.pullrequest.isfork'], false)
-      )
+    condition: eq(variables['system.pullrequest.isfork'], false)
