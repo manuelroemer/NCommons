@@ -1,0 +1,83 @@
+trigger:
+- master
+
+name: $(SourceBranchName)_$(Date:yyyy-MM-dd)_$(Rev:.r)
+
+jobs:
+- job: Build
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  variables:
+    buildConfiguration: 'Release'
+    buildDir: 'src'
+  steps:
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 2.2
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '2.2.x'
+
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 3.0
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '3.0.x'
+
+  - task: DotNetCoreCLI@2
+    displayName: Restore NuGet Packages
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      arguments: '--configuration $(BuildConfiguration) --no-restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: test
+      projects: '**/*.csproj'
+      configuration: $(buildConfiguration)
+      nobuild: true
+      
+  - task: DotNetCoreCLI@2
+    displayName: Pack NuGet Packages
+    inputs:
+      command: 'pack'
+      packagesToPack: '**/*.csproj'
+      arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
+      outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
+    condition: eq(variables['system.pullrequest.isfork'], false)
+      
+  - task: PublishBuildArtifacts@1
+    displayName: Publish NuGet Package Artifacts
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
+      ArtifactName: 'NuGet Packages'
+
+- job: Doc
+  dependsOn: Build
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - script: choco install docfx --version 2.45
+    displayName: Install DocFX
+    
+  - task: PowerShell@2
+    displayName: Build
+    inputs:
+      filePath: 'doc/build.ps1'
+      workingDirectory: 'doc'
+
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Site artifact
+    inputs:
+      pathtoPublish: 'doc/_site'
+      ArtifactName: 'Site'
+    condition: eq(variables['system.pullrequest.isfork'], false)

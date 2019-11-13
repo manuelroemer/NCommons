@@ -1,0 +1,39 @@
+<#+
+public string T(int index, string format = null) {
+    format = format ?? "T{0}";
+	return string.Format(format, index);
+}
+
+public string[] Ts(int to, string format = null) => Ts(1, to, format);
+public string[] Ts(int from, int to, string format = null) {
+	return FromTo(from, to)
+        .Select(n => T(n, format)).ToArray();
+}
+	
+public string TList(int to, string format = null) => TList(1, to, format);
+public string TList(int from, int to, string format = null) {
+	return string.Join(", ", Ts(from, to, format));
+}
+
+public string TDefinition(int to, string format = null) => TDefinition(1, to, format);
+public string TDefinition(int from, int to, string format = null) {
+	return $"<{TList(from, to, format)}>";
+}
+
+public string TXmlDefinition(int to, string format = null) => TXmlDefinition(1, to, format);
+public string TXmlDefinition(int from, int to, string format = null) {
+    return $"{{{TList(from, to, format)}}}";
+}
+
+public string TParameters(int to, Func<int, string> createParameter) => TParameters(1, to, createParameter);
+public string TParameters(int from, int to, Func<int, string> createParameter) {
+    return string.Join(
+        ", ", 
+        FromTo(from, to).Select(index => createParameter(index))
+    );
+}
+
+private IEnumerable<int> FromTo(int from, int to) {
+    return Enumerable.Range(from, Math.Max(0, to - from + 1));
+}
+#>
