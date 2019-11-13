@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class WeakReferenceCollection&lt;T&gt;
+   | NCommons </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class WeakReferenceCollection&lt;T&gt;
+   | NCommons ">
+    <meta name="generator" content="docfx 2.45.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="NCommons">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container-fluid hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container-fluid body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-9">
+            <article class="content wrap" id="_content" data-uid="NCommons.Collections.WeakReferenceCollection`1">
+  
+  
+  <h1 id="NCommons_Collections_WeakReferenceCollection_1" data-uid="NCommons.Collections.WeakReferenceCollection`1" class="text-break">Class WeakReferenceCollection&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>A special collection which only holds weak references to the elements
+that are added to it.
+This allows the elements that are added to this list to be garbage-collected.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">WeakReferenceCollection&lt;T&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NCommons.Collections.html">NCommons.Collections</a></h6>
+  <h6><strong>Assembly</strong>: NCommons.Collections.dll</h6>
+  <h5 id="NCommons_Collections_WeakReferenceCollection_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class WeakReferenceCollection&lt;T&gt; : Object, IEnumerable&lt;T&gt;, IEnumerable where T : class</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p><p>The type of items added to the collection.</p>
+
+  <h2 id="NCommons_Collections_WeakReferenceCollection_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This collection only implements the <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a> interface, because
+not all members of <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> can be implemented.</p>
+</div>
+  <h2 id="constructors">Constructors
+  </h2>
+  <a id="NCommons_Collections_WeakReferenceCollection_1__ctor_" data-uid="NCommons.Collections.WeakReferenceCollection`1.#ctor*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1__ctor" data-uid="NCommons.Collections.WeakReferenceCollection`1.#ctor">WeakReferenceCollection()</h3>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.WeakReferenceCollection-1.html">WeakReferenceCollection&lt;T&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WeakReferenceCollection()</code></pre>
+  </div>
+  <h2 id="methods">Methods
+  </h2>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_Add_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Add*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_Add__0_System_Boolean_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Add(`0,System.Boolean)">Add(T, Boolean)</h3>
+  <div class="markdown level1 summary"><p>Adds a weak reference to the <code data-dev-comment-type="paramref" class="paramref">item</code> to the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(T item, bool trackResurrection = false)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">item</span></strong></code>
+  <p><p>The item to be added to the collection.</p>
+</p>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <code><strong><span class="parametername">trackResurrection</span></strong></code>
+  <p><p><span class="xref">true</span> to track the object after finalization;
+<span class="xref">false</span> to track the object only until finalization.</p>
+</p>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_Clear_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Clear*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_Clear" data-uid="NCommons.Collections.WeakReferenceCollection`1.Clear">Clear()</h3>
+  <div class="markdown level1 summary"><p>Clears the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_ClearDeadReferences_" data-uid="NCommons.Collections.WeakReferenceCollection`1.ClearDeadReferences*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_ClearDeadReferences" data-uid="NCommons.Collections.WeakReferenceCollection`1.ClearDeadReferences">ClearDeadReferences()</h3>
+  <div class="markdown level1 summary"><p>Iterates over the whole collection and removes any dead references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearDeadReferences()</code></pre>
+  </div>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_Contains_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Contains*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_Contains__0_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Contains(`0)">Contains(T)</h3>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether the collection contains an alive reference to
+the specified <code data-dev-comment-type="paramref" class="paramref">item</code>.
+This may purge dead references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(T item)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">item</span></strong></code>
+  <p><p>The item.</p>
+</p>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><p><code>true</code> if the collection contains an alive reference to the specified
+<code data-dev-comment-type="paramref" class="paramref">item</code>; <code>false</code> if not.</p>
+</p>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_GetEnumerator_" data-uid="NCommons.Collections.WeakReferenceCollection`1.GetEnumerator*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_GetEnumerator" data-uid="NCommons.Collections.WeakReferenceCollection`1.GetEnumerator">GetEnumerator()</h3>
+  <div class="markdown level1 summary"><p>Returns an enumerator which iterates over all active weak references in the
+collection.
+Dead references are purged on-the-fly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;
+  <p>
+  <a id="NCommons_Collections_WeakReferenceCollection_1_Remove_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Remove*"></a>
+  <h3 id="NCommons_Collections_WeakReferenceCollection_1_Remove__0_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Remove(`0)">Remove(T)</h3>
+  <div class="markdown level1 summary"><p>Removes the first occurence of the specified <code data-dev-comment-type="paramref" class="paramref">item</code> from the
+collection.
+This may purge dead references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(T item)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">item</span></strong></code>
+  <p><p>The item to be removed from the collection.</p>
+</p>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><p><code>true</code> if the item was removed from the collection;
+<code>false</code> if no such item was found in the collection.</p>
+</p>
+  <h2 id="implements">Implements</h2>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">System.Collections.IEnumerable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container-fluid">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &copy; 2019 Manuel Römer - Generated with <a href="https://github.com/dotnet/docfx">DocFX</a> - <a href="https://gist.github.com/manuelroemer/2aa8fc4e377874ae93dbd26e779cdbf6">Impressum (Imprint)</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

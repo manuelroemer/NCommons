@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PriorityQueue&lt;T&gt;
+   | NCommons </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PriorityQueue&lt;T&gt;
+   | NCommons ">
+    <meta name="generator" content="docfx 2.45.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="NCommons">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container-fluid hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container-fluid body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-9">
+            <article class="content wrap" id="_content" data-uid="NCommons.Collections.PriorityQueue`1">
+  
+  
+  <h1 id="NCommons_Collections_PriorityQueue_1" data-uid="NCommons.Collections.PriorityQueue`1" class="text-break">Class PriorityQueue&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Stores and serves items ordered by a priority.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">PriorityQueue&lt;T&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;T&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NCommons.Collections.html">NCommons.Collections</a></h6>
+  <h6><strong>Assembly</strong>: NCommons.Collections.dll</h6>
+  <h5 id="NCommons_Collections_PriorityQueue_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PriorityQueue&lt;T&gt; : Object, IPriorityQueue&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable, IReadOnlyCollection&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p><p>The type of items contained in the priority queue.</p>
+
+  <h2 id="NCommons_Collections_PriorityQueue_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>The <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class is, at its heart, just a wrapper around
+another <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> implementation.
+This basically means that you don't have to use it at all - you could simply use
+any class that implements the <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> interface directly
+(for example the <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a>, which is also used by this class,
+if no other <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance was specified).</p>
+<p>With that being said, using this class usually makes code more clear, because certain
+<a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> implementations rename methods (for instance, the
+<a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a> doesn't expose <code>Enqueue / Dequeue</code> methods; instead,
+they are called <code>Push / Pop</code>).
+It also makes understanding the instanciations easier. For instance, have a look at
+the following example:</p>
+<pre><code>    var pq1 = new BinaryHeap&lt;int>();
+    var pq2 = new PriorityQueue&lt;int>();</code></pre>
+<p>Both result in an (implicit) <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a>, but the second line
+makes that much more obvious.</p>
+</div>
+  <h2 id="constructors">Constructors
+  </h2>
+  <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1__ctor" data-uid="NCommons.Collections.PriorityQueue`1.#ctor">PriorityQueue()</h3>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PriorityQueue()</code></pre>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1__ctor_NCommons_Collections_IPriorityQueue__0__" data-uid="NCommons.Collections.PriorityQueue`1.#ctor(NCommons.Collections.IPriorityQueue{`0})">PriorityQueue(IPriorityQueue&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> instance which directly
+uses the specified <code data-dev-comment-type="paramref" class="paramref">underlyingQueue</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PriorityQueue(IPriorityQueue&lt;T&gt; underlyingQueue)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue</a>&lt;T&gt;
+  <code><strong><span class="parametername">underlyingQueue</span></strong></code>
+  <p><p>An <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance which will be wrapped and thus
+directly be used by this priority queue.</p>
+<p>If <code>null</code>, a new, default queue is used.</p>
+</p>
+  <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1__ctor_System_Collections_Generic_IComparer__0__" data-uid="NCommons.Collections.PriorityQueue`1.#ctor(System.Collections.Generic.IComparer{`0})">PriorityQueue(IComparer&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class with the
+specified <code data-dev-comment-type="paramref" class="paramref">comparer</code> for determining the priority of items
+during insertion and retrieval.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PriorityQueue(IComparer&lt;T&gt; comparer)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer</a>&lt;T&gt;
+  <code><strong><span class="parametername">comparer</span></strong></code>
+  <p><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer&lt;T&gt;</a> instance which is used for for determining the
+priority of items during insertion and retrieval.</p>
+<p>If <code>null</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.comparer-1.default#System_Collections_Generic_Comparer_1_Default">Default</a> is used.</p>
+</p>
+  <h2 id="properties">Properties
+  </h2>
+  <a id="NCommons_Collections_PriorityQueue_1_Comparer_" data-uid="NCommons.Collections.PriorityQueue`1.Comparer*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Comparer" data-uid="NCommons.Collections.PriorityQueue`1.Comparer">Comparer</h3>
+  <div class="markdown level1 summary"><p>Gets the comparer which is used to determine the priority of items during
+insertion and retrieval.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IComparer&lt;T&gt; Comparer { get; }</code></pre>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1_Count_" data-uid="NCommons.Collections.PriorityQueue`1.Count*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Count" data-uid="NCommons.Collections.PriorityQueue`1.Count">Count</h3>
+  <div class="markdown level1 summary"><p>Gets the number of elements in the priority queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1_UnderlyingQueue_" data-uid="NCommons.Collections.PriorityQueue`1.UnderlyingQueue*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_UnderlyingQueue" data-uid="NCommons.Collections.PriorityQueue`1.UnderlyingQueue">UnderlyingQueue</h3>
+  <div class="markdown level1 summary"><p>Gets the underlying <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance which backs this
+priority queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IPriorityQueue&lt;T&gt; UnderlyingQueue { get; }</code></pre>
+  </div>
+  <h2 id="methods">Methods
+  </h2>
+  <a id="NCommons_Collections_PriorityQueue_1_Clear_" data-uid="NCommons.Collections.PriorityQueue`1.Clear*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Clear" data-uid="NCommons.Collections.PriorityQueue`1.Clear">Clear()</h3>
+  <div class="markdown level1 summary"><p>Removes all items from the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Clear()</code></pre>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1_Dequeue_" data-uid="NCommons.Collections.PriorityQueue`1.Dequeue*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Dequeue" data-uid="NCommons.Collections.PriorityQueue`1.Dequeue">Dequeue()</h3>
+  <div class="markdown level1 summary"><p>Removes and returns the item with the highest priority from the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual T Dequeue()</code></pre>
+  </div>
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p><p>The item that was removed from the queue and had the highest priority.</p>
+</p>
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
+  <p>Thrown when the queue is empty, i.e. when it does not contain any items.
+Use <a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_TryDequeue__0__">TryDequeue(out T)</a> for an exception-less version.</p>
+
+  <h4 id="NCommons_Collections_PriorityQueue_1_Dequeue_seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_TryDequeue__0__">TryDequeue(out T)</a></div>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1_Enqueue_" data-uid="NCommons.Collections.PriorityQueue`1.Enqueue*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Enqueue__0_" data-uid="NCommons.Collections.PriorityQueue`1.Enqueue(`0)">Enqueue(T)</h3>
+  <div class="markdown level1 summary"><p>Inserts the specified <code data-dev-comment-type="paramref" class="paramref">item</code> at the correct position into the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Enqueue(T item)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">item</span></strong></code>
+  <p><p>The item to be inserted into the queue.</p>
+</p>
+  <a id="NCommons_Collections_PriorityQueue_1_GetEnumerator_" data-uid="NCommons.Collections.PriorityQueue`1.GetEnumerator*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_GetEnumerator" data-uid="NCommons.Collections.PriorityQueue`1.GetEnumerator">GetEnumerator()</h3>
+  <div class="markdown level1 summary"><p>Returns an enumerator which iterates over the elements in the queue.
+The iterator does not necessarily iterate over the items in the prioritized order.
+See remarks of <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> for details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;
+  <p><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator&lt;T&gt;</a> which allows iterating over the queue's elements.</p>
+</p>
+  <a id="NCommons_Collections_PriorityQueue_1_Peek_" data-uid="NCommons.Collections.PriorityQueue`1.Peek*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_Peek" data-uid="NCommons.Collections.PriorityQueue`1.Peek">Peek()</h3>
+  <div class="markdown level1 summary"><p>Returns the item with the highest priority without removing it from the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual T Peek()</code></pre>
+  </div>
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p><p>The item with the highest priority.</p>
+</p>
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
+  <p>Thrown when the queue is empty, i.e. when it does not contain any items.
+Use <a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_TryPeek__0__">TryPeek(out T)</a> for an exception-less version.</p>
+
+  <h4 id="NCommons_Collections_PriorityQueue_1_Peek_seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_TryPeek__0__">TryPeek(out T)</a></div>
+  </div>
+  <a id="NCommons_Collections_PriorityQueue_1_TryDequeue_" data-uid="NCommons.Collections.PriorityQueue`1.TryDequeue*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_TryDequeue__0__" data-uid="NCommons.Collections.PriorityQueue`1.TryDequeue(`0@)">TryDequeue(out T)</h3>
+  <div class="markdown level1 summary"><p>Attempts to remove and return the item with the highest priority from the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryDequeue(out T result)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">result</span></strong></code>
+  <p><p>When this method succeeded, this parameter holds the result of the operation, i.e.
+the item with the highest priority.</p>
+</p>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
+<code>false</code> if the queue was empty.</p>
+</p>
+  <a id="NCommons_Collections_PriorityQueue_1_TryPeek_" data-uid="NCommons.Collections.PriorityQueue`1.TryPeek*"></a>
+  <h3 id="NCommons_Collections_PriorityQueue_1_TryPeek__0__" data-uid="NCommons.Collections.PriorityQueue`1.TryPeek(`0@)">TryPeek(out T)</h3>
+  <div class="markdown level1 summary"><p>Attempts to return the item with the highest priority without removing it from the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryPeek(out T result)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">result</span></strong></code>
+  <p><p>When this method succeeded, this parameter holds the result of the operation, i.e.
+the item with the highest priority.</p>
+</p>
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
+<code>false</code> if the queue was empty.</p>
+</p>
+  <h4 id="NCommons_Collections_PriorityQueue_1_TryPeek__0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_Peek">Peek()</a></div>
+  </div>
+  <h2 id="implements">Implements</h2>
+  <div>
+      <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">System.Collections.IEnumerable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container-fluid">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &copy; 2019 Manuel Römer - Generated with <a href="https://github.com/dotnet/docfx">DocFX</a> - <a href="https://gist.github.com/manuelroemer/2aa8fc4e377874ae93dbd26e779cdbf6">Impressum (Imprint)</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
