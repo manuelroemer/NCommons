@@ -7,7 +7,7 @@
     <Description>
 A reusable set of common members which may be useful in any kind project.
 
-This library provides several members which assist in writing type-safe and exhaustive code. Even though the package is called "Monads", the included members don't necessarily have to be monadic. In general, the goal of the package is to provide utility types, monadic or not, which assist in writing precise code that still looks and behaves like traditional C#. While inspired by functional programming languages, the provided types still look and feel like types that could come straight from the .NET Framework's BCL.
+This library provides several members which assist in writing type-safe and expressive code. Even though the package is called "Monads", the included members don't necessarily have to be monadic. In general, the goal of the package is to provide utility types, monadic or not, which assist in writing precise code that still looks and behaves like traditional C#. While inspired by functional programming languages, the provided types still look and feel like types that could come straight from the .NET Framework's BCL.
 
 Commonly Used Types:
 Optional&lt;T&gt;
