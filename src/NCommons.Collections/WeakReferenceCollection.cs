@@ -19,7 +19,7 @@
     ///     This collection only implements the <see cref="IEnumerable{T}"/> interface, because
     ///     not all members of <see cref="ICollection{T}"/> can be implemented.
     /// </remarks>
-    public sealed class WeakReferenceCollection<T> : IEnumerable<T> where T : class
+    public sealed class WeakReferenceCollection<T> : IEnumerable<T> where T : class?
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -40,7 +40,11 @@
         ///     Adds a weak reference to the <paramref name="item"/> to the collection.
         /// </summary>
         /// <param name="item">The item to be added to the collection.</param>
-        public void Add(T item)
+        /// <param name="trackResurrection">
+        ///     <see langword="true"/> to track the object after finalization;
+        ///     <see langword="false"/> to track the object only until finalization.
+        /// </param>
+        public void Add(T item, bool trackResurrection = false)
         {
             IncrementVersion();
             if (item is null)
@@ -49,7 +53,7 @@
             }
             else
             {
-                _underlyingCollection.Add(new WeakReference<T>(item));
+                _underlyingCollection.Add(new WeakReference<T>(item, trackResurrection));
             }
         }
 
@@ -160,7 +164,7 @@
             }
         }
 
-        public struct Enumerator : IEnumerator<T>
+        private struct Enumerator : IEnumerator<T>
         {
 
             private const int EnumerationNotStartedYet = -1;
@@ -171,7 +175,7 @@
             private int _pos;
             private T _current;
 
-            object IEnumerator.Current => Current;
+            object? IEnumerator.Current => Current;
 
             public T Current
             {
@@ -202,11 +206,9 @@
                     var itemRef = _collection._underlyingCollection[_pos];
                     if (itemRef is null)
                     {
-#nullable disable
                         // The WeakReference<T> is null. -> null was added to the collection.
-                        _current = null;
+                        _current = null!;
                         return true;
-#nullable restore
                     }
                     else
                     {
@@ -228,21 +230,17 @@
                     }
                 }
 
-#nullable disable
                 // If we get here, nothing was found, i.e. the enumeration ended.
-                _current = null;
+                _current = null!;
                 _pos = EnumerationFinished;
                 return false;
-#nullable restore
             }
 
             public void Reset()
             {
-#nullable disable
                 VerifyVersion();
                 _pos = EnumerationNotStartedYet;
-                _current = null;
-#nullable restore
+                _current = null!;
             }
 
             public void Dispose() { }

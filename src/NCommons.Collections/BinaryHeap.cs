@@ -144,10 +144,8 @@
             }
             else
             {
-#nullable disable
-                result = default;
+                result = default!;
                 return false;
-#nullable restore
             }
         }
 
@@ -214,10 +212,8 @@
             }
             else
             {
-#nullable disable
-                result = default;
+                result = default!;
                 return false;
-#nullable restore
             }
         }
 

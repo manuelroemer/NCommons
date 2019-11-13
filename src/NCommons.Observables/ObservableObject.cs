@@ -133,7 +133,7 @@
         /// </exception>
         protected void Set(Action setProperty, [CallerMemberName]string? propertyName = "")
         {
-            if (setProperty is null) throw new ArgumentNullException(nameof(setProperty));
+            _ = setProperty ?? throw new ArgumentNullException(nameof(setProperty));
 
             OnPropertyChanging(propertyName);
             setProperty();

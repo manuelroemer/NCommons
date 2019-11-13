@@ -3,86 +3,81 @@ trigger:
 
 name: $(SourceBranchName)_$(Date:yyyy-MM-dd)_$(Rev:.r)
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+jobs:
+- job: Build
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  variables:
+    buildConfiguration: 'Release'
+    buildDir: 'src'
+  steps:
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 2.2
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '2.2.x'
 
-variables:
-  buildConfiguration: 'Release'
-  buildDir: 'src'
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 3.0
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '3.0.x'
 
-steps:
-- task: DotNetCoreInstaller@1
-  displayName: Install .NET Core 3.0
-  inputs:
-    packageType: 'sdk'
-    includePreviewVersions: true
-    version: '3.0.x'
+  - task: DotNetCoreCLI@2
+    displayName: Restore NuGet Packages
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      arguments: '--configuration $(BuildConfiguration) --no-restore'
 
-- task: DotNetCoreCLI@2
-  displayName: NuGet Restore
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: test
+      projects: '**/*.csproj'
+      configuration: $(buildConfiguration)
+      nobuild: true
+      
+  - task: DotNetCoreCLI@2
+    displayName: Pack NuGet Packages
+    inputs:
+      command: 'pack'
+      packagesToPack: '**/*.csproj'
+      arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
+      outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
+    condition: eq(variables['system.pullrequest.isfork'], false)
+      
+  - task: PublishBuildArtifacts@1
+    displayName: Publish NuGet Package Artifacts
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
+      ArtifactName: 'NuGet Packages'
 
-- script: dotnet build $(buildDir) -c $(buildConfiguration)
-  displayName: Build
+- job: Doc
+  dependsOn: Build
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - script: choco install docfx --version 2.45
+    displayName: Install DocFX
+    
+  - task: PowerShell@2
+    displayName: Build
+    inputs:
+      filePath: 'doc/build.ps1'
+      workingDirectory: 'doc'
 
-- task: DotNetCoreCLI@2
-  displayName: Run Tests
-  inputs:
-    command: test
-    projects: '**/*.csproj'
-    configuration: $(buildConfiguration)
-    nobuild: true
-
-- task: DotNetCoreInstaller@1
-  displayName: Install .NET Core 2.1 for InheritDoc
-  inputs:
-    packageType: 'sdk'
-    version: '2.1.x'
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    )
-
-- script: dotnet tool install -g InheritDocTool
-  displayName: Install InheritDoc
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    )
-
-- script: InheritDoc -o
-  displayName: Run InheritDoc
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    )
-
-- script: dotnet pack src --no-build --output $(Build.ArtifactStagingDirectory) -c $(buildConfiguration)
-  displayName: NuGet - Pack Projects
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-      eq(variables['system.pullrequest.isfork'], false)
-    )
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    ArtifactName: 'NuGet Packages'
-  condition: |
-    and
-    (
-      succeeded(),
-      eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-      eq(variables['system.pullrequest.isfork'], false)
-    )
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Site artifact
+    inputs:
+      pathtoPublish: 'doc/_site'
+      ArtifactName: 'Site'
+    condition: eq(variables['system.pullrequest.isfork'], false)
