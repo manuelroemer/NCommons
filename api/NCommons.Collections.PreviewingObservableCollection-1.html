@@ -94,7 +94,7 @@ going to change and when they have actually changed.</p>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <code><strong><span class="parametername">T</span></strong></code>
-  <p><p>The type of elements in the collection.</p>
+  <p>The type of elements in the collection.</p>
 
   <h2 id="constructors">Constructors
   </h2>
@@ -120,8 +120,8 @@ class that contains elements copied from the specified <code data-dev-comment-ty
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;
   <code><strong><span class="parametername">collection</span></strong></code>
-  <p><p>The collection from which the elements are copied.</p>
-</p>
+  <p>The collection from which the elements are copied.</p>
+
   <h4 class="exceptions">Exceptions</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
   <p><code data-dev-comment-type="paramref" class="paramref">collection</code></p>
@@ -139,8 +139,8 @@ class that contains elements copied from the specified <code data-dev-comment-ty
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;
   <code><strong><span class="parametername">list</span></strong></code>
-  <p><p>The list from which the elements are copied.</p>
-</p>
+  <p>The list from which the elements are copied.</p>
+
   <h4 class="exceptions">Exceptions</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
   <p><code data-dev-comment-type="paramref" class="paramref">list</code></p>
@@ -158,7 +158,7 @@ class that contains elements copied from the specified <code data-dev-comment-ty
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="NCommons.Collections.NotifyCollectionChangingEventHandler.html">NotifyCollectionChangingEventHandler</a>
   <code><strong><span class="parametername">value</span></strong></code>
-  <p>
+  
   <a id="NCommons_Collections_PreviewingObservableCollection_1_BlockCollectionChangingReentrancy_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.BlockCollectionChangingReentrancy*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_BlockCollectionChangingReentrancy" data-uid="NCommons.Collections.PreviewingObservableCollection`1.BlockCollectionChangingReentrancy">BlockCollectionChangingReentrancy()</h3>
   <div class="markdown level1 summary"><p>Ensures that any action which modifies this collection throws an
@@ -173,9 +173,9 @@ class that contains elements copied from the specified <code data-dev-comment-ty
   </div>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  <p><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a> which is used to scope the lifetime of the
+  <p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a> which is used to scope the lifetime of the
 reentrancy block.</p>
-</p>
+
   <h4 id="NCommons_Collections_PreviewingObservableCollection_1_BlockCollectionChangingReentrancy_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>The only exception to this rule is if <a class="xref" href="NCommons.Collections.PreviewingObservableCollection-1.html#NCommons_Collections_PreviewingObservableCollection_1_CollectionChanging">CollectionChanging</a> has 1 or less
 subscribers.</p>
@@ -225,12 +225,12 @@ throwing the exception.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>
   <code><strong><span class="parametername">index</span></strong></code>
-  <p><p>The zero-based index where to insert the item.</p>
-</p>
+  <p>The zero-based index where to insert the item.</p>
+
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item to be inserted.</p>
-</p>
+  <p>The item to be inserted.</p>
+
   <a id="NCommons_Collections_PreviewingObservableCollection_1_MoveItem_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.MoveItem*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_MoveItem_System_Int32_System_Int32_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.MoveItem(System.Int32,System.Int32)">MoveItem(Int32, Int32)</h3>
   <div class="markdown level1 summary"><p>Moves the item at the specified index to a new location in the collection.</p>
@@ -243,12 +243,12 @@ throwing the exception.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>
   <code><strong><span class="parametername">oldIndex</span></strong></code>
-  <p><p>The zero-based index of the item to be moved.</p>
-</p>
+  <p>The zero-based index of the item to be moved.</p>
+
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>
   <code><strong><span class="parametername">newIndex</span></strong></code>
-  <p><p>The zero-based index to which the item should be moved.</p>
-</p>
+  <p>The zero-based index to which the item should be moved.</p>
+
   <a id="NCommons_Collections_PreviewingObservableCollection_1_OnCollectionChanging_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.OnCollectionChanging*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_OnCollectionChanging_System_Collections_Specialized_NotifyCollectionChangedEventArgs_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.OnCollectionChanging(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">OnCollectionChanging(NotifyCollectionChangedEventArgs)</h3>
   <div class="markdown level1 summary"><p>Raises the <a class="xref" href="NCommons.Collections.INotifyCollectionChanging.html">INotifyCollectionChanging</a> event with the provided
@@ -262,8 +262,8 @@ event args.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.notifycollectionchangedeventargs">NotifyCollectionChangedEventArgs</a>
   <code><strong><span class="parametername">e</span></strong></code>
-  <p><p>The event args.</p>
-</p>
+  <p>The event args.</p>
+
   <a id="NCommons_Collections_PreviewingObservableCollection_1_remove_CollectionChanging_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.remove_CollectionChanging*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_remove_CollectionChanging_NCommons_Collections_NotifyCollectionChangingEventHandler_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.remove_CollectionChanging(NCommons.Collections.NotifyCollectionChangingEventHandler)">remove_CollectionChanging(NotifyCollectionChangingEventHandler)</h3>
   <div class="markdown level1 summary"></div>
@@ -275,7 +275,7 @@ event args.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="NCommons.Collections.NotifyCollectionChangingEventHandler.html">NotifyCollectionChangingEventHandler</a>
   <code><strong><span class="parametername">value</span></strong></code>
-  <p>
+  
   <a id="NCommons_Collections_PreviewingObservableCollection_1_RemoveItem_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.RemoveItem*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_RemoveItem_System_Int32_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.RemoveItem(System.Int32)">RemoveItem(Int32)</h3>
   <div class="markdown level1 summary"><p>Removes the item at the specified <code data-dev-comment-type="paramref" class="paramref">index</code> of the collection.</p>
@@ -288,8 +288,8 @@ event args.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>
   <code><strong><span class="parametername">index</span></strong></code>
-  <p><p>The zero-based index of the item to be removed.</p>
-</p>
+  <p>The zero-based index of the item to be removed.</p>
+
   <a id="NCommons_Collections_PreviewingObservableCollection_1_SetItem_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.SetItem*"></a>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_SetItem_System_Int32__0_" data-uid="NCommons.Collections.PreviewingObservableCollection`1.SetItem(System.Int32,`0)">SetItem(Int32, T)</h3>
   <div class="markdown level1 summary"><p>Replaces the item at the specified <code data-dev-comment-type="paramref" class="paramref">index</code>.</p>
@@ -302,12 +302,12 @@ event args.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>
   <code><strong><span class="parametername">index</span></strong></code>
-  <p><p>The zero-based index of the item to be replaced.</p>
-</p>
+  <p>The zero-based index of the item to be replaced.</p>
+
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item with which to replace the old item.</p>
-</p>
+  <p>The item with which to replace the old item.</p>
+
   <h2 id="events">Events
   </h2>
   <h3 id="NCommons_Collections_PreviewingObservableCollection_1_CollectionChanging" data-uid="NCommons.Collections.PreviewingObservableCollection`1.CollectionChanging">CollectionChanging</h3>
@@ -320,8 +320,8 @@ happened.</p>
     <pre><code class="lang-csharp hljs">public event NotifyCollectionChangingEventHandler CollectionChanging</code></pre>
   </div>
   <h4 class="eventType">Event Type</h4>
-  <code><strong><a class="xref" href="NCommons.Collections.NotifyCollectionChangingEventHandler.html">NotifyCollectionChangingEventHandler</a></strong></code>
-  <p>
+  <a class="xref" href="NCommons.Collections.NotifyCollectionChangingEventHandler.html">NotifyCollectionChangingEventHandler</a>
+  
   <h2 id="implements">Implements</h2>
   <div>
       <a class="xref" href="NCommons.Collections.INotifyCollectionChanging.html">INotifyCollectionChanging</a>

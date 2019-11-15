@@ -96,7 +96,7 @@ This allows the elements that are added to this list to be garbage-collected.</p
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <code><strong><span class="parametername">T</span></strong></code>
-  <p><p>The type of items added to the collection.</p>
+  <p>The type of items added to the collection.</p>
 
   <h2 id="NCommons_Collections_WeakReferenceCollection_1_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>This collection only implements the <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a> interface, because
@@ -127,13 +127,13 @@ not all members of <a class="xref" href="https://docs.microsoft.com/dotnet/api/s
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item to be added to the collection.</p>
-</p>
+  <p>The item to be added to the collection.</p>
+
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
   <code><strong><span class="parametername">trackResurrection</span></strong></code>
-  <p><p><span class="xref">true</span> to track the object after finalization;
+  <p><span class="xref">true</span> to track the object after finalization;
 <span class="xref">false</span> to track the object only until finalization.</p>
-</p>
+
   <a id="NCommons_Collections_WeakReferenceCollection_1_Clear_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Clear*"></a>
   <h3 id="NCommons_Collections_WeakReferenceCollection_1_Clear" data-uid="NCommons.Collections.WeakReferenceCollection`1.Clear">Clear()</h3>
   <div class="markdown level1 summary"><p>Clears the collection.</p>
@@ -166,13 +166,13 @@ This may purge dead references.</p>
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item.</p>
-</p>
+  <p>The item.</p>
+
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
-  <p><p><code>true</code> if the collection contains an alive reference to the specified
+  <p><code>true</code> if the collection contains an alive reference to the specified
 <code data-dev-comment-type="paramref" class="paramref">item</code>; <code>false</code> if not.</p>
-</p>
+
   <a id="NCommons_Collections_WeakReferenceCollection_1_GetEnumerator_" data-uid="NCommons.Collections.WeakReferenceCollection`1.GetEnumerator*"></a>
   <h3 id="NCommons_Collections_WeakReferenceCollection_1_GetEnumerator" data-uid="NCommons.Collections.WeakReferenceCollection`1.GetEnumerator">GetEnumerator()</h3>
   <div class="markdown level1 summary"><p>Returns an enumerator which iterates over all active weak references in the
@@ -186,7 +186,7 @@ Dead references are purged on-the-fly.</p>
   </div>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;
-  <p>
+  
   <a id="NCommons_Collections_WeakReferenceCollection_1_Remove_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Remove*"></a>
   <h3 id="NCommons_Collections_WeakReferenceCollection_1_Remove__0_" data-uid="NCommons.Collections.WeakReferenceCollection`1.Remove(`0)">Remove(T)</h3>
   <div class="markdown level1 summary"><p>Removes the first occurence of the specified <code data-dev-comment-type="paramref" class="paramref">item</code> from the
@@ -201,13 +201,13 @@ This may purge dead references.</p>
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item to be removed from the collection.</p>
-</p>
+  <p>The item to be removed from the collection.</p>
+
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
-  <p><p><code>true</code> if the item was removed from the collection;
+  <p><code>true</code> if the item was removed from the collection;
 <code>false</code> if no such item was found in the collection.</p>
-</p>
+
   <h2 id="implements">Implements</h2>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>

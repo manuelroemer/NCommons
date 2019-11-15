@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.BinaryHeap-1.html",
-          "hash": "xWNOCqY4xS3W/VWvlrTDqg=="
+          "hash": "ggSPN7z0LSPKTnPUQav1zQ=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.Heap-1.html",
-          "hash": "Eecd/vmZs6++5FTIx+HR1g=="
+          "hash": "95376a1CcIaDphlTUy+rlw=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.INotifyCollectionChanging.html",
-          "hash": "jJELFWvtZbcZd2D9MgD7Pg=="
+          "hash": "j7MjRSwUBXW7Qm6joPDUuQ=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.IPriorityQueue-1.html",
-          "hash": "QvdlxpQB6Qa8kR7d8881Iw=="
+          "hash": "tIvKxLsHPVJ9+FuZqQmWLw=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.NotifyCollectionChangingEventHandler.html",
-          "hash": "PAShOzpWxGqIpdBKIwG2Vg=="
+          "hash": "DY278jyH6+s+/3g6BVcgWw=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.PreviewingObservableCollection-1.html",
-          "hash": "HslhPUki/jRSBWjNwvK2Rg=="
+          "hash": "gDJarAnmLPcfxKH3Lzg8Qg=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.PriorityQueue-1.html",
-          "hash": "Un1jMXs78y9yfJVpUcZFPQ=="
+          "hash": "wsnIqZr60882WNBaK5SbSQ=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Collections.WeakReferenceCollection-1.html",
-          "hash": "hhCns/0bZT3VCa+lPG3Enw=="
+          "hash": "w4IX0wK4U1FRRQZutTLjhQ=="
         }
       },
       "is_incremental": false,
@@ -113,11 +113,143 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Optional-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Optional-1.html",
+          "hash": "Udpnq8b8QGW/iIMYeeAldw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Optional.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Optional.html",
+          "hash": "lvm+agc3mDUJgiua1UuFRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-1.html",
+          "hash": "YQsq6ywGsC79doebptUwIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-2.html",
+          "hash": "zMuo+xuhGUjWeM6DJiGICw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-3.html",
+          "hash": "rW9+fUgVo56DhdzOcbzcCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-4.html",
+          "hash": "DEZcxL2YfJd7+LbDRuQGpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-5.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-5.html",
+          "hash": "1wEftz+rFz/jRXCdHVin4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-6.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-6.html",
+          "hash": "MzOsS7VxRKXzZzOfKYIJtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-7.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-7.html",
+          "hash": "+lC2jeGB4hJbHv7IHdO6ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.Variant-8.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.Variant-8.html",
+          "hash": "CVQ3W4B+mn6hln7tx1bplA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NCommons.Monads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NCommons.Monads.html",
+          "hash": "BU3iAZARDd93rm+nMSkbHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NCommons.Observables.ObservableObject.yml",
       "output": {
         ".html": {
           "relative_path": "api/NCommons.Observables.ObservableObject.html",
-          "hash": "9ldEIzJ3aOr0XXQmUJljzA=="
+          "hash": "P0i5yYn90CXmmsBVGAhhBQ=="
         }
       },
       "is_incremental": false,
@@ -141,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "aibhI2C/D65DeHZEvwrScw=="
+          "hash": "kMZ1lh0kdaFY3C9VwlhtwQ=="
         }
       },
       "is_incremental": false,
@@ -187,7 +319,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 11,
+          "total_file_count": 22,
           "skipped_file_count": 0
         }
       }

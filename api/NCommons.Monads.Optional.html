@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Optional
+   | NCommons </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Optional
+   | NCommons ">
+    <meta name="generator" content="docfx 2.45.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="NCommons">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container-fluid hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container-fluid body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-9">
+            <article class="content wrap" id="_content" data-uid="NCommons.Monads.Optional">
+  
+  
+  <h1 id="NCommons_Monads_Optional" data-uid="NCommons.Monads.Optional" class="text-break">Class Optional
+  </h1>
+  <div class="markdown level0 summary"><p>Defines static functions which assist with the creation of and interaction with
+<a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instances.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">Optional</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NCommons.Monads.html">NCommons.Monads</a></h6>
+  <h6><strong>Assembly</strong>: NCommons.Monads.dll</h6>
+  <h5 id="NCommons_Monads_Optional_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Optional : Object</code></pre>
+  </div>
+  <h2 id="methods">Methods
+  </h2>
+  <a id="NCommons_Monads_Optional_FromNullable_" data-uid="NCommons.Monads.Optional.FromNullable*"></a>
+  <h3 id="NCommons_Monads_Optional_FromNullable__1___0_" data-uid="NCommons.Monads.Optional.FromNullable``1(``0)">FromNullable&lt;T&gt;(T)</h3>
+  <div class="markdown level1 summary"><p>Creates a non-empty optional holding the specified value if is not <span class="xref">null</span>.
+Otherwise, returns an empty optional.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;T&gt; FromNullable&lt;T&gt;(T value)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">value</span></strong></code>
+  <p>The value from which an optional should be created if it is not <span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <p>A non-empty optional holding the value if it is not <span class="xref">null</span>.
+Otherwise, an empty optional.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type to be held by the optional.</p>
+
+  <a id="NCommons_Monads_Optional_FromNullable_" data-uid="NCommons.Monads.Optional.FromNullable*"></a>
+  <h3 id="NCommons_Monads_Optional_FromNullable__1_System_Nullable___0__" data-uid="NCommons.Monads.Optional.FromNullable``1(System.Nullable{``0})">FromNullable&lt;T&gt;(Nullable&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Creates a non-empty optional holding the specified value if is not <span class="xref">null</span>.
+Otherwise, returns an empty optional.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;T&gt; FromNullable&lt;T&gt;(Nullable&lt;T&gt; value)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;
+  <code><strong><span class="parametername">value</span></strong></code>
+  <p>The value from which an optional should be created if it is not <span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <p>A non-empty optional holding the value if it is not <span class="xref">null</span>.
+Otherwise, an empty optional.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type to be held by the optional.</p>
+
+  <a id="NCommons_Monads_Optional_ToEmptyIfNull_" data-uid="NCommons.Monads.Optional.ToEmptyIfNull*"></a>
+  <h3 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional___0__" data-uid="NCommons.Monads.Optional.ToEmptyIfNull``1(NCommons.Monads.Optional{``0})">ToEmptyIfNull&lt;T&gt;(Optional&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns an empty optional if the current optional's held value is <span class="xref">null</span>.
+Otherwise, returns a non-empty optional holding the same value as the current optional.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;T&gt; ToEmptyIfNull&lt;T&gt;(this Optional&lt;T&gt; optional)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional holding a nullable value.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <p>An empty optional if the current optional's held value is <span class="xref">null</span>.
+Otherwise, a non-empty optional holding the same value as the current optional.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional___0___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p><strong>Recommendation:</strong> This method is ideally used together with C# 8.0's
+nullable reference types, because it strips the nullable type annotation
+from a nullable reference type, making it obvious that a held value can no
+longer be <span class="xref">null</span>.</p>
+</div>
+  <a id="NCommons_Monads_Optional_ToEmptyIfNull_" data-uid="NCommons.Monads.Optional.ToEmptyIfNull*"></a>
+  <h3 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional_System_Nullable___0___" data-uid="NCommons.Monads.Optional.ToEmptyIfNull``1(NCommons.Monads.Optional{System.Nullable{``0}})">ToEmptyIfNull&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns an empty optional if the current optional's held value is <span class="xref">null</span>.
+Otherwise, returns a non-empty optional holding the same value as the current optional.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;T&gt; ToEmptyIfNull&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional holding a nullable value.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <p>An empty optional if the current optional's held value is <span class="xref">null</span>.
+Otherwise, a non-empty optional holding the same value as the current optional.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <a id="NCommons_Monads_Optional_ToNullable_" data-uid="NCommons.Monads.Optional.ToNullable*"></a>
+  <h3 id="NCommons_Monads_Optional_ToNullable__1_NCommons_Monads_Optional___0__" data-uid="NCommons.Monads.Optional.ToNullable``1(NCommons.Monads.Optional{``0})">ToNullable&lt;T&gt;(Optional&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Converts the optional to a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable&lt;T&gt;</a>.
+This returns the held value if the optional is non-empty or <span class="xref">null</span>
+if the optional is empty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Nullable&lt;T&gt; ToNullable&lt;T&gt;(this Optional&lt;T&gt; optional)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional to be converted to a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable&lt;T&gt;</a>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;
+  <p>The held value if the optional is non-empty.
+<span class="xref">null</span> if the optional is empty.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container-fluid">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &copy; 2019 Manuel Römer - Generated with <a href="https://github.com/dotnet/docfx">DocFX</a> - <a href="https://gist.github.com/manuelroemer/2aa8fc4e377874ae93dbd26e779cdbf6">Impressum (Imprint)</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

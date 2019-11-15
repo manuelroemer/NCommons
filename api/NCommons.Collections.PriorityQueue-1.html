@@ -96,7 +96,7 @@
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <code><strong><span class="parametername">T</span></strong></code>
-  <p><p>The type of items contained in the priority queue.</p>
+  <p>The type of items contained in the priority queue.</p>
 
   <h2 id="NCommons_Collections_PriorityQueue_1_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>The <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class is, at its heart, just a wrapper around
@@ -140,10 +140,10 @@ uses the specified <code data-dev-comment-type="paramref" class="paramref">under
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue</a>&lt;T&gt;
   <code><strong><span class="parametername">underlyingQueue</span></strong></code>
-  <p><p>An <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance which will be wrapped and thus
+  <p>An <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance which will be wrapped and thus
 directly be used by this priority queue.</p>
 <p>If <code>null</code>, a new, default queue is used.</p>
-</p>
+
   <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1__ctor_System_Collections_Generic_IComparer__0__" data-uid="NCommons.Collections.PriorityQueue`1.#ctor(System.Collections.Generic.IComparer{`0})">PriorityQueue(IComparer&lt;T&gt;)</h3>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class with the
@@ -158,10 +158,10 @@ during insertion and retrieval.</p>
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer</a>&lt;T&gt;
   <code><strong><span class="parametername">comparer</span></strong></code>
-  <p><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer&lt;T&gt;</a> instance which is used for for determining the
+  <p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer&lt;T&gt;</a> instance which is used for for determining the
 priority of items during insertion and retrieval.</p>
 <p>If <code>null</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.comparer-1.default#System_Collections_Generic_Comparer_1_Default">Default</a> is used.</p>
-</p>
+
   <h2 id="properties">Properties
   </h2>
   <a id="NCommons_Collections_PriorityQueue_1_Comparer_" data-uid="NCommons.Collections.PriorityQueue`1.Comparer*"></a>
@@ -215,8 +215,8 @@ priority queue.</p>
   </div>
   <h4 class="returns">Returns</h4>
   <span class="xref">T</span>
-  <p><p>The item that was removed from the queue and had the highest priority.</p>
-</p>
+  <p>The item that was removed from the queue and had the highest priority.</p>
+
   <h4 class="exceptions">Exceptions</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
   <p>Thrown when the queue is empty, i.e. when it does not contain any items.
@@ -238,8 +238,8 @@ Use <a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Col
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">item</span></strong></code>
-  <p><p>The item to be inserted into the queue.</p>
-</p>
+  <p>The item to be inserted into the queue.</p>
+
   <a id="NCommons_Collections_PriorityQueue_1_GetEnumerator_" data-uid="NCommons.Collections.PriorityQueue`1.GetEnumerator*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1_GetEnumerator" data-uid="NCommons.Collections.PriorityQueue`1.GetEnumerator">GetEnumerator()</h3>
   <div class="markdown level1 summary"><p>Returns an enumerator which iterates over the elements in the queue.
@@ -253,8 +253,8 @@ See remarks of <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html"
   </div>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;
-  <p><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator&lt;T&gt;</a> which allows iterating over the queue's elements.</p>
-</p>
+  <p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator&lt;T&gt;</a> which allows iterating over the queue's elements.</p>
+
   <a id="NCommons_Collections_PriorityQueue_1_Peek_" data-uid="NCommons.Collections.PriorityQueue`1.Peek*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1_Peek" data-uid="NCommons.Collections.PriorityQueue`1.Peek">Peek()</h3>
   <div class="markdown level1 summary"><p>Returns the item with the highest priority without removing it from the queue.</p>
@@ -266,8 +266,8 @@ See remarks of <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html"
   </div>
   <h4 class="returns">Returns</h4>
   <span class="xref">T</span>
-  <p><p>The item with the highest priority.</p>
-</p>
+  <p>The item with the highest priority.</p>
+
   <h4 class="exceptions">Exceptions</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
   <p>Thrown when the queue is empty, i.e. when it does not contain any items.
@@ -289,14 +289,14 @@ Use <a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Col
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">result</span></strong></code>
-  <p><p>When this method succeeded, this parameter holds the result of the operation, i.e.
+  <p>When this method succeeded, this parameter holds the result of the operation, i.e.
 the item with the highest priority.</p>
-</p>
+
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
-  <p><p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
+  <p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
 <code>false</code> if the queue was empty.</p>
-</p>
+
   <a id="NCommons_Collections_PriorityQueue_1_TryPeek_" data-uid="NCommons.Collections.PriorityQueue`1.TryPeek*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1_TryPeek__0__" data-uid="NCommons.Collections.PriorityQueue`1.TryPeek(`0@)">TryPeek(out T)</h3>
   <div class="markdown level1 summary"><p>Attempts to return the item with the highest priority without removing it from the queue.</p>
@@ -309,14 +309,14 @@ the item with the highest priority.</p>
   <h4 class="parameters">Parameters</h4>
   <span class="xref">T</span>
   <code><strong><span class="parametername">result</span></strong></code>
-  <p><p>When this method succeeded, this parameter holds the result of the operation, i.e.
+  <p>When this method succeeded, this parameter holds the result of the operation, i.e.
 the item with the highest priority.</p>
-</p>
+
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
-  <p><p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
+  <p><code>true</code> if the operation succeeded, i.e. the queue contained one or more item(s).
 <code>false</code> if the queue was empty.</p>
-</p>
+
   <h4 id="NCommons_Collections_PriorityQueue_1_TryPeek__0___seealso">See Also</h4>
   <div class="seealso">
       <div><a class="xref" href="NCommons.Collections.PriorityQueue-1.html#NCommons_Collections_PriorityQueue_1_Peek">Peek()</a></div>
