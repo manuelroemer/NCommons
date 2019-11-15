@@ -53,16 +53,16 @@ jobs:
       packagesToPack: '**/*.csproj'
       arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
       outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
-    condition: eq(variables['system.pullrequest.isfork'], false)
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
       
   - task: PublishBuildArtifacts@1
     displayName: Publish NuGet Package Artifacts
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
       ArtifactName: 'NuGet Packages'
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
 
 - job: Doc
-  dependsOn: Build
   pool:
     vmImage: 'windows-2019'
   steps:
@@ -80,4 +80,4 @@ jobs:
     inputs:
       pathtoPublish: 'doc/_site'
       ArtifactName: 'Site'
-    condition: eq(variables['system.pullrequest.isfork'], false)
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
