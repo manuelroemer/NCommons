@@ -163,9 +163,8 @@ namespace NCommons.Monads
     ///
     ///     <h3>Application Areas and Limitations</h3>
     ///     
-    ///     The variant has been created to artifically add pseudo-support for unions to C#, because
-    ///     the language is currently lacking this feature.
-    ///     Due to that limited language support, the variant has a few limitations though.
+    ///     The variant has been created to add pseudo-support for unions to C#.
+    ///     Due to limited C# language support, the variant has a few limitations though.
     ///     For example, it is not possible to implicitly convert two variants having the same type parameters,
     ///     but in a different order, to and from each other. For example, the <c>Variant&lt;string, int&gt;</c>
     ///     and <c>Variant&lt;int, string&gt;</c> in theory represent the same set of values, but cannot
