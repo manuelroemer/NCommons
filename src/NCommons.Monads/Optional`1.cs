@@ -529,7 +529,7 @@
         ///     <code>
         ///     Optional&lt;int&gt; opt = 123;
         ///     Optional&lt;Optional&lt;string&gt;&gt; map = opt.Map(value => new Optional&lt;string&gt;(value.ToString()));
-        ///     Optional&lt;Optional&lt;string&gt;&gt; flatMap = opt.FlatMap(value => new Optional&lt;string&gt;(value.ToString()));
+        ///     Optional&lt;string&gt; flatMap = opt.FlatMap(value => new Optional&lt;string&gt;(value.ToString()));
         ///     </code>
         ///     
         ///     As you can see, <see cref="FlatMap{TResult}(Func{T, Optional{TResult}})"/>
@@ -593,7 +593,7 @@
         ///     <code>
         ///     Optional&lt;int&gt; opt = 123;
         ///     Optional&lt;Optional&lt;string&gt;&gt; map = opt.Map(value => new Optional&lt;string&gt;(value.ToString()));
-        ///     Optional&lt;Optional&lt;string&gt;&gt; flatMap = opt.FlatMap(value => new Optional&lt;string&gt;(value.ToString()));
+        ///     Optional&lt;string&gt; flatMap = opt.FlatMap(value => new Optional&lt;string&gt;(value.ToString()));
         ///     </code>
         ///     
         ///     As you can see, <see cref="FlatMap{TResult}(Func{T, Optional{TResult}})"/>
@@ -757,7 +757,7 @@
         ///     
         ///     Nevertheless, the two types serve different purposes. While an <see cref="Optional{T}"/> is mainly
         ///     designed for modeling the absence of a value, the variant family is designed for scenarios where
-        ///     one needs to accept or provide an instance of one or many types, or none.
+        ///     one needs to accept or provide an instance of one of many types.
         ///     Depending on the use case, you may pick either type for your scenario. If you ever
         ///     need to switch between the two, you can use one of the available conversion methods.
         /// </remarks>

@@ -55,19 +55,19 @@ namespace NCommons.Monads
     ///     as a data storage for one out of multiple different values. In that sense, it is very
     ///     similar to unions in other programming languages, but with the difference that a variant
     ///     may also not hold any value at all, i.e. it might be empty.
-    ///     Therefore, when translating the variant's behavior into plain english, it would probably
-    ///     lead to a sentence like <i>"A variant may hold one of these given values, or none at all."</i>.
+    ///     In plain english, one would say that <i>"A variant may hold one of these given values or none at all."</i>.
     ///
     ///     The variant is ideally used for methods which need to return exactly one of multiple values.
-    ///     While C# has added in-built support for tuples, they don't exactly capture the same intent
-    ///     as a variant. With tuples, it may, for example, happen that two items have a value at the same
-    ///     time. This is not possible with a variant.
+    ///     While newer versions of C# already seem to support such scenarios via tuples, they don't exactly
+    ///     capture the same intent as a variant.
+    ///     Two items of a tuple may, for example, have a value at the same time.
+    ///     This is not possible with a variant.
     ///
     ///     As an example, imagine that you write a method which can return a <see cref="string"/>,
     ///     an <see cref="int"/> or no value at all. However, there is one twist - both the <see cref="string"/>
     ///     and <see cref="int"/> are allowed be <see langword="null"/>.
-    ///     The first thought may be to use a tuple for encoding the return value, but then the user has a problem -
-    ///     he has no way to determine which of these values was the right one. Checking them for
+    ///     The first thought may be to use a tuple for encoding the return value, but then the user of the function 
+    ///     has a problem - he has no way to determine which of these values was the right one. Checking them for
     ///     <see langword="null"/> is not possible, because <see langword="null"/> is a valid value for
     ///     both items:
     ///
@@ -92,7 +92,7 @@ namespace NCommons.Monads
     ///     }
     ///     </code>
     ///
-    ///     The code above seems to work fine at the first glance, but what happens, when <c>(null, null)</c>
+    ///     The code above seems to work fine at first glance, but what happens, when <c>(null, null)</c>
     ///     is returned? The code will print <c>"The function returned neither a string nor an int."</c>.
     ///     This may be entirely wrong though. In fact, the function may have returned a <see cref="string"/>
     ///     which just happened to be <see langword="null"/>. As you can see, it is impossible to correctly

@@ -47,7 +47,7 @@
         /// </param>
         /// <param name="propertyName">
         ///     The name of the property that is going to be changed.
-        ///     If this is <c>null</c> or an empty string, no event will be raised.
+        ///     If this is <see langword="null"/> or an empty string, no event will be raised.
         ///     
         ///     This parameter is marked with the <see cref="CallerMemberNameAttribute"/>.
         ///     As such, it will automatically be set by the compiler, if not specified.
@@ -81,12 +81,12 @@
         ///     new value.
         ///     If the two properties are considered equal, no events will be raised.
         ///     
-        ///     If <c>null</c>, no value comparison will be done and the events will be raised,
+        ///     If <see langword="null"/>, no value comparison will be done and the events will be raised,
         ///     even if the values are equal.
         /// </param>
         /// <param name="propertyName">
         ///     The name of the property that is going to be changed.
-        ///     If this is <c>null</c> or an empty string, no event will be raised.
+        ///     If this is <see langword="null"/> or an empty string, no event will be raised.
         ///     
         ///     This parameter is marked with the <see cref="CallerMemberNameAttribute"/>.
         ///     As such, it will automatically be set by the compiler, if not specified.
@@ -123,7 +123,7 @@
         /// </param>
         /// <param name="propertyName">
         ///     The name of the property that is going to be changed.
-        ///     If this is <c>null</c> or an empty string, no event will be raised.
+        ///     If this is <see langword="null"/> or an empty string, no event will be raised.
         ///     
         ///     This parameter is marked with the <see cref="CallerMemberNameAttribute"/>.
         ///     As such, it will automatically be set by the compiler, if not specified.
@@ -145,7 +145,7 @@
         /// </summary>
         /// <param name="propertyName">
         ///     The name of the property that is about to change.
-        ///     If this is <c>null</c> or an empty string, the event will not be raised.
+        ///     If this is <see langword="null"/> or an empty string, the event will not be raised.
         ///     
         ///     This parameter is marked with the <see cref="CallerMemberNameAttribute"/>.
         ///     As such, it will automatically be set by the compiler, if not specified.
@@ -160,8 +160,8 @@
         /// </summary>
         /// <param name="args">
         ///     The event args which provide detail about the property that is about to change.
-        ///     If this is <c>null</c>, or if <see cref="PropertyChangingEventArgs.PropertyName"/>
-        ///     is <c>null</c> or empty, the event will not be raised.
+        ///     If this is <see langword="null"/>, or if <see cref="PropertyChangingEventArgs.PropertyName"/>
+        ///     is <see langword="null"/> or empty, the event will not be raised.
         /// </param>
         protected virtual void OnPropertyChanging(PropertyChangingEventArgs? args)
         {
@@ -176,7 +176,7 @@
         /// </summary>
         /// <param name="propertyName">
         ///     The name of the property that changed.
-        ///     If this is <c>null</c> or an empty string, the event will not be raised.
+        ///     If this is <see langword="null"/> or an empty string, the event will not be raised.
         ///     
         ///     This parameter is marked with the <see cref="CallerMemberNameAttribute"/>.
         ///     As such, it will automatically be set by the compiler, if not specified.
@@ -191,8 +191,8 @@
         /// </summary>
         /// <param name="args">
         ///     The event args which provide detail about the changed property.
-        ///     If this is <c>null</c>, or if <see cref="PropertyChangedEventArgs.PropertyName"/>
-        ///     is <c>null</c> or empty, the event will not be raised.
+        ///     If this is <see langword="null"/>, or if <see cref="PropertyChangedEventArgs.PropertyName"/>
+        ///     is <see langword="null"/> or empty, the event will not be raised.
         /// </param>
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs? args)
         {
