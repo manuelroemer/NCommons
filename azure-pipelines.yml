@@ -30,7 +30,7 @@ jobs:
     inputs:
       command: 'restore'
       projects: '**/*.csproj'
-      
+
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
@@ -53,19 +53,33 @@ jobs:
       packagesToPack: '**/*.csproj'
       arguments: '--configuration $(BuildConfiguration) --no-build --no-restore'
       outputDir: '$(Build.ArtifactStagingDirectory)/NuGet'
-    condition: eq(variables['system.pullrequest.isfork'], false)
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
       
   - task: PublishBuildArtifacts@1
     displayName: Publish NuGet Package Artifacts
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/NuGet'
       ArtifactName: 'NuGet Packages'
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
 
 - job: Doc
-  dependsOn: Build
   pool:
     vmImage: 'windows-2019'
   steps:
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 2.2
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '2.2.x'
+
+  - task: DotNetCoreInstaller@1
+    displayName: Install .NET Core 3.0
+    inputs:
+      packageType: 'sdk'
+      includePreviewVersions: true
+      version: '3.0.x'
+
   - script: choco install docfx --version 2.45
     displayName: Install DocFX
     
@@ -80,4 +94,4 @@ jobs:
     inputs:
       pathtoPublish: 'doc/_site'
       ArtifactName: 'Site'
-    condition: eq(variables['system.pullrequest.isfork'], false)
+    condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))

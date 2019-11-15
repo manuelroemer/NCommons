@@ -1,5 +1,10 @@
 Set-Location ../src
-dotnet build
+dotnet restore
+dotnet build --configuration Release --no-restore
+
+if ($LASTEXITCODE -ne 0) {
+    throw 'Building the projects failed.'
+}
 
 Set-Location ../doc
 
@@ -11,4 +16,4 @@ Remove-Item api/.manifest  -ErrorAction Ignore
 Remove-Item api/*.yml      -ErrorAction Ignore
 
 docfx metadata -f
-docfx build --serve
+docfx build

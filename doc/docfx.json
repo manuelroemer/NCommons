@@ -4,7 +4,7 @@
         "src": [
           {
             "src": "../src",
-            "files": ["**/Debug/netstandard2.0/NCommons*.dll"],
+            "files": ["**/Release/netstandard2.0/NCommons*.dll"],
             "exclude": ["**/*Test*/**"]
           }
         ],
