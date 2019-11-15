@@ -37,7 +37,7 @@
 {{#syntax.parameters}}
 <code><strong>{{{type.specName.0.value}}}</code></strong>
 <span class="parametername">{{{id}}}</span>
-<p>{{{description}}}</p>
+{{{description}}}
 {{/syntax.parameters}}
 {{#syntax.return}}
 <h5 class="returns">{{__global.returns}}</h5>
@@ -61,7 +61,7 @@
 {{/syntax.typeParameters.0}}
 {{#syntax.typeParameters}}
 <code><strong><span class="parametername">{{{id}}}</span></strong></code>
-<p>{{{description}}}</code>
+{{{description}}}
 {{/syntax.typeParameters}}
 {{#remarks}}
 <h2 id="{{id}}_remarks">{{__global.remarks}}</h2>

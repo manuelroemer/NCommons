@@ -32,24 +32,24 @@
 {{#parameters}}
 {{{type.specName.0.value}}}
 <code><strong><span class="parametername">{{{id}}}</span></strong></code>
-<p>{{{description}}}</p>
+{{{description}}}
 {{/parameters}}
 {{#return}}
 <h4 class="returns">{{__global.returns}}</h4>
 {{{type.specName.0.value}}}
-<p>{{{description}}}</p>
+{{{description}}}
 {{/return}}
 {{#typeParameters.0}}
 <h4 class="typeParameters">{{__global.typeParameters}}</h4>
 {{/typeParameters.0}}
 {{#typeParameters}}
 <code><strong><span class="parametername">{{{id}}}</span></strong></code>
-<p>{{{description}}}</p>
+{{{description}}}
 {{/typeParameters}}
 {{#eventType}}
 <h4 class="eventType">{{__global.eventType}}</h4>
-<code><strong>{{{type.specName.0.value}}}</strong></code>
-<p>{{{description}}}</p>
+{{{type.specName.0.value}}}
+{{{description}}}
 {{/eventType}}
 {{/syntax}}
 {{#overridden}}
