@@ -51,9 +51,9 @@ Notable members include:
 * [`WeakReferenceCollection<T>`](https://manuelroemer.github.io/NCommons/api/NCommons.Collections.WeakReferenceCollection-1.html)
 
 
-### NCommons.Monads [![Nuget](https://img.shields.io/nuget/v/NCommons.Monads)](https://www.nuget.org/packages/NCommons.Monads)
+### NCommons.Monads [![Nuget](https://img.shields.io/nuget/v/NCommons.Monads)](https://www.nuget.org/packages/NCommons.Monads) ![netstandard2.0](https://img.shields.io/badge/netstandard2.0-lightgrey)
 
-[:books: Documentation](https://manuelroemer.github.io/NCommons/api/NCommons.Monads.html) &nbsp; | &nbsp; [:package: NuGet ](https://www.nuget.org/packages/NCommons.Monads) ![netstandard2.0](https://img.shields.io/badge/netstandard2.0-lightgrey)
+[:books: Documentation](https://manuelroemer.github.io/NCommons/api/NCommons.Monads.html) &nbsp; | &nbsp; [:package: NuGet ](https://www.nuget.org/packages/NCommons.Monads)
 
 `NCommons.Monads` provides several members which assist in writing type-safe
 and expressive code. Even though the package is called "Monads", the included
