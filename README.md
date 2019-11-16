@@ -21,7 +21,7 @@ goals and advantages:
   In essence, this means that there will be no library which contains
   members that can be written manually in a very short amount of time.
   Anything that gets added to one of these library will at least have a
-  medium level of complexity or boilerplate - basically everything,
+  medium level of complexity or required boilerplate - basically everything,
   that is reusable but tedious to write.
 * **It feels like .NET:**<br/>
   A lot of time is spent on making NCommon's types feel like .NET.
