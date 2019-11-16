@@ -103,7 +103,7 @@ The goal is to provide a nearly flawless documentation which
 accurately describes each public member that is exposed by the libraries.
 
 While the documentation can easily be viewed in your preferred IDE, you
-can also browse it [online](https://manuelroemer.github.io/NCommons/api).
+can also browse it [online](https://manuelroemer.github.io/NCommons).
 
 If you have any issues, feel free to open an issue.
 
