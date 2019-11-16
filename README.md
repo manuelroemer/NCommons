@@ -17,7 +17,7 @@ While such libraries are certainly nothing new, NCommons has the following
 goals and advantages:
 
 * **Important members only:**<br/>
-  NCommons is supposed to be a set of "no-nonesense" libraries.
+  NCommons is supposed to be a set of "no-nonsense" libraries.
   In essence, this means that there will be no library which contains
   members that can be written manually in a very short amount of time.
   Anything that gets added to one of these library will at least have a
