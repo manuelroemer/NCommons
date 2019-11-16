@@ -74,7 +74,7 @@ Notable members include:
 [:books: Documentation](https://manuelroemer.github.io/NCommons/api/NCommons.Observables.html) &nbsp; | &nbsp; [:package: NuGet ](https://www.nuget.org/packages/NCommons.Observables)
 
 `NCommons.Observables` provides members which aim to reduce the amount of
-required boilerplate code for correctly implement the MVVM pattern in UI-based
+required boilerplate code for implementing the MVVM pattern in UI-based
 applications using frameworks like WPF or WinUI.
 
 Notable members include:
