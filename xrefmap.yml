@@ -1,6 +1,9 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: api
+  name: API Documentation
+  href: api/index.html
 - uid: index
   name: Welcome to the NCommons Documentation!
   href: index.html

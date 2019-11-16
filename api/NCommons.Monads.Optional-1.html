@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
+    <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
     
@@ -352,7 +352,7 @@ while <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Opti
 The following code segment demonstrates this behavior:</p>
 <pre><code>Optional&lt;int> opt = 123;
 Optional&lt;Optional&lt;string>> map = opt.Map(value => new Optional&lt;string>(value.ToString()));
-Optional&lt;Optional&lt;string>> flatMap = opt.FlatMap(value => new Optional&lt;string>(value.ToString()));</code></pre>
+Optional&lt;string> flatMap = opt.FlatMap(value => new Optional&lt;string>(value.ToString()));</code></pre>
 <p>As you can see, <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</a>
 <em>flattens</em> an optional which is returned by the mapper function, while
 <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Map__1_System_Func__0___0__">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</a> does not.</p>
@@ -608,7 +608,7 @@ while <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Opti
 The following code segment demonstrates this behavior:</p>
 <pre><code>Optional&lt;int> opt = 123;
 Optional&lt;Optional&lt;string>> map = opt.Map(value => new Optional&lt;string>(value.ToString()));
-Optional&lt;Optional&lt;string>> flatMap = opt.FlatMap(value => new Optional&lt;string>(value.ToString()));</code></pre>
+Optional&lt;string> flatMap = opt.FlatMap(value => new Optional&lt;string>(value.ToString()));</code></pre>
 <p>As you can see, <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</a>
 <em>flattens</em> an optional which is returned by the mapper function, while
 <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Map__1_System_Func__0___0__">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</a> does not.</p>
@@ -767,7 +767,7 @@ Both types either hold a value or are empty. Therefore, any <a class="xref" href
 easily be converted to a <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> and vice versa.</p>
 <p>Nevertheless, the two types serve different purposes. While an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> is mainly
 designed for modeling the absence of a value, the variant family is designed for scenarios where
-one needs to accept or provide an instance of one or many types, or none.
+one needs to accept or provide an instance of one of many types.
 Depending on the use case, you may pick either type for your scenario. If you ever
 need to switch between the two, you can use one of the available conversion methods.</p>
 </div>

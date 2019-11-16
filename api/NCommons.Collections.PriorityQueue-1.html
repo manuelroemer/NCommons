@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
+    <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
     
@@ -102,25 +102,27 @@
   <div class="markdown level0 remarks"><p>The <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class is, at its heart, just a wrapper around
 another <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> implementation.
 This basically means that you don't have to use it at all - you could simply use
-any class that implements the <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> interface directly
-(for example the <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a>, which is also used by this class,
-if no other <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance was specified).</p>
-<p>With that being said, using this class usually makes code more clear, because certain
+any class that implements the <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> interface directly.</p>
+<p>With that being said, using this class usually makes code easier to understand, because certain
 <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> implementations rename methods (for instance, the
 <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a> doesn't expose <code>Enqueue / Dequeue</code> methods; instead,
 they are called <code>Push / Pop</code>).
-It also makes understanding the instanciations easier. For instance, have a look at
-the following example:</p>
-<pre><code>    var pq1 = new BinaryHeap&lt;int>();
-    var pq2 = new PriorityQueue&lt;int>();</code></pre>
-<p>Both result in an (implicit) <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a>, but the second line
-makes that much more obvious.</p>
+For example, the code below uses a <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> and a <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a>
+to enqueue an integer. While the code's result is the same for the two classes, using
+the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> makes the intention much clearer.</p>
+<pre><code>var pq1 = new BinaryHeap&lt;int>();
+var pq2 = new PriorityQueue&lt;int>();
+
+pq1.Push(1);
+pq2.Enqueue(1);</code></pre>
 </div>
   <h2 id="constructors">Constructors
   </h2>
   <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1__ctor" data-uid="NCommons.Collections.PriorityQueue`1.#ctor">PriorityQueue()</h3>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class which
+uses a <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a> for determining the priority of items during
+insertion and retrieval.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h4 class="declaration">Declaration</h4>
@@ -129,8 +131,9 @@ makes that much more obvious.</p>
   </div>
   <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1__ctor_NCommons_Collections_IPriorityQueue__0__" data-uid="NCommons.Collections.PriorityQueue`1.#ctor(NCommons.Collections.IPriorityQueue{`0})">PriorityQueue(IPriorityQueue&lt;T&gt;)</h3>
-  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> instance which directly
-uses the specified <code data-dev-comment-type="paramref" class="paramref">underlyingQueue</code>.</p>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> instance which
+uses a given <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance
+for determining the priority of items during insertion and retrieval.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h4 class="declaration">Declaration</h4>
@@ -142,13 +145,14 @@ uses the specified <code data-dev-comment-type="paramref" class="paramref">under
   <code><strong><span class="parametername">underlyingQueue</span></strong></code>
   <p>An <a class="xref" href="NCommons.Collections.IPriorityQueue-1.html">IPriorityQueue&lt;T&gt;</a> instance which will be wrapped and thus
 directly be used by this priority queue.</p>
-<p>If <code>null</code>, a new, default queue is used.</p>
+<p>If <span class="xref">null</span>, a newly created <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a> instance is
+used instead.</p>
 
   <a id="NCommons_Collections_PriorityQueue_1__ctor_" data-uid="NCommons.Collections.PriorityQueue`1.#ctor*"></a>
   <h3 id="NCommons_Collections_PriorityQueue_1__ctor_System_Collections_Generic_IComparer__0__" data-uid="NCommons.Collections.PriorityQueue`1.#ctor(System.Collections.Generic.IComparer{`0})">PriorityQueue(IComparer&lt;T&gt;)</h3>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class with the
-specified <code data-dev-comment-type="paramref" class="paramref">comparer</code> for determining the priority of items
-during insertion and retrieval.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="NCommons.Collections.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a> class which
+uses a <a class="xref" href="NCommons.Collections.BinaryHeap-1.html">BinaryHeap&lt;T&gt;</a> and the specified <code data-dev-comment-type="paramref" class="paramref">comparer</code>
+for determining the priority of items during insertion and retrieval.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h4 class="declaration">Declaration</h4>
@@ -160,7 +164,7 @@ during insertion and retrieval.</p>
   <code><strong><span class="parametername">comparer</span></strong></code>
   <p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer&lt;T&gt;</a> instance which is used for for determining the
 priority of items during insertion and retrieval.</p>
-<p>If <code>null</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.comparer-1.default#System_Collections_Generic_Comparer_1_Default">Default</a> is used.</p>
+<p>If <span class="xref">null</span>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.comparer-1.default#System_Collections_Generic_Comparer_1_Default">Default</a> is used.</p>
 
   <h2 id="properties">Properties
   </h2>

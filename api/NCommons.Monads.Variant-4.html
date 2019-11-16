@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
+    <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
     
@@ -111,17 +111,17 @@ See remarks for details.</p>
 as a data storage for one out of multiple different values. In that sense, it is very
 similar to unions in other programming languages, but with the difference that a variant
 may also not hold any value at all, i.e. it might be empty.
-Therefore, when translating the variant's behavior into plain english, it would probably
-lead to a sentence like <em>&quot;A variant may hold one of these given values, or none at all.&quot;</em>.</p>
+In plain english, one would say that <em>&quot;A variant may hold one of these given values or none at all.&quot;</em>.</p>
 <p>The variant is ideally used for methods which need to return exactly one of multiple values.
-While C# has added in-built support for tuples, they don't exactly capture the same intent
-as a variant. With tuples, it may, for example, happen that two items have a value at the same
-time. This is not possible with a variant.</p>
+While newer versions of C# already seem to support such scenarios via tuples, they don't exactly
+capture the same intent as a variant.
+Two items of a tuple may, for example, have a value at the same time.
+This is not possible with a variant.</p>
 <p>As an example, imagine that you write a method which can return a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>,
 an <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a> or no value at all. However, there is one twist - both the <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>
 and <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a> are allowed be <span class="xref">null</span>.
-The first thought may be to use a tuple for encoding the return value, but then the user has a problem -
-he has no way to determine which of these values was the right one. Checking them for
+The first thought may be to use a tuple for encoding the return value, but then the user of the function
+has a problem - he has no way to determine which of these values was the right one. Checking them for
 <span class="xref">null</span> is not possible, because <span class="xref">null</span> is a valid value for
 both items:</p>
 <pre><code>// This returns &quot;Hello&quot;, i.e. a string. But &quot;null&quot; is also a valid value for the int?.
@@ -142,7 +142,7 @@ else
 {
     Console.WriteLine(&quot;The function returned neither a string nor an int.&quot;);
 }</code></pre>
-<p>The code above seems to work fine at the first glance, but what happens, when <code>(null, null)</code>
+<p>The code above seems to work fine at first glance, but what happens, when <code>(null, null)</code>
 is returned? The code will print <code>&quot;The function returned neither a string nor an int.&quot;</code>.
 This may be entirely wrong though. In fact, the function may have returned a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>
 which just happened to be <span class="xref">null</span>. As you can see, it is impossible to correctly
@@ -198,9 +198,8 @@ else
     Console.WriteLine(&quot;The function returned neither a string nor an int.&quot;);
 }</code></pre>
 <h3>Application Areas and Limitations</h3>
-<p>The variant has been created to artifically add pseudo-support for unions to C#, because
-the language is currently lacking this feature.
-Due to that limited language support, the variant has a few limitations though.
+<p>The variant has been created to add pseudo-support for unions to C#.
+Due to limited C# language support, the variant has a few limitations though.
 For example, it is not possible to implicitly convert two variants having the same type parameters,
 but in a different order, to and from each other. For example, the <code>Variant&lt;string, int&gt;</code>
 and <code>Variant&lt;int, string&gt;</code> in theory represent the same set of values, but cannot
