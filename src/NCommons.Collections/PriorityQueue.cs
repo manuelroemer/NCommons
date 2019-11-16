@@ -14,24 +14,23 @@
     ///     The <see cref="PriorityQueue{T}"/> class is, at its heart, just a wrapper around
     ///     another <see cref="IPriorityQueue{T}"/> implementation.
     ///     This basically means that you don't have to use it at all - you could simply use
-    ///     any class that implements the <see cref="IPriorityQueue{T}"/> interface directly
-    ///     (for example the <see cref="BinaryHeap{T}"/>, which is also used by this class,
-    ///     if no other <see cref="IPriorityQueue{T}"/> instance was specified).
+    ///     any class that implements the <see cref="IPriorityQueue{T}"/> interface directly.
     ///     
-    ///     With that being said, using this class usually makes code more clear, because certain
+    ///     With that being said, using this class usually makes code easier to understand, because certain
     ///     <see cref="IPriorityQueue{T}"/> implementations rename methods (for instance, the
     ///     <see cref="BinaryHeap{T}"/> doesn't expose <c>Enqueue / Dequeue</c> methods; instead,
     ///     they are called <c>Push / Pop</c>).
-    ///     It also makes understanding the instanciations easier. For instance, have a look at
-    ///     the following example:
+    ///     For example, the code below uses a <see cref="PriorityQueue{T}"/> and a <see cref="BinaryHeap{T}"/>
+    ///     to enqueue an integer. While the code's result is the same for the two classes, using
+    ///     the <see cref="PriorityQueue{T}"/> makes the intention much clearer.
     ///     
     ///     <code>
-    ///         var pq1 = new BinaryHeap&lt;int&gt;();
-    ///         var pq2 = new PriorityQueue&lt;int&gt;();
-    ///     </code>
+    ///     var pq1 = new BinaryHeap&lt;int&gt;();
+    ///     var pq2 = new PriorityQueue&lt;int&gt;();
     ///     
-    ///     Both result in an (implicit) <see cref="IPriorityQueue{T}"/>, but the second line
-    ///     makes that much more obvious.
+    ///     pq1.Push(1);
+    ///     pq2.Enqueue(1);
+    ///     </code>
     /// </remarks>
     [DebuggerTypeProxy(typeof(PriorityQueueDebugView<>))]
     [DebuggerDisplay("Count = {Count}")]
@@ -56,47 +55,45 @@
         public int Count => UnderlyingQueue.Count;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PriorityQueue{T}"/> class.
+        ///     Initializes a new instance of the <see cref="PriorityQueue{T}"/> class which
+        ///     uses a <see cref="BinaryHeap{T}"/> for determining the priority of items during
+        ///     insertion and retrieval.
         /// </summary>
         public PriorityQueue()
             : this(underlyingQueue: null, comparer: null) { }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PriorityQueue{T}"/> class with the
-        ///     specified <paramref name="comparer"/> for determining the priority of items
-        ///     during insertion and retrieval.
+        ///     Initializes a new instance of the <see cref="PriorityQueue{T}"/> class which
+        ///     uses a <see cref="BinaryHeap{T}"/> and the specified <paramref name="comparer"/>
+        ///     for determining the priority of items during insertion and retrieval.
         /// </summary>
         /// <param name="comparer">
         ///     An <see cref="IComparer{T}"/> instance which is used for for determining the
         ///     priority of items during insertion and retrieval.
         ///     
-        ///     If <c>null</c>, <see cref="Comparer{T}.Default"/> is used.
+        ///     If <see langword="null"/>, <see cref="Comparer{T}.Default"/> is used.
         /// </param>
         public PriorityQueue(IComparer<T>? comparer)
             : this(underlyingQueue: null, comparer) { }
 
         /// <summary>
-        ///     Initializes a new <see cref="PriorityQueue{T}"/> instance which directly
-        ///     uses the specified <paramref name="underlyingQueue"/>.
+        ///     Initializes a new <see cref="PriorityQueue{T}"/> instance which
+        ///     uses a given <see cref="IPriorityQueue{T}"/> instance
+        ///     for determining the priority of items during insertion and retrieval.
         /// </summary>
         /// <param name="underlyingQueue">
         ///     An <see cref="IPriorityQueue{T}"/> instance which will be wrapped and thus
         ///     directly be used by this priority queue.
         ///     
-        ///     If <c>null</c>, a new, default queue is used.
+        ///     If <see langword="null"/>, a newly created <see cref="BinaryHeap{T}"/> instance is
+        ///     used instead.
         /// </param>
         public PriorityQueue(IPriorityQueue<T>? underlyingQueue)
             : this(underlyingQueue, underlyingQueue?.Comparer) { }
 
         private PriorityQueue(IPriorityQueue<T>? underlyingQueue, IComparer<T>? comparer)
         {
-            // Initialize with provided queue, but fall back to a BinaryHeap (and a default comparer)
-            // if none was specified.
-            // This ensures that users can simply call new PriorityQueue() and use it, as if it
-            // was a "standalone" class.
-            // Advanced scenarios may leverage custom IPriorityQueue interfaces though.
-            UnderlyingQueue = underlyingQueue ?? 
-                              new BinaryHeap<T>(comparer ?? Comparer<T>.Default);
+            UnderlyingQueue = underlyingQueue ?? new BinaryHeap<T>(comparer ?? Comparer<T>.Default);
         }
 
         /// <summary>

@@ -60,7 +60,7 @@
         ///     An <see cref="IComparer{T}"/> instance which is used for for determining the
         ///     priority of items during insertion and retrieval.
         ///     
-        ///     If <c>null</c>, <see cref="Comparer{T}.Default"/> is used.
+        ///     If <see langword="null"/>, <see cref="Comparer{T}.Default"/> is used.
         /// </param>
         public BinaryHeap(IComparer<T>? comparer)
             : this(DefaultCapacity, comparer) { }
@@ -84,7 +84,7 @@
         ///     An <see cref="IComparer{T}"/> instance which is used for for determining the
         ///     priority of items during insertion and retrieval.
         ///     
-        ///     If <c>null</c>, <see cref="Comparer{T}.Default"/> is used.
+        ///     If <see langword="null"/>, <see cref="Comparer{T}.Default"/> is used.
         /// </param>
         public BinaryHeap(int capacity, IComparer<T>? comparer)
             : base(comparer)
