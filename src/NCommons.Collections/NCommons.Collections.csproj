@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +6,7 @@
     <Version>2.0.0</Version>
     <PackageTags>$(PackageTags);Collection;List;WeakReference;Observable;Heap;PriorityQueue</PackageTags>
     <Description>
-A reusable set of common members which may be useful in any kind project.
+NCommons is a set of several .NET libraries which provide common building blocks that can be used by any kind of library or application.
 
 This library provides several generic and specialized collection-type members.
 

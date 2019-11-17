@@ -6,7 +6,7 @@
     <Version>1.2.4</Version>
     <PackageTags>$(PackageTags);Observable;MVVM;PropertyChanging;PropertyChanged</PackageTags>
     <Description>
-A reusable set of common members which may be useful in any kind project.
+NCommons is a set of several .NET libraries which provide common building blocks that can be used by any kind of library or application.
 
 This library provides members for quickly setting up classes which require property change notifications.
 
