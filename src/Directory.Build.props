@@ -21,6 +21,7 @@
     <RepositoryUrl>https://github.com/manuelroemer/NCommons</RepositoryUrl>
     <PackageProjectUrl>https://github.com/manuelroemer/NCommons</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>NCommons;Common;Extension</PackageTags>
     
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
   </PropertyGroup>

@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <Version>1.2.4</Version>
+    <PackageTags>$(PackageTags);Observable;MVVM;PropertyChanging;PropertyChanged</PackageTags>
     <Description>
 A reusable set of common members which may be useful in any kind project.
 
