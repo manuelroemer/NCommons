@@ -102,7 +102,7 @@
             [CallerMemberName]string? propertyName = "")
         {
             // No need to redundantly set the property (and raise events).
-            if (equalityComparer != null && equalityComparer.Equals(property, newValue))
+            if (equalityComparer?.Equals(property, newValue) == true)
             {
                 return false;
             }
@@ -134,7 +134,6 @@
         protected void Set(Action setProperty, [CallerMemberName]string? propertyName = "")
         {
             _ = setProperty ?? throw new ArgumentNullException(nameof(setProperty));
-
             OnPropertyChanging(propertyName);
             setProperty();
             OnPropertyChanged(propertyName);

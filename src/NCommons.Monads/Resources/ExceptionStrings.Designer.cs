@@ -70,6 +70,15 @@ namespace NCommons.Monads.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The optional held a value, but that value was null (Nothing in VB)..
+        /// </summary>
+        internal static string Optional_ValueIsNull {
+            get {
+                return ResourceManager.GetString("Optional_ValueIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An attempt was made to read the value of an either of type &quot;{0}&quot;. The either is, however, of type &quot;{1}&quot;..
         /// </summary>
         internal static string UnexpectedEitherTypeException_DefaultMessage {

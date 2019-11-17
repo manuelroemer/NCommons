@@ -120,6 +120,9 @@
   <data name="Optional_IsEmpty" xml:space="preserve">
     <value>The optional is empty.</value>
   </data>
+  <data name="Optional_ValueIsNull" xml:space="preserve">
+    <value>The optional held a value, but that value was null (Nothing in VB).</value>
+  </data>
   <data name="UnexpectedEitherTypeException_DefaultMessage" xml:space="preserve">
     <value>An attempt was made to read the value of an either of type "{0}". The either is, however, of type "{1}".</value>
     <comment>{0} and {1} stand for Left/Right respectively.</comment>

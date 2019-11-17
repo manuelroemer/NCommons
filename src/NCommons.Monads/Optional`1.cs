@@ -89,7 +89,7 @@
     ///     
     ///     if (first.HasValue)
     ///     {
-    ///         Console.WriteLine("First item: {0}", first.GetValue());
+    ///         Console.WriteLine("First item: {0}", first.GetValue() ?? "null");
     ///     }
     ///     else
     ///     {
@@ -97,7 +97,7 @@
     ///     }
     ///     
     ///     // Output:
-    ///     // ""
+    ///     // "First item: null"
     ///     </code>
     ///     
     ///     In addition to the members defined in this class, the <see cref="Optional"/> class
@@ -170,7 +170,7 @@
         ///     The held value if the optional holds a value.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        ///     The optional is empty. No value can be retrieved from an empty optional.
+        ///     The optional is empty.
         /// </exception>
         /// <remarks>
         ///     The <see cref="GetValue"/> function should be used if you either know that an
@@ -222,12 +222,12 @@
         }
 
         /// <summary>
-        ///     Returns the held value if the optional is non-empty or a default value of type
+        ///     Returns the held value if the optional is non-empty or the default value of type
         ///     <typeparamref name="T"/> if the optional is empty.
         /// </summary>
         /// <returns>
-        ///     The held value if the optional is non-empty;
-        ///     a default value of type <typeparamref name="T"/> if the optional is empty.
+        ///     The held value if the optional is non-empty or
+        ///     the default value of type <typeparamref name="T"/> if the optional is empty.
         /// </returns>
         /// <remarks>
         ///     <see cref="GetValueOrDefault"/> is useful when you must retrieve a value from
@@ -268,8 +268,8 @@
         ///     A value to be returned if the optional is empty.
         /// </param>
         /// <returns>
-        ///     The held value if the optional is non-empty;
-        ///     <paramref name="substitute"/> if the optional is empty.
+        ///     The held value if the optional is non-empty or <paramref name="substitute"/> if the
+        ///     optional is empty.
         /// </returns>
         /// <remarks>
         ///     <see cref="GetValueOr(T)"/> behaves similarly to <see cref="GetValueOrDefault"/>,
@@ -300,14 +300,14 @@
         }
 
         /// <summary>
-        ///     Returns the held value if the optional is non-empty or the value returned by the specified
+        ///     Returns the held value if the optional is non-empty or a value returned by the specified
         ///     <paramref name="substituteProvider"/> function if the optional is empty.
         /// </summary>
         /// <param name="substituteProvider">
         ///     A function which returns a value which is supposed to be returned if the optional is empty.
         /// </param>
         /// <returns>
-        ///     The held value if the optional is non-empty;
+        ///     The held value if the optional is non-empty or
         ///     a value returned by the specified <paramref name="substituteProvider"/> function if 
         ///     the optional is empty.
         /// </returns>
@@ -428,6 +428,10 @@
         ///     the <paramref name="onEmpty"/> function if the optional is empty.
         ///     This method returns the returned value of the invoked function.
         /// </summary>
+        /// <typeparam name="TResult">
+        ///     The type of the result which gets returned by the <paramref name="onValue"/> and
+        ///     <paramref name="onEmpty"/> functions.
+        /// </typeparam>
         /// <param name="onValue">
         ///     The function to be invoked if the optional is non-empty.
         /// </param>
@@ -435,7 +439,7 @@
         ///     The function to be invoked if the optional is empty.
         /// </param>
         /// <returns>
-        ///     The returned value of the <paramref name="onValue"/> function if the optional is non-empty;
+        ///     The returned value of the <paramref name="onValue"/> function if the optional is non-empty or
         ///     the returned value of the <paramref name="onEmpty"/> function if the optional is empty.
         /// </returns>
         /// <exception cref="ArgumentNullException">
@@ -480,14 +484,14 @@
 
         /// <summary>
         ///     If the optional is non-empty, the specified <paramref name="mapValue"/> function
-        ///     is invoked with the optional's held value. The return value is then wrapped in a new
+        ///     is invoked with the optional's held value. The returned value is then wrapped in a new
         ///     <see cref="Optional{TResult}"/> instance and returned by this method.
         ///     
         ///     If the optional is empty, the <paramref name="mapValue"/> function is not invoked.
         ///     Instead, an empty <see cref="Optional{TResult}"/> instance is returned.
         /// </summary>
         /// <typeparam name="TResult">
-        ///     The type held by the optional to be returned.
+        ///     The type of the result which gets returned by the <paramref name="mapValue"/> function.
         /// </typeparam>
         /// <param name="mapValue">
         ///     The function to be invoked if the optional is non-empty.
@@ -495,7 +499,7 @@
         /// </param>
         /// <returns>
         ///     An <see cref="Optional{TResult}"/> instance holding the returned value of the
-        ///     <paramref name="mapValue"/> function if the optional is non-empty;
+        ///     <paramref name="mapValue"/> function if the optional is non-empty or
         ///     an empty <see cref="Optional{TResult}"/> instance if the optional is empty.
         /// </returns>
         /// <exception cref="ArgumentNullException">
@@ -545,13 +549,13 @@
 
         /// <summary>
         ///     If the optional is non-empty, the specified <paramref name="flatMapValue"/> function
-        ///     is invoked with the optional's held value. The return value is then returned by this method.
+        ///     is invoked with the optional's held value. The returned value is then returned by this method.
         ///     
         ///     If the optional is empty, the <paramref name="flatMapValue"/> function is not invoked.
         ///     Instead, an empty <see cref="Optional{TResult}"/> instance is returned.
         /// </summary>
         /// <typeparam name="TResult">
-        ///     The type held by the optional to be returned.
+        ///     The type of the result which gets returned by the <paramref name="flatMapValue"/> function.
         /// </typeparam>
         /// <param name="flatMapValue">
         ///     The function to be invoked if the optional is non-empty.
@@ -559,7 +563,7 @@
         /// </param>
         /// <returns>
         ///     The <see cref="Optional{TResult}"/> instance returned by the
-        ///     <paramref name="flatMapValue"/> function if the optional is non-empty;
+        ///     <paramref name="flatMapValue"/> function if the optional is non-empty or
         ///     an empty <see cref="Optional{TResult}"/> instance if the optional is empty.
         /// </returns>
         /// <exception cref="ArgumentNullException">
@@ -729,9 +733,8 @@
         /// </summary>
         /// <returns>
         ///     An empty string if the optional is empty or if it is non-empty, but the held value
-        ///     is <see langword="null"/>.
-        ///     Otherwise, returns the value of calling <see cref="object.ToString"/> on the
-        ///     held value.
+        ///     is <see langword="null"/> or the result of calling <see cref="object.ToString"/> on
+        ///     the held value.
         /// </returns>
         public override string? ToString()
         {
@@ -747,8 +750,8 @@
         ///     i.e. it holds a value if the optional is non-empty or it is empty if the optional is empty.
         /// </summary>
         /// <returns>
-        ///     A new <see cref="Variant{T1}"/> holding the optional's held value if the optional is non-empty.
-        ///     An empty <see cref="Variant{T1}"/> if the optional is empty.
+        ///     A new <see cref="Variant{T1}"/> holding the optional's held value if the optional is
+        ///     non-empty or an empty <see cref="Variant{T1}"/> if the optional is empty.
         /// </returns>
         /// <remarks>
         ///     The <see cref="Variant{T1}"/> essentially has the same functionality as an <see cref="Optional{T}"/>.
@@ -872,6 +875,14 @@
         public static explicit operator T(Optional<T> optional)
         {
             return optional.GetValue();
+        }
+
+        /// <inheritdoc cref="ToVariant"/>
+        /// <param name="optional">The optional to be converted to a variant.</param>
+        /// <seealso cref="ToVariant"/>
+        public static implicit operator Variant<T>(Optional<T> optional)
+        {
+            return optional.ToVariant();
         }
 
     }
