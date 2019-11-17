@@ -47,7 +47,6 @@ namespace NCommons.Monads
 <#
         }
 #>
-    /// 
     /// <remarks>
     ///     <h3>General Usage</h3>
     ///
@@ -1067,6 +1066,20 @@ namespace NCommons.Monads
             return new Variant<#=TDefinition(currentTo)#>(value);
         }
 
+<#
+        if (currentTo == 1) {
+#>
+        /// <inheritdoc cref="ToOptional"/>
+        /// <param name="variant">The variant to be converted to an optional.</param>
+        /// <seealso cref="ToOptional"/>
+        public static implicit operator Optional<T1>(Variant<T1> variant)
+        {
+            return variant.ToOptional();
+        }
+
+<#
+        }
+#>
         /// <summary>
         ///     If the variant holds a value of type <typeparamref name="<#=T(i)#>"/>, returns that value.
         ///     Otherwise an exception is thrown.

@@ -877,6 +877,14 @@
             return optional.GetValue();
         }
 
+        /// <inheritdoc cref="ToVariant"/>
+        /// <param name="optional">The optional to be converted to a variant.</param>
+        /// <seealso cref="ToVariant"/>
+        public static implicit operator Variant<T>(Optional<T> optional)
+        {
+            return optional.ToVariant();
+        }
+
     }
 
 }
