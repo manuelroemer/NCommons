@@ -151,7 +151,7 @@ var first = items.BetterFirstOrDefault();
 
 if (first.HasValue)
 {
-    Console.WriteLine(&quot;First item: {0}&quot;, first.GetValue());
+    Console.WriteLine(&quot;First item: {0}&quot;, first.GetValue() ?? &quot;null&quot;);
 }
 else
 {
@@ -159,7 +159,7 @@ else
 }
 
 // Output:
-// &quot;&quot;</code></pre>
+// &quot;First item: null&quot;</code></pre>
 <p>In addition to the members defined in this class, the <a class="xref" href="NCommons.Monads.Optional.html">Optional</a> class
 defines additional utility functions which further enhance the interaction with the
 <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> type.</p>
@@ -306,7 +306,7 @@ information on how the equality comparison works.</p>
   <a id="NCommons_Monads_Optional_1_FlatMap_" data-uid="NCommons.Monads.Optional`1.FlatMap*"></a>
   <h3 id="NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___" data-uid="NCommons.Monads.Optional`1.FlatMap``1(System.Func{`0,NCommons.Monads.Optional{``0}})">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</h3>
   <div class="markdown level1 summary"><p>If the optional is non-empty, the specified <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function
-is invoked with the optional's held value. The return value is then returned by this method.</p>
+is invoked with the optional's held value. The returned value is then returned by this method.</p>
 <p>If the optional is empty, the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function is not invoked.
 Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
 </div>
@@ -324,12 +324,12 @@ This function receives the optional's held value as a parameter.</p>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
   <p>The <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance returned by the
-<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function if the optional is non-empty;
+<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function if the optional is non-empty or
 an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the optional is empty.</p>
 
   <h4 class="typeParameters">Type Parameters</h4>
   <code><strong><span class="parametername">TResult</span></strong></code>
-  <p>The type held by the optional to be returned.</p>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function.</p>
 
   <h4 id="NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0____remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</a> allows you to transform
@@ -433,7 +433,7 @@ RunCriticalBusinessLogic(requiredValues);</code></pre>
 </div>
   <h4 class="exceptions">Exceptions</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
-  <p>The optional is empty. No value can be retrieved from an empty optional.</p>
+  <p>The optional is empty.</p>
 
   <a id="NCommons_Monads_Optional_1_GetValueOr_" data-uid="NCommons.Monads.Optional`1.GetValueOr*"></a>
   <h3 id="NCommons_Monads_Optional_1_GetValueOr__0_" data-uid="NCommons.Monads.Optional`1.GetValueOr(`0)">GetValueOr(T)</h3>
@@ -452,8 +452,8 @@ RunCriticalBusinessLogic(requiredValues);</code></pre>
 
   <h4 class="returns">Returns</h4>
   <span class="xref">T</span>
-  <p>The held value if the optional is non-empty;
-<code data-dev-comment-type="paramref" class="paramref">substitute</code> if the optional is empty.</p>
+  <p>The held value if the optional is non-empty or <code data-dev-comment-type="paramref" class="paramref">substitute</code> if the
+optional is empty.</p>
 
   <h4 id="NCommons_Monads_Optional_1_GetValueOr__0__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOr__0_">GetValueOr(T)</a> behaves similarly to <a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOrDefault">GetValueOrDefault()</a>,
@@ -475,7 +475,7 @@ Console.WriteLine(nonEmptyStringOpt.GetValueOr(&quot;Substitute value&quot;));
 </div>
   <a id="NCommons_Monads_Optional_1_GetValueOr_" data-uid="NCommons.Monads.Optional`1.GetValueOr*"></a>
   <h3 id="NCommons_Monads_Optional_1_GetValueOr_System_Func__0__" data-uid="NCommons.Monads.Optional`1.GetValueOr(System.Func{`0})">GetValueOr(Func&lt;T&gt;)</h3>
-  <div class="markdown level1 summary"><p>Returns the held value if the optional is non-empty or the value returned by the specified
+  <div class="markdown level1 summary"><p>Returns the held value if the optional is non-empty or a value returned by the specified
 <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function if the optional is empty.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -490,7 +490,7 @@ Console.WriteLine(nonEmptyStringOpt.GetValueOr(&quot;Substitute value&quot;));
 
   <h4 class="returns">Returns</h4>
   <span class="xref">T</span>
-  <p>The held value if the optional is non-empty;
+  <p>The held value if the optional is non-empty or
 a value returned by the specified <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function if
 the optional is empty.</p>
 
@@ -524,7 +524,7 @@ opt.GetValueOr(() => throw new Exception(&quot;Custom exception.&quot;));</code>
 
   <a id="NCommons_Monads_Optional_1_GetValueOrDefault_" data-uid="NCommons.Monads.Optional`1.GetValueOrDefault*"></a>
   <h3 id="NCommons_Monads_Optional_1_GetValueOrDefault" data-uid="NCommons.Monads.Optional`1.GetValueOrDefault">GetValueOrDefault()</h3>
-  <div class="markdown level1 summary"><p>Returns the held value if the optional is non-empty or a default value of type
+  <div class="markdown level1 summary"><p>Returns the held value if the optional is non-empty or the default value of type
 <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> if the optional is empty.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -534,8 +534,8 @@ opt.GetValueOr(() => throw new Exception(&quot;Custom exception.&quot;));</code>
   </div>
   <h4 class="returns">Returns</h4>
   <span class="xref">T</span>
-  <p>The held value if the optional is non-empty;
-a default value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> if the optional is empty.</p>
+  <p>The held value if the optional is non-empty or
+the default value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> if the optional is empty.</p>
 
   <h4 id="NCommons_Monads_Optional_1_GetValueOrDefault_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOrDefault">GetValueOrDefault()</a> is useful when you must retrieve a value from
@@ -561,7 +561,7 @@ Console.WriteLine(nonEmptyIntOpt.GetValueOrDefault());
   <a id="NCommons_Monads_Optional_1_Map_" data-uid="NCommons.Monads.Optional`1.Map*"></a>
   <h3 id="NCommons_Monads_Optional_1_Map__1_System_Func__0___0__" data-uid="NCommons.Monads.Optional`1.Map``1(System.Func{`0,``0})">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</h3>
   <div class="markdown level1 summary"><p>If the optional is non-empty, the specified <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function
-is invoked with the optional's held value. The return value is then wrapped in a new
+is invoked with the optional's held value. The returned value is then wrapped in a new
 <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance and returned by this method.</p>
 <p>If the optional is empty, the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function is not invoked.
 Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
@@ -580,12 +580,12 @@ This function receives the optional's held value as a parameter.</p>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
   <p>An <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance holding the returned value of the
-<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function if the optional is non-empty;
+<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function if the optional is non-empty or
 an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the optional is empty.</p>
 
   <h4 class="typeParameters">Type Parameters</h4>
   <code><strong><span class="parametername">TResult</span></strong></code>
-  <p>The type held by the optional to be returned.</p>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function.</p>
 
   <h4 id="NCommons_Monads_Optional_1_Map__1_System_Func__0___0___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Map__1_System_Func__0___0__">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</a> allows you to transform the held value
@@ -693,12 +693,14 @@ This method returns the returned value of the invoked function.</p>
 
   <h4 class="returns">Returns</h4>
   <span class="xref">TResult</span>
-  <p>The returned value of the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional is non-empty;
+  <p>The returned value of the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional is non-empty or
 the returned value of the <code data-dev-comment-type="paramref" class="paramref">onEmpty</code> function if the optional is empty.</p>
 
   <h4 class="typeParameters">Type Parameters</h4>
   <code><strong><span class="parametername">TResult</span></strong></code>
-  
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">onValue</code> and
+<code data-dev-comment-type="paramref" class="paramref">onEmpty</code> functions.</p>
+
   <h4 id="NCommons_Monads_Optional_1_Match__1_System_Func__0___0__System_Func___0___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Match__1_System_Func__0___0__System_Func___0__">Match&lt;TResult&gt;(Func&lt;T, TResult&gt;, Func&lt;TResult&gt;)</a> is a utility function
 which allows you to run two different pieces of code, depending on whether an
@@ -742,9 +744,8 @@ Console.WriteLine(Stringify(nonEmptyOpt));
   <h4 class="returns">Returns</h4>
   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>
   <p>An empty string if the optional is empty or if it is non-empty, but the held value
-is <span class="xref">null</span>.
-Otherwise, returns the value of calling <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">ToString()</a> on the
-held value.</p>
+is <span class="xref">null</span> or the result of calling <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">ToString()</a> on
+the held value.</p>
 
   <a id="NCommons_Monads_Optional_1_ToVariant_" data-uid="NCommons.Monads.Optional`1.ToVariant*"></a>
   <h3 id="NCommons_Monads_Optional_1_ToVariant" data-uid="NCommons.Monads.Optional`1.ToVariant">ToVariant()</h3>
@@ -758,8 +759,8 @@ i.e. it holds a value if the optional is non-empty or it is empty if the optiona
   </div>
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Variant-1.html">Variant</a>&lt;T&gt;
-  <p>A new <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> holding the optional's held value if the optional is non-empty.
-An empty <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> if the optional is empty.</p>
+  <p>A new <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> holding the optional's held value if the optional is
+non-empty or an empty <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> if the optional is empty.</p>
 
   <h4 id="NCommons_Monads_Optional_1_ToVariant_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>The <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> essentially has the same functionality as an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a>.
@@ -926,6 +927,40 @@ specified <code data-dev-comment-type="paramref" class="paramref">value</code>.<
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
   
+  <a id="NCommons_Monads_Optional_1_op_Implicit_" data-uid="NCommons.Monads.Optional`1.op_Implicit*"></a>
+  <h3 id="NCommons_Monads_Optional_1_op_Implicit_NCommons_Monads_Optional__0___NCommons_Monads_Variant__0_" data-uid="NCommons.Monads.Optional`1.op_Implicit(NCommons.Monads.Optional{`0})~NCommons.Monads.Variant{`0}">Implicit(Optional&lt;T&gt; to Variant&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> which represents the same state as the optional,
+i.e. it holds a value if the optional is non-empty or it is empty if the optional is empty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Variant&lt;T&gt;(Optional&lt;T&gt; optional)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional to be converted to a variant.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Variant-1.html">Variant</a>&lt;T&gt;
+  <p>A new <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> holding the optional's held value if the optional is
+non-empty or an empty <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> if the optional is empty.</p>
+
+  <h4 id="NCommons_Monads_Optional_1_op_Implicit_NCommons_Monads_Optional__0___NCommons_Monads_Variant__0__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> essentially has the same functionality as an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a>.
+Both types either hold a value or are empty. Therefore, any <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> can
+easily be converted to a <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> and vice versa.</p>
+<p>Nevertheless, the two types serve different purposes. While an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> is mainly
+designed for modeling the absence of a value, the variant family is designed for scenarios where
+one needs to accept or provide an instance of one of many types.
+Depending on the use case, you may pick either type for your scenario. If you ever
+need to switch between the two, you can use one of the available conversion methods.</p>
+</div>
+  <h4 id="NCommons_Monads_Optional_1_op_Implicit_NCommons_Monads_Optional__0___NCommons_Monads_Variant__0__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_ToVariant">ToVariant()</a></div>
+  </div>
   <a id="NCommons_Monads_Optional_1_op_Inequality_" data-uid="NCommons.Monads.Optional`1.op_Inequality*"></a>
   <h3 id="NCommons_Monads_Optional_1_op_Inequality__0_NCommons_Monads_Optional__0__" data-uid="NCommons.Monads.Optional`1.op_Inequality(`0,NCommons.Monads.Optional{`0})">Inequality(T, Optional&lt;T&gt;)</h3>
   <div class="markdown level1 summary"><p>Returns a value indicating whether the specified value is unequal to the specified

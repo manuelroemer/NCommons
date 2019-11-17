@@ -1166,6 +1166,30 @@ references:
   commentId: T:NCommons.Monads.Optional
   fullName: NCommons.Monads.Optional
   nameWithType: Optional
+- uid: NCommons.Monads.Optional.FlatMapNonNull*
+  name: FlatMapNonNull
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_FlatMapNonNull_
+  commentId: Overload:NCommons.Monads.Optional.FlatMapNonNull
+  fullName: NCommons.Monads.Optional.FlatMapNonNull
+  nameWithType: Optional.FlatMapNonNull
+- uid: NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,NCommons.Monads.Optional{``1}})
+  name: FlatMapNonNull<T, TResult>(Optional<T>, Func<T, Optional<TResult>>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional___0__System_Func___0_NCommons_Monads_Optional___1___
+  commentId: M:NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,NCommons.Monads.Optional{``1}})
+  name.vb: FlatMapNonNull(Of T, TResult)(Optional(Of T), Func(Of T, Optional(Of TResult)))
+  fullName: NCommons.Monads.Optional.FlatMapNonNull<T, TResult>(NCommons.Monads.Optional<T>, System.Func<T, NCommons.Monads.Optional<TResult>>)
+  fullName.vb: NCommons.Monads.Optional.FlatMapNonNull(Of T, TResult)(NCommons.Monads.Optional(Of T), System.Func(Of T, NCommons.Monads.Optional(Of TResult)))
+  nameWithType: Optional.FlatMapNonNull<T, TResult>(Optional<T>, Func<T, Optional<TResult>>)
+  nameWithType.vb: Optional.FlatMapNonNull(Of T, TResult)(Optional(Of T), Func(Of T, Optional(Of TResult)))
+- uid: NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,NCommons.Monads.Optional{``1}})
+  name: FlatMapNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, Optional<TResult>>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0_NCommons_Monads_Optional___1___
+  commentId: M:NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,NCommons.Monads.Optional{``1}})
+  name.vb: FlatMapNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, Optional(Of TResult)))
+  fullName: NCommons.Monads.Optional.FlatMapNonNull<T, TResult>(NCommons.Monads.Optional<System.Nullable<T>>, System.Func<T, NCommons.Monads.Optional<TResult>>)
+  fullName.vb: NCommons.Monads.Optional.FlatMapNonNull(Of T, TResult)(NCommons.Monads.Optional(Of System.Nullable(Of T)), System.Func(Of T, NCommons.Monads.Optional(Of TResult)))
+  nameWithType: Optional.FlatMapNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, Optional<TResult>>)
+  nameWithType.vb: Optional.FlatMapNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, Optional(Of TResult)))
 - uid: NCommons.Monads.Optional.FromNullable*
   name: FromNullable
   href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_FromNullable_
@@ -1190,6 +1214,153 @@ references:
   fullName.vb: NCommons.Monads.Optional.FromNullable(Of T)(System.Nullable(Of T))
   nameWithType: Optional.FromNullable<T>(Nullable<T>)
   nameWithType.vb: Optional.FromNullable(Of T)(Nullable(Of T))
+- uid: NCommons.Monads.Optional.GetNonNullValue*
+  name: GetNonNullValue
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValue_
+  commentId: Overload:NCommons.Monads.Optional.GetNonNullValue
+  fullName: NCommons.Monads.Optional.GetNonNullValue
+  nameWithType: Optional.GetNonNullValue
+- uid: NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{``0})
+  name: GetNonNullValue<T>(Optional<T>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional___0__
+  commentId: M:NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{``0})
+  name.vb: GetNonNullValue(Of T)(Optional(Of T))
+  fullName: NCommons.Monads.Optional.GetNonNullValue<T>(NCommons.Monads.Optional<T>)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValue(Of T)(NCommons.Monads.Optional(Of T))
+  nameWithType: Optional.GetNonNullValue<T>(Optional<T>)
+  nameWithType.vb: Optional.GetNonNullValue(Of T)(Optional(Of T))
+- uid: NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}})
+  name: GetNonNullValue<T>(Optional<Nullable<T>>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0___
+  commentId: M:NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}})
+  name.vb: GetNonNullValue(Of T)(Optional(Of Nullable(Of T)))
+  fullName: NCommons.Monads.Optional.GetNonNullValue<T>(NCommons.Monads.Optional<System.Nullable<T>>)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValue(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)))
+  nameWithType: Optional.GetNonNullValue<T>(Optional<Nullable<T>>)
+  nameWithType.vb: Optional.GetNonNullValue(Of T)(Optional(Of Nullable(Of T)))
+- uid: NCommons.Monads.Optional.GetNonNullValueOr*
+  name: GetNonNullValueOr
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOr_
+  commentId: Overload:NCommons.Monads.Optional.GetNonNullValueOr
+  fullName: NCommons.Monads.Optional.GetNonNullValueOr
+  nameWithType: Optional.GetNonNullValueOr
+- uid: NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},``0)
+  name: GetNonNullValueOr<T>(Optional<T>, T)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0____0_
+  commentId: M:NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},``0)
+  name.vb: GetNonNullValueOr(Of T)(Optional(Of T), T)
+  fullName: NCommons.Monads.Optional.GetNonNullValueOr<T>(NCommons.Monads.Optional<T>, T)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValueOr(Of T)(NCommons.Monads.Optional(Of T), T)
+  nameWithType: Optional.GetNonNullValueOr<T>(Optional<T>, T)
+  nameWithType.vb: Optional.GetNonNullValueOr(Of T)(Optional(Of T), T)
+- uid: NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},System.Func{``0})
+  name: GetNonNullValueOr<T>(Optional<T>, Func<T>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0__System_Func___0__
+  commentId: M:NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},System.Func{``0})
+  name.vb: GetNonNullValueOr(Of T)(Optional(Of T), Func(Of T))
+  fullName: NCommons.Monads.Optional.GetNonNullValueOr<T>(NCommons.Monads.Optional<T>, System.Func<T>)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValueOr(Of T)(NCommons.Monads.Optional(Of T), System.Func(Of T))
+  nameWithType: Optional.GetNonNullValueOr<T>(Optional<T>, Func<T>)
+  nameWithType.vb: Optional.GetNonNullValueOr(Of T)(Optional(Of T), Func(Of T))
+- uid: NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},``0)
+  name: GetNonNullValueOr<T>(Optional<Nullable<T>>, T)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0_____0_
+  commentId: M:NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},``0)
+  name.vb: GetNonNullValueOr(Of T)(Optional(Of Nullable(Of T)), T)
+  fullName: NCommons.Monads.Optional.GetNonNullValueOr<T>(NCommons.Monads.Optional<System.Nullable<T>>, T)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValueOr(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)), T)
+  nameWithType: Optional.GetNonNullValueOr<T>(Optional<Nullable<T>>, T)
+  nameWithType.vb: Optional.GetNonNullValueOr(Of T)(Optional(Of Nullable(Of T)), T)
+- uid: NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0})
+  name: GetNonNullValueOr<T>(Optional<Nullable<T>>, Func<T>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0___System_Func___0__
+  commentId: M:NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0})
+  name.vb: GetNonNullValueOr(Of T)(Optional(Of Nullable(Of T)), Func(Of T))
+  fullName: NCommons.Monads.Optional.GetNonNullValueOr<T>(NCommons.Monads.Optional<System.Nullable<T>>, System.Func<T>)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValueOr(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)), System.Func(Of T))
+  nameWithType: Optional.GetNonNullValueOr<T>(Optional<Nullable<T>>, Func<T>)
+  nameWithType.vb: Optional.GetNonNullValueOr(Of T)(Optional(Of Nullable(Of T)), Func(Of T))
+- uid: NCommons.Monads.Optional.GetNonNullValueOrDefault*
+  name: GetNonNullValueOrDefault
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOrDefault_
+  commentId: Overload:NCommons.Monads.Optional.GetNonNullValueOrDefault
+  fullName: NCommons.Monads.Optional.GetNonNullValueOrDefault
+  nameWithType: Optional.GetNonNullValueOrDefault
+- uid: NCommons.Monads.Optional.GetNonNullValueOrDefault``1(NCommons.Monads.Optional{System.Nullable{``0}})
+  name: GetNonNullValueOrDefault<T>(Optional<Nullable<T>>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_GetNonNullValueOrDefault__1_NCommons_Monads_Optional_System_Nullable___0___
+  commentId: M:NCommons.Monads.Optional.GetNonNullValueOrDefault``1(NCommons.Monads.Optional{System.Nullable{``0}})
+  name.vb: GetNonNullValueOrDefault(Of T)(Optional(Of Nullable(Of T)))
+  fullName: NCommons.Monads.Optional.GetNonNullValueOrDefault<T>(NCommons.Monads.Optional<System.Nullable<T>>)
+  fullName.vb: NCommons.Monads.Optional.GetNonNullValueOrDefault(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)))
+  nameWithType: Optional.GetNonNullValueOrDefault<T>(Optional<Nullable<T>>)
+  nameWithType.vb: Optional.GetNonNullValueOrDefault(Of T)(Optional(Of Nullable(Of T)))
+- uid: NCommons.Monads.Optional.MapNonNull*
+  name: MapNonNull
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MapNonNull_
+  commentId: Overload:NCommons.Monads.Optional.MapNonNull
+  fullName: NCommons.Monads.Optional.MapNonNull
+  nameWithType: Optional.MapNonNull
+- uid: NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1})
+  name: MapNonNull<T, TResult>(Optional<T>, Func<T, TResult>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1__
+  commentId: M:NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1})
+  name.vb: MapNonNull(Of T, TResult)(Optional(Of T), Func(Of T, TResult))
+  fullName: NCommons.Monads.Optional.MapNonNull<T, TResult>(NCommons.Monads.Optional<T>, System.Func<T, TResult>)
+  fullName.vb: NCommons.Monads.Optional.MapNonNull(Of T, TResult)(NCommons.Monads.Optional(Of T), System.Func(Of T, TResult))
+  nameWithType: Optional.MapNonNull<T, TResult>(Optional<T>, Func<T, TResult>)
+  nameWithType.vb: Optional.MapNonNull(Of T, TResult)(Optional(Of T), Func(Of T, TResult))
+- uid: NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1})
+  name: MapNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, TResult>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1__
+  commentId: M:NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1})
+  name.vb: MapNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, TResult))
+  fullName: NCommons.Monads.Optional.MapNonNull<T, TResult>(NCommons.Monads.Optional<System.Nullable<T>>, System.Func<T, TResult>)
+  fullName.vb: NCommons.Monads.Optional.MapNonNull(Of T, TResult)(NCommons.Monads.Optional(Of System.Nullable(Of T)), System.Func(Of T, TResult))
+  nameWithType: Optional.MapNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, TResult>)
+  nameWithType.vb: Optional.MapNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, TResult))
+- uid: NCommons.Monads.Optional.MatchNonNull*
+  name: MatchNonNull
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MatchNonNull_
+  commentId: Overload:NCommons.Monads.Optional.MatchNonNull
+  fullName: NCommons.Monads.Optional.MatchNonNull
+  nameWithType: Optional.MatchNonNull
+- uid: NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{``0},System.Action{``0},System.Action)
+  name: MatchNonNull<T>(Optional<T>, Action<T>, Action)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional___0__System_Action___0__System_Action_
+  commentId: M:NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{``0},System.Action{``0},System.Action)
+  name.vb: MatchNonNull(Of T)(Optional(Of T), Action(Of T), Action)
+  fullName: NCommons.Monads.Optional.MatchNonNull<T>(NCommons.Monads.Optional<T>, System.Action<T>, System.Action)
+  fullName.vb: NCommons.Monads.Optional.MatchNonNull(Of T)(NCommons.Monads.Optional(Of T), System.Action(Of T), System.Action)
+  nameWithType: Optional.MatchNonNull<T>(Optional<T>, Action<T>, Action)
+  nameWithType.vb: Optional.MatchNonNull(Of T)(Optional(Of T), Action(Of T), Action)
+- uid: NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Action{``0},System.Action)
+  name: MatchNonNull<T>(Optional<Nullable<T>>, Action<T>, Action)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional_System_Nullable___0___System_Action___0__System_Action_
+  commentId: M:NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Action{``0},System.Action)
+  name.vb: MatchNonNull(Of T)(Optional(Of Nullable(Of T)), Action(Of T), Action)
+  fullName: NCommons.Monads.Optional.MatchNonNull<T>(NCommons.Monads.Optional<System.Nullable<T>>, System.Action<T>, System.Action)
+  fullName.vb: NCommons.Monads.Optional.MatchNonNull(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)), System.Action(Of T), System.Action)
+  nameWithType: Optional.MatchNonNull<T>(Optional<Nullable<T>>, Action<T>, Action)
+  nameWithType.vb: Optional.MatchNonNull(Of T)(Optional(Of Nullable(Of T)), Action(Of T), Action)
+- uid: NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1},System.Func{``1})
+  name: MatchNonNull<T, TResult>(Optional<T>, Func<T, TResult>, Func<TResult>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1__System_Func___1__
+  commentId: M:NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1},System.Func{``1})
+  name.vb: MatchNonNull(Of T, TResult)(Optional(Of T), Func(Of T, TResult), Func(Of TResult))
+  fullName: NCommons.Monads.Optional.MatchNonNull<T, TResult>(NCommons.Monads.Optional<T>, System.Func<T, TResult>, System.Func<TResult>)
+  fullName.vb: NCommons.Monads.Optional.MatchNonNull(Of T, TResult)(NCommons.Monads.Optional(Of T), System.Func(Of T, TResult), System.Func(Of TResult))
+  nameWithType: Optional.MatchNonNull<T, TResult>(Optional<T>, Func<T, TResult>, Func<TResult>)
+  nameWithType.vb: Optional.MatchNonNull(Of T, TResult)(Optional(Of T), Func(Of T, TResult), Func(Of TResult))
+- uid: NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1},System.Func{``1})
+  name: MatchNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, TResult>, Func<TResult>)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1__System_Func___1__
+  commentId: M:NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1},System.Func{``1})
+  name.vb: MatchNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, TResult), Func(Of TResult))
+  fullName: NCommons.Monads.Optional.MatchNonNull<T, TResult>(NCommons.Monads.Optional<System.Nullable<T>>, System.Func<T, TResult>, System.Func<TResult>)
+  fullName.vb: NCommons.Monads.Optional.MatchNonNull(Of T, TResult)(NCommons.Monads.Optional(Of System.Nullable(Of T)), System.Func(Of T, TResult), System.Func(Of TResult))
+  nameWithType: Optional.MatchNonNull<T, TResult>(Optional<Nullable<T>>, Func<T, TResult>, Func<TResult>)
+  nameWithType.vb: Optional.MatchNonNull(Of T, TResult)(Optional(Of Nullable(Of T)), Func(Of T, TResult), Func(Of TResult))
 - uid: NCommons.Monads.Optional.ToEmptyIfNull*
   name: ToEmptyIfNull
   href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_ToEmptyIfNull_
@@ -1229,6 +1400,30 @@ references:
   fullName.vb: NCommons.Monads.Optional.ToNullable(Of T)(NCommons.Monads.Optional(Of T))
   nameWithType: Optional.ToNullable<T>(Optional<T>)
   nameWithType.vb: Optional.ToNullable(Of T)(Optional(Of T))
+- uid: NCommons.Monads.Optional.TryGetNonNullValue*
+  name: TryGetNonNullValue
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_TryGetNonNullValue_
+  commentId: Overload:NCommons.Monads.Optional.TryGetNonNullValue
+  fullName: NCommons.Monads.Optional.TryGetNonNullValue
+  nameWithType: Optional.TryGetNonNullValue
+- uid: NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{``0},``0@)
+  name: TryGetNonNullValue<T>(Optional<T>, out T)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional___0____0__
+  commentId: M:NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{``0},``0@)
+  name.vb: TryGetNonNullValue(Of T)(Optional(Of T), ByRef T)
+  fullName: NCommons.Monads.Optional.TryGetNonNullValue<T>(NCommons.Monads.Optional<T>, out T)
+  fullName.vb: NCommons.Monads.Optional.TryGetNonNullValue(Of T)(NCommons.Monads.Optional(Of T), ByRef T)
+  nameWithType: Optional.TryGetNonNullValue<T>(Optional<T>, out T)
+  nameWithType.vb: Optional.TryGetNonNullValue(Of T)(Optional(Of T), ByRef T)
+- uid: NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}},``0@)
+  name: TryGetNonNullValue<T>(Optional<Nullable<T>>, out T)
+  href: api/NCommons.Monads.Optional.html#NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0_____0__
+  commentId: M:NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}},``0@)
+  name.vb: TryGetNonNullValue(Of T)(Optional(Of Nullable(Of T)), ByRef T)
+  fullName: NCommons.Monads.Optional.TryGetNonNullValue<T>(NCommons.Monads.Optional<System.Nullable<T>>, out T)
+  fullName.vb: NCommons.Monads.Optional.TryGetNonNullValue(Of T)(NCommons.Monads.Optional(Of System.Nullable(Of T)), ByRef T)
+  nameWithType: Optional.TryGetNonNullValue<T>(Optional<Nullable<T>>, out T)
+  nameWithType.vb: Optional.TryGetNonNullValue(Of T)(Optional(Of Nullable(Of T)), ByRef T)
 - uid: NCommons.Monads.Optional`1
   name: Optional<T>
   href: api/NCommons.Monads.Optional-1.html
@@ -1514,6 +1709,15 @@ references:
   fullName.vb: NCommons.Monads.Optional(Of T).Widening(T to NCommons.Monads.Optional(Of T))
   nameWithType: Optional<T>.Implicit(T to Optional<T>)
   nameWithType.vb: Optional(Of T).Widening(T to Optional(Of T))
+- uid: NCommons.Monads.Optional`1.op_Implicit(NCommons.Monads.Optional{`0})~NCommons.Monads.Variant{`0}
+  name: Implicit(Optional<T> to Variant<T>)
+  href: api/NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_op_Implicit_NCommons_Monads_Optional__0___NCommons_Monads_Variant__0_
+  commentId: M:NCommons.Monads.Optional`1.op_Implicit(NCommons.Monads.Optional{`0})~NCommons.Monads.Variant{`0}
+  name.vb: Widening(Optional(Of T) to Variant(Of T))
+  fullName: NCommons.Monads.Optional<T>.Implicit(NCommons.Monads.Optional<T> to NCommons.Monads.Variant<T>)
+  fullName.vb: NCommons.Monads.Optional(Of T).Widening(NCommons.Monads.Optional(Of T) to NCommons.Monads.Variant(Of T))
+  nameWithType: Optional<T>.Implicit(Optional<T> to Variant<T>)
+  nameWithType.vb: Optional(Of T).Widening(Optional(Of T) to Variant(Of T))
 - uid: NCommons.Monads.Optional`1.op_Implicit*
   name: Implicit
   href: api/NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_op_Implicit_
@@ -1865,6 +2069,15 @@ references:
   fullName.vb: NCommons.Monads.Variant(Of T1).Widening(T1 to NCommons.Monads.Variant(Of T1))
   nameWithType: Variant<T1>.Implicit(T1 to Variant<T1>)
   nameWithType.vb: Variant(Of T1).Widening(T1 to Variant(Of T1))
+- uid: NCommons.Monads.Variant`1.op_Implicit(NCommons.Monads.Variant{`0})~NCommons.Monads.Optional{`0}
+  name: Implicit(Variant<T1> to Optional<T1>)
+  href: api/NCommons.Monads.Variant-1.html#NCommons_Monads_Variant_1_op_Implicit_NCommons_Monads_Variant__0___NCommons_Monads_Optional__0_
+  commentId: M:NCommons.Monads.Variant`1.op_Implicit(NCommons.Monads.Variant{`0})~NCommons.Monads.Optional{`0}
+  name.vb: Widening(Variant(Of T1) to Optional(Of T1))
+  fullName: NCommons.Monads.Variant<T1>.Implicit(NCommons.Monads.Variant<T1> to NCommons.Monads.Optional<T1>)
+  fullName.vb: NCommons.Monads.Variant(Of T1).Widening(NCommons.Monads.Variant(Of T1) to NCommons.Monads.Optional(Of T1))
+  nameWithType: Variant<T1>.Implicit(Variant<T1> to Optional<T1>)
+  nameWithType.vb: Variant(Of T1).Widening(Variant(Of T1) to Optional(Of T1))
 - uid: NCommons.Monads.Variant`1.op_Implicit*
   name: Implicit
   href: api/NCommons.Monads.Variant-1.html#NCommons_Monads_Variant_1_op_Implicit_

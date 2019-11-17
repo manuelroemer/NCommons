@@ -73,8 +73,8 @@
   
   <h1 id="NCommons_Monads_Optional" data-uid="NCommons.Monads.Optional" class="text-break">Class Optional
   </h1>
-  <div class="markdown level0 summary"><p>Defines static functions which assist with the creation of and interaction with
-<a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instances.</p>
+  <div class="markdown level0 summary"><p>Defines static utility functions and extension methods which assist with the creation of
+and interaction with <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instances.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -90,6 +90,104 @@
   </div>
   <h2 id="methods">Methods
   </h2>
+  <a id="NCommons_Monads_Optional_FlatMapNonNull_" data-uid="NCommons.Monads.Optional.FlatMapNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional___0__System_Func___0_NCommons_Monads_Optional___1___" data-uid="NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,NCommons.Monads.Optional{``1}})">FlatMapNonNull&lt;T, TResult&gt;(Optional&lt;T&gt;, Func&lt;T, Optional&lt;TResult&gt;&gt;)</h3>
+  <div class="markdown level1 summary"><p>If the optional holds a value which is not <span class="xref">null</span>, the specified
+<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function is invoked with the optional's held value.
+The returned value is then returned by this method.</p>
+<p>If the optional is either empty or holds a value which is not <span class="xref">null</span>,
+the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function is not invoked.
+Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;TResult&gt; FlatMapNonNull&lt;T, TResult&gt;(this Optional&lt;T&gt; optional, Func&lt;T, Optional&lt;TResult&gt;&gt; flatMapValue)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;&gt;
+  <code><strong><span class="parametername">flatMapValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.
+This function receives the optional's held value as a parameter.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
+  <p>The <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance returned by the
+<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function if the optional holds a value which is not
+<span class="xref">null</span> or an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the
+optional is empty.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">flatMapValue</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional___0__System_Func___0_NCommons_Monads_Optional___1____seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_FlatMapNonNull_" data-uid="NCommons.Monads.Optional.FlatMapNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0_NCommons_Monads_Optional___1___" data-uid="NCommons.Monads.Optional.FlatMapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,NCommons.Monads.Optional{``1}})">FlatMapNonNull&lt;T, TResult&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, Func&lt;T, Optional&lt;TResult&gt;&gt;)</h3>
+  <div class="markdown level1 summary"><p>If the optional holds a value which is not <span class="xref">null</span>, the specified
+<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function is invoked with the optional's held value.
+The returned value is then returned by this method.</p>
+<p>If the optional is either empty or holds a value which is not <span class="xref">null</span>,
+the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function is not invoked.
+Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;TResult&gt; FlatMapNonNull&lt;T, TResult&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, Func&lt;T, Optional&lt;TResult&gt;&gt; flatMapValue)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;&gt;
+  <code><strong><span class="parametername">flatMapValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.
+This function receives the optional's held value as a parameter.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
+  <p>The <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance returned by the
+<code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function if the optional holds a value which is not
+<span class="xref">null</span> or an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the
+optional is empty.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">flatMapValue</code> function.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">flatMapValue</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_FlatMapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0_NCommons_Monads_Optional___1____seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_FlatMap__1_System_Func__0_NCommons_Monads_Optional___0___">FlatMap&lt;TResult&gt;(Func&lt;T, Optional&lt;TResult&gt;&gt;)</a></div>
+  </div>
   <a id="NCommons_Monads_Optional_FromNullable_" data-uid="NCommons.Monads.Optional.FromNullable*"></a>
   <h3 id="NCommons_Monads_Optional_FromNullable__1___0_" data-uid="NCommons.Monads.Optional.FromNullable``1(``0)">FromNullable&lt;T&gt;(T)</h3>
   <div class="markdown level1 summary"><p>Creates a non-empty optional holding the specified value if is not <span class="xref">null</span>.
@@ -140,6 +238,541 @@ Otherwise, an empty optional.</p>
   <code><strong><span class="parametername">T</span></strong></code>
   <p>The type to be held by the optional.</p>
 
+  <a id="NCommons_Monads_Optional_GetNonNullValue_" data-uid="NCommons.Monads.Optional.GetNonNullValue*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional___0__" data-uid="NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{``0})">GetNonNullValue&lt;T&gt;(Optional&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+and throws an exception if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValue&lt;T&gt;(this Optional&lt;T&gt; optional)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
+  <p>The optional is empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional___0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValue">GetValue()</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValue_" data-uid="NCommons.Monads.Optional.GetNonNullValue*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0___" data-uid="NCommons.Monads.Optional.GetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}})">GetNonNullValue&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+and throws an exception if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValue&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>
+  <p>The optional is empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0____seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValue">GetValue()</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValueOr_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0____0_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},``0)">GetNonNullValueOr&lt;T&gt;(Optional&lt;T&gt;, T)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+or the specified <code data-dev-comment-type="paramref" class="paramref">substitute</code> value if the optional is either empty
+or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValueOr&lt;T&gt;(this Optional&lt;T&gt; optional, T substitute)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">substitute</span></strong></code>
+  <p>A value to be returned if the optional is empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value which is not <span class="xref">null</span>
+or <code data-dev-comment-type="paramref" class="paramref">substitute</code> if the optional is either empty
+or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0____0__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOr__0_">GetValueOr(T)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValueOr_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0__System_Func___0__" data-uid="NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{``0},System.Func{``0})">GetNonNullValueOr&lt;T&gt;(Optional&lt;T&gt;, Func&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+or a value returned by the specified <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function
+if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValueOr&lt;T&gt;(this Optional&lt;T&gt; optional, Func&lt;T&gt; substituteProvider)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;T&gt;
+  <code><strong><span class="parametername">substituteProvider</span></strong></code>
+  <p>A function which returns a value which is supposed to be returned if the optional is empty.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value which is not <span class="xref">null</span>
+or a value returned by the specified <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function
+if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">substituteProvider</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional___0__System_Func___0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOr_System_Func__0__">GetValueOr(Func&lt;T&gt;)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValueOr_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0_____0_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},``0)">GetNonNullValueOr&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, T)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+or the specified <code data-dev-comment-type="paramref" class="paramref">substitute</code> value if the optional is either empty
+or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValueOr&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, T substitute)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">substitute</span></strong></code>
+  <p>A value to be returned if the optional is empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value which is not <span class="xref">null</span>
+or <code data-dev-comment-type="paramref" class="paramref">substitute</code> if the optional is either empty
+or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0_____0__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOr__0_">GetValueOr(T)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValueOr_" data-uid="NCommons.Monads.Optional.GetNonNullValueOr*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0___System_Func___0__" data-uid="NCommons.Monads.Optional.GetNonNullValueOr``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0})">GetNonNullValueOr&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, Func&lt;T&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+or a value returned by the specified <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function
+if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValueOr&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, Func&lt;T&gt; substituteProvider)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;T&gt;
+  <code><strong><span class="parametername">substituteProvider</span></strong></code>
+  <p>A function which returns a value which is supposed to be returned if the optional is empty.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value which is not <span class="xref">null</span>
+or a value returned by the specified <code data-dev-comment-type="paramref" class="paramref">substituteProvider</code> function
+if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">substituteProvider</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValueOr__1_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOr_System_Func__0__">GetValueOr(Func&lt;T&gt;)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_GetNonNullValueOrDefault_" data-uid="NCommons.Monads.Optional.GetNonNullValueOrDefault*"></a>
+  <h3 id="NCommons_Monads_Optional_GetNonNullValueOrDefault__1_NCommons_Monads_Optional_System_Nullable___0___" data-uid="NCommons.Monads.Optional.GetNonNullValueOrDefault``1(NCommons.Monads.Optional{System.Nullable{``0}})">GetNonNullValueOrDefault&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns the optional's held value if it is not <span class="xref">null</span>
+or the default value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> if the optional is either empty
+or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T GetNonNullValueOrDefault&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">T</span>
+  <p>The held value if the optional holds a value which is not <span class="xref">null</span>
+or the default value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> if the optional is either
+empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_GetNonNullValueOrDefault__1_NCommons_Monads_Optional_System_Nullable___0____seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_GetValueOrDefault">GetValueOrDefault()</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MapNonNull_" data-uid="NCommons.Monads.Optional.MapNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1__" data-uid="NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1})">MapNonNull&lt;T, TResult&gt;(Optional&lt;T&gt;, Func&lt;T, TResult&gt;)</h3>
+  <div class="markdown level1 summary"><p>If the optional holds a value which is not <span class="xref">null</span>, the specified
+<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function is invoked with the optional's held value.
+The returned value is then wrapped in a new <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance
+and returned by this method.</p>
+<p>If the optional is either empty or holds a value which is not <span class="xref">null</span>,
+the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function is not invoked.
+Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;TResult&gt; MapNonNull&lt;T, TResult&gt;(this Optional&lt;T&gt; optional, Func&lt;T, TResult&gt; mapValue)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;
+  <code><strong><span class="parametername">mapValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.
+This function receives the optional's held value as a parameter.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
+  <p>An <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance holding the returned value of the
+<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function if the optional holds a value which is not
+<span class="xref">null</span> or an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the
+optional is empty.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">mapValue</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Map__1_System_Func__0___0__">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MapNonNull_" data-uid="NCommons.Monads.Optional.MapNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1__" data-uid="NCommons.Monads.Optional.MapNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1})">MapNonNull&lt;T, TResult&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, Func&lt;T, TResult&gt;)</h3>
+  <div class="markdown level1 summary"><p>If the optional holds a value which is not <span class="xref">null</span>, the specified
+<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function is invoked with the optional's held value.
+The returned value is then wrapped in a new <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance
+and returned by this method.</p>
+<p>If the optional is either empty or holds a value which is not <span class="xref">null</span>,
+the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function is not invoked.
+Instead, an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Optional&lt;TResult&gt; MapNonNull&lt;T, TResult&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, Func&lt;T, TResult&gt; mapValue)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;
+  <code><strong><span class="parametername">mapValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.
+This function receives the optional's held value as a parameter.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;TResult&gt;
+  <p>An <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance holding the returned value of the
+<code data-dev-comment-type="paramref" class="paramref">mapValue</code> function if the optional holds a value which is not
+<span class="xref">null</span> or an empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> instance if the
+optional is empty.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">mapValue</code> function.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">mapValue</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MapNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Map__1_System_Func__0___0__">Map&lt;TResult&gt;(Func&lt;T, TResult&gt;)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MatchNonNull_" data-uid="NCommons.Monads.Optional.MatchNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional___0__System_Action___0__System_Action_" data-uid="NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{``0},System.Action{``0},System.Action)">MatchNonNull&lt;T&gt;(Optional&lt;T&gt;, Action&lt;T&gt;, Action)</h3>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional holds a value which
+is not <span class="xref">null</span> or the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if
+the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MatchNonNull&lt;T&gt;(this Optional&lt;T&gt; optional, Action&lt;T&gt; onValue, Action onNullOrEmpty)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;T&gt;
+  <code><strong><span class="parametername">onValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a>
+  <code><strong><span class="parametername">onNullOrEmpty</span></strong></code>
+  <p>The function to be invoked if the optional is either empty or holds a value which is
+<span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">onValue</code></li>
+<li><code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional___0__System_Action___0__System_Action__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Match_System_Action__0__System_Action_">Match(Action&lt;T&gt;, Action)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MatchNonNull_" data-uid="NCommons.Monads.Optional.MatchNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional_System_Nullable___0___System_Action___0__System_Action_" data-uid="NCommons.Monads.Optional.MatchNonNull``1(NCommons.Monads.Optional{System.Nullable{``0}},System.Action{``0},System.Action)">MatchNonNull&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, Action&lt;T&gt;, Action)</h3>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional holds a value which
+is not <span class="xref">null</span> or the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if
+the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MatchNonNull&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, Action&lt;T&gt; onValue, Action onNullOrEmpty)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;T&gt;
+  <code><strong><span class="parametername">onValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a>
+  <code><strong><span class="parametername">onNullOrEmpty</span></strong></code>
+  <p>The function to be invoked if the optional is either empty or holds a value which is
+<span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">onValue</code></li>
+<li><code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MatchNonNull__1_NCommons_Monads_Optional_System_Nullable___0___System_Action___0__System_Action__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Match_System_Action__0__System_Action_">Match(Action&lt;T&gt;, Action)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MatchNonNull_" data-uid="NCommons.Monads.Optional.MatchNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1__System_Func___1__" data-uid="NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{``0},System.Func{``0,``1},System.Func{``1})">MatchNonNull&lt;T, TResult&gt;(Optional&lt;T&gt;, Func&lt;T, TResult&gt;, Func&lt;TResult&gt;)</h3>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional holds a value which
+is not <span class="xref">null</span> or the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if
+the optional is either empty or holds a value which is <span class="xref">null</span>.
+This method returns the returned value of the invoked function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TResult MatchNonNull&lt;T, TResult&gt;(this Optional&lt;T&gt; optional, Func&lt;T, TResult&gt; onValue, Func&lt;TResult&gt; onNullOrEmpty)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;
+  <code><strong><span class="parametername">onValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TResult&gt;
+  <code><strong><span class="parametername">onNullOrEmpty</span></strong></code>
+  <p>The function to be invoked if the optional is either empty or holds a value which is
+<span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">TResult</span>
+  <p>The returned value of the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional
+holds a value which is not <span class="xref">null</span> or
+the returned value of the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if the optional
+is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">onValue</code> and
+<code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> functions.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">onValue</code></li>
+<li><code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional___0__System_Func___0___1__System_Func___1___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Match_System_Action__0__System_Action_">Match(Action&lt;T&gt;, Action)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_MatchNonNull_" data-uid="NCommons.Monads.Optional.MatchNonNull*"></a>
+  <h3 id="NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1__System_Func___1__" data-uid="NCommons.Monads.Optional.MatchNonNull``2(NCommons.Monads.Optional{System.Nullable{``0}},System.Func{``0,``1},System.Func{``1})">MatchNonNull&lt;T, TResult&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, Func&lt;T, TResult&gt;, Func&lt;TResult&gt;)</h3>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional holds a value which
+is not <span class="xref">null</span> or the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if
+the optional is either empty or holds a value which is <span class="xref">null</span>.
+This method returns the returned value of the invoked function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TResult MatchNonNull&lt;T, TResult&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, Func&lt;T, TResult&gt; onValue, Func&lt;TResult&gt; onNullOrEmpty)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TResult&gt;
+  <code><strong><span class="parametername">onValue</span></strong></code>
+  <p>The function to be invoked if the optional holds a value which is not <span class="xref">null</span>.</p>
+
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TResult&gt;
+  <code><strong><span class="parametername">onNullOrEmpty</span></strong></code>
+  <p>The function to be invoked if the optional is either empty or holds a value which is
+<span class="xref">null</span>.</p>
+
+  <h4 class="returns">Returns</h4>
+  <span class="xref">TResult</span>
+  <p>The returned value of the <code data-dev-comment-type="paramref" class="paramref">onValue</code> function if the optional
+holds a value which is not <span class="xref">null</span> or
+the returned value of the <code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> function if the optional
+is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <code><strong><span class="parametername">TResult</span></strong></code>
+  <p>The type of the result which gets returned by the <code data-dev-comment-type="paramref" class="paramref">onValue</code> and
+<code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code> functions.</p>
+
+  <h4 class="exceptions">Exceptions</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>
+  <ul>
+<li><code data-dev-comment-type="paramref" class="paramref">onValue</code></li>
+<li><code data-dev-comment-type="paramref" class="paramref">onNullOrEmpty</code></li>
+</ul>
+
+  <h4 id="NCommons_Monads_Optional_MatchNonNull__2_NCommons_Monads_Optional_System_Nullable___0___System_Func___0___1__System_Func___1___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_Match_System_Action__0__System_Action_">Match(Action&lt;T&gt;, Action)</a></div>
+  </div>
   <a id="NCommons_Monads_Optional_ToEmptyIfNull_" data-uid="NCommons.Monads.Optional.ToEmptyIfNull*"></a>
   <h3 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional___0__" data-uid="NCommons.Monads.Optional.ToEmptyIfNull``1(NCommons.Monads.Optional{``0})">ToEmptyIfNull&lt;T&gt;(Optional&lt;T&gt;)</h3>
   <div class="markdown level1 summary"><p>Returns an empty optional if the current optional's held value is <span class="xref">null</span>.
@@ -154,7 +787,7 @@ Otherwise, returns a non-empty optional holding the same value as the current op
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
   <code><strong><span class="parametername">optional</span></strong></code>
-  <p>The optional holding a nullable value.</p>
+  <p>The optional which may hold a nullable value.</p>
 
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
@@ -165,12 +798,6 @@ Otherwise, a non-empty optional holding the same value as the current optional.<
   <code><strong><span class="parametername">T</span></strong></code>
   <p>The type which may be held by the optional.</p>
 
-  <h4 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional___0___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p><strong>Recommendation:</strong> This method is ideally used together with C# 8.0's
-nullable reference types, because it strips the nullable type annotation
-from a nullable reference type, making it obvious that a held value can no
-longer be <span class="xref">null</span>.</p>
-</div>
   <a id="NCommons_Monads_Optional_ToEmptyIfNull_" data-uid="NCommons.Monads.Optional.ToEmptyIfNull*"></a>
   <h3 id="NCommons_Monads_Optional_ToEmptyIfNull__1_NCommons_Monads_Optional_System_Nullable___0___" data-uid="NCommons.Monads.Optional.ToEmptyIfNull``1(NCommons.Monads.Optional{System.Nullable{``0}})">ToEmptyIfNull&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;)</h3>
   <div class="markdown level1 summary"><p>Returns an empty optional if the current optional's held value is <span class="xref">null</span>.
@@ -185,7 +812,7 @@ Otherwise, returns a non-empty optional holding the same value as the current op
   <h4 class="parameters">Parameters</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
   <code><strong><span class="parametername">optional</span></strong></code>
-  <p>The optional holding a nullable value.</p>
+  <p>The optional which may hold a nullable value.</p>
 
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
@@ -222,6 +849,76 @@ if the optional is empty.</p>
   <code><strong><span class="parametername">T</span></strong></code>
   <p>The type which may be held by the optional.</p>
 
+  <a id="NCommons_Monads_Optional_TryGetNonNullValue_" data-uid="NCommons.Monads.Optional.TryGetNonNullValue*"></a>
+  <h3 id="NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional___0____0__" data-uid="NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{``0},``0@)">TryGetNonNullValue&lt;T&gt;(Optional&lt;T&gt;, out T)</h3>
+  <div class="markdown level1 summary"><p>Attempts to retrieve a non-<span class="xref">null</span> value from the optional and
+returns a value indicating whether the retrieval was successful, i.e. if the
+optional actually held a non-<span class="xref">null</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGetNonNullValue&lt;T&gt;(this Optional&lt;T&gt; optional, out T value)
+    where T : class</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">value</span></strong></code>
+  <p>A parameter which will hold the optional's non-<span class="xref">null</span>-value, if it
+held one.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><span class="xref">true</span> if the optional held a non-<span class="xref">null</span> value;
+<span class="xref">false</span> if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional___0____0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_TryGetValue__0__">TryGetValue(out T)</a></div>
+  </div>
+  <a id="NCommons_Monads_Optional_TryGetNonNullValue_" data-uid="NCommons.Monads.Optional.TryGetNonNullValue*"></a>
+  <h3 id="NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0_____0__" data-uid="NCommons.Monads.Optional.TryGetNonNullValue``1(NCommons.Monads.Optional{System.Nullable{``0}},``0@)">TryGetNonNullValue&lt;T&gt;(Optional&lt;Nullable&lt;T&gt;&gt;, out T)</h3>
+  <div class="markdown level1 summary"><p>Attempts to retrieve a non-<span class="xref">null</span> value from the optional and
+returns a value indicating whether the retrieval was successful, i.e. if the
+optional actually held a non-<span class="xref">null</span> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGetNonNullValue&lt;T&gt;(this Optional&lt;Nullable&lt;T&gt;&gt; optional, out T value)
+    where T : struct, ValueType</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;T&gt;&gt;
+  <code><strong><span class="parametername">optional</span></strong></code>
+  <p>The optional which may hold a nullable value.</p>
+
+  <span class="xref">T</span>
+  <code><strong><span class="parametername">value</span></strong></code>
+  <p>A parameter which will hold the optional's non-<span class="xref">null</span>-value, if it
+held one.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>
+  <p><span class="xref">true</span> if the optional held a non-<span class="xref">null</span> value;
+<span class="xref">false</span> if the optional is either empty or holds a value which is <span class="xref">null</span>.</p>
+
+  <h4 class="typeParameters">Type Parameters</h4>
+  <code><strong><span class="parametername">T</span></strong></code>
+  <p>The type which may be held by the optional.</p>
+
+  <h4 id="NCommons_Monads_Optional_TryGetNonNullValue__1_NCommons_Monads_Optional_System_Nullable___0_____0___seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Optional-1.html#NCommons_Monads_Optional_1_TryGetValue__0__">TryGetValue(out T)</a></div>
+  </div>
 </article>
           </div>
           

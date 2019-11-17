@@ -919,6 +919,40 @@ specified <code data-dev-comment-type="paramref" class="paramref">value</code>.<
   <h4 class="returns">Returns</h4>
   <a class="xref" href="NCommons.Monads.Variant-1.html">Variant</a>&lt;T1&gt;
   
+  <a id="NCommons_Monads_Variant_1_op_Implicit_" data-uid="NCommons.Monads.Variant`1.op_Implicit*"></a>
+  <h3 id="NCommons_Monads_Variant_1_op_Implicit_NCommons_Monads_Variant__0___NCommons_Monads_Optional__0_" data-uid="NCommons.Monads.Variant`1.op_Implicit(NCommons.Monads.Variant{`0})~NCommons.Monads.Optional{`0}">Implicit(Variant&lt;T1&gt; to Optional&lt;T1&gt;)</h3>
+  <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> which represents the same state as the variant,
+i.e. it holds a value if the variant holds a value or it is empty if the variant is empty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h4 class="declaration">Declaration</h4>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Optional&lt;T1&gt;(Variant&lt;T1&gt; variant)</code></pre>
+  </div>
+  <h4 class="parameters">Parameters</h4>
+  <a class="xref" href="NCommons.Monads.Variant-1.html">Variant</a>&lt;T1&gt;
+  <code><strong><span class="parametername">variant</span></strong></code>
+  <p>The variant to be converted to an optional.</p>
+
+  <h4 class="returns">Returns</h4>
+  <a class="xref" href="NCommons.Monads.Optional-1.html">Optional</a>&lt;T1&gt;
+  <p>A new <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> holding the variant's value if it holds one.
+An empty <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> if the variant is empty.</p>
+
+  <h4 id="NCommons_Monads_Variant_1_op_Implicit_NCommons_Monads_Variant__0___NCommons_Monads_Optional__0__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> essentially has the same functionality as an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a>.
+Both types either hold a value or are empty. Therefore, any <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> can
+easily be converted to a <a class="xref" href="NCommons.Monads.Variant-1.html">Variant&lt;T1&gt;</a> and vice versa.</p>
+<p>Nevertheless, the two types serve different purposes. While an <a class="xref" href="NCommons.Monads.Optional-1.html">Optional&lt;T&gt;</a> is mainly
+designed for modeling the absence of a value, the variant family is designed for scenarios where
+one needs to accept or provide an instance of one or many types, or none.
+Depending on the use case, you may pick either type for your scenario. If you ever
+need to switch between the two, you can use one of the available conversion methods.</p>
+</div>
+  <h4 id="NCommons_Monads_Variant_1_op_Implicit_NCommons_Monads_Variant__0___NCommons_Monads_Optional__0__seealso">See Also</h4>
+  <div class="seealso">
+      <div><a class="xref" href="NCommons.Monads.Variant-1.html#NCommons_Monads_Variant_1_ToOptional">ToOptional()</a></div>
+  </div>
   <a id="NCommons_Monads_Variant_1_op_Inequality_" data-uid="NCommons.Monads.Variant`1.op_Inequality*"></a>
   <h3 id="NCommons_Monads_Variant_1_op_Inequality_NCommons_Monads_Variant__0___NCommons_Monads_Variant__0___" data-uid="NCommons.Monads.Variant`1.op_Inequality(NCommons.Monads.Variant{`0}@,NCommons.Monads.Variant{`0}@)">Inequality(Variant&lt;T1&gt;, Variant&lt;T1&gt;)</h3>
   <div class="markdown level1 summary"><p>Returns a value indicating whether the two variant instances are unequal.
