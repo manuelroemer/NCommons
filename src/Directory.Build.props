@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
-    <PackageReference Include="SauceControl.InheritDoc" Version="0.4.0" PrivateAssets="All" />
+    <PackageReference Include="SauceControl.InheritDoc" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8" PrivateAssets="all" />
   </ItemGroup>
 
